@@ -4,8 +4,7 @@
 3、注释、关键字、标识符
 4、数据（数据类型、常量）
 
-
-###01java语言概述
+### 01java语言概述 ###
 	* A: java语言概述
 		* a: Java是sun公司开发的一门编程语言,目前被Oracle公司收购，编程语言就是用来编写软件的。
 		* b: Java的应用
@@ -18,7 +17,7 @@
 			* JavaSE（标准版）部分,基础班学习JavaSE,JavaSE并不能开发大型项目。
 			* JavaEE（企业版）部分,就业班学习JavaEE,学习完JavaEE部分就可以开发各种大型项目了。
 	
-###02常用的DOS命令
+### 02常用的DOS命令
 	* A: 常用的DOS命令
 		* a: 打开Dos控制台
 			* win+r--cmd--回车			
@@ -36,35 +35,38 @@
 			* 还可以省略“.exe”后缀，例如：D:\>C:\windows\notepad
 			
 			
-###03java语言开发环境JDK
+
+### 03java语言开发环境JDK
+
 	* A: java语言开发环境JDK
 		* a: JDK是Java开发环境
 		* b: 课程中使用的JDK版本是JDK7，当前最新版本是JDK8
 
-	
+​	
 
-###04JDK的下载和安装
+### 04JDK的下载和安装
 	* A: JDK的下载
 		* a: 官网 http://www.oracle.com/cn/index.html
-		* b: 演示下载流程
+	  * b: 演示下载流程
 	* B: JDK的安装
-		* a: 傻瓜式安装
-			* 双击安装程序，然后一路next即可(但是不建议)
-		* b: 安装的推荐方式
-			* 安装路径不要有中文或者特殊符号如空格等。
-			* 所有和开发相关的软件最好安装目录统一。
-				* 举例：我的JDK安装路径
-					* D:\develop\Java\jdk1.7.0_72
-			* 当提示安装JRE时，可以选择不安装。建议还是安装上。
-					* D:\develop\Java\jre\
-			* 安装路径中没有的文件夹,会自动创建
-			
+	  * a: 傻瓜式安装
+	    * 双击安装程序，然后一路next即可(但是不建议)
+	  * b: 安装的推荐方式
+	    * 安装路径不要有中文或者特殊符号如空格等。
+	    * 所有和开发相关的软件最好安装目录统一。
+	      * 举例：我的JDK安装路径
+	      	* D:\develop\Java\jdk1.7.0_72
+	    * 当提示安装JRE时，可以选择不安装。建议还是安装上。
+	      	* D:\develop\Java\jre\
+	    * 安装路径中没有的文件夹,会自动创建
 	* C: 验证安装是否成功
-		* a:通过DOS命令，切换到JDK安装的bin目录下。
-			* D:\develop\Java\jdk1.7.0_72\bin
-		* b:然后分别输入javac和java，如果正常显示一些内容，说明安装成功
+	  * a:通过DOS命令，切换到JDK安装的bin目录下。
+	  	* D:\develop\Java\jdk1.7.0_72\bin
+	  * b:然后分别输入javac和java，如果正常显示一些内容，说明安装成功
 
-###05JDK和JRE跨平台
+
+
+### 05JDK和JRE跨平台
 	* A: JDK与JRE的关系
 		* a: JDK：它是Java开发运行环境，在程序员的电脑上当然要安装JDK；
 		* b: JRE：Java Runtime Environment它是Java运行环境，如果你不需要开发只需要运行Java程序，那么你可以安装JRE。例如程序员开发出的程序最终卖给了用户，用户不用开发，只需要运行程序，所以用户在电脑上安装JRE即可。
@@ -73,12 +75,10 @@
 		* a: 平台指的是操作系统 （Windows，Linux，Mac）。
 		* b: Java程序可以在任意操作系统上运行，一次编写到处运行
 		* c: 实现跨平台需要依赖Java的虚拟机 JVM （Java Virtual Machine）
-		
-	
 
-				
+​				
 
-###06编写HelloWorld程序
+### 06编写HelloWorld程序
 	* A: 编写步骤(初学者)
 		* a: 创建一个普通文本文件，将其修改为.java文件。
 		* b: 完成模板代码：
@@ -104,7 +104,7 @@
 		* b: 编译：然后通过编译器把源文件编译成字节码文件，字节码文件扩展名为.class；
 		* c: 运行：最后使用解释器来运行字节码文件。
 
-###07编译Java程序
+### 07编译Java程序
 	* A：程序编译
 		* 作用：将程序员写的java源代码生成可以运行的Java程序(.class文件)
 		* 过程：
@@ -113,14 +113,14 @@
 			* c: d:\234\day01\code>d:\develop\java\jdk1.7.0_72\bin\javac HelloWorld.java 回车
 			* d:在d:\234\day01\code文件夹中多了个HelloWorld.class文件(又叫做字节码文件)
 
-###08运行Java程序			
+### 08运行Java程序			
 	* A：运行程序
 		* a: 开启DOS窗口并切换到.class文件所在的目录
 		* b: 此目录中没有java命令,所以在运行时也要写出java命令的全路径
 		* c: d:\234\day01\code>d:\develop\java\jdk1.7.0_72\bin\java HelloWorld 回车(注意:运行时不用后缀名.class)
 		* d: 控制台打印显示结果"HelloWorld"
 
-###09环境变量的配置
+### 09环境变量的配置
 	* A: Path环境变量配置方式一
 		* a: 安装高级文本编辑器notepad++
 		* b: 配置Windows的path环境变量
@@ -133,12 +133,11 @@
 		* a：右键点击计算机  →  选择属性  →  更改设置  →  点击高级  →  点击环境变量  →  创建名为JAVA_HOME的环境变量  →  将jdk所在的目录路径(bin所在的路径)配置到JAVA_HOME变量中
 		* b: 用;与其他变量分隔  →  在path环境变量中添加%JAVA_HOME%\bin
 		
-###10notepad软件安装
+### 10notepad软件安装
 	* A: 安装
 		* 双击.exe文件安装 即可
-		
 
-###11注释
+### 11注释
 	* A: 注释
 		* a: 定义：用来解释和说明程序的文字，注释是不会被执行的
 		* b: 分类：
@@ -156,15 +155,15 @@
 				   1. 定义类
 				   2. 定义主方法
 				   3. 一条命令，控制台输出了HelloWorld
-			*/
-			public class HelloWorld{
+				*/
+				public class HelloWorld{
 				//main主方法，固定格式，程序的入口点
 				public static void main(String[] args){
 					//系统 输出 打印    打印的内容
 					System.out.println("HelloWorld");
 				}
-			}
-###12关键字
+				}
+### 12关键字
 	* A: 关键字
 		* a: 定义
 			* 是被Java语言赋予特殊含义，具有专门用途的单词，比如之前接触的class，int，double均为Java已经预设好的
@@ -175,7 +174,7 @@
 		* d: 注意事项
 			* goto与const是Java中的保留字，即没有赋予特殊含义却仍被Java占用的单词,类似Editplus这样的高级记事本,针对关键字有特殊的颜色标记，非常直观 
 	
-###13标识符
+### 13标识符
 	* A: 标识符
 		* a: 定义
 			* 就是给类,接口,方法,变量等起名字时使用的字符序列
@@ -188,38 +187,44 @@
 			* 2：不可以使用关键字
 			* 3：严格区分大小写，不限制长度
 			* 4：起名时，尽量达到见名知意
+		
 	* B：标识符中常见的命名规则(这些规定是不受语法约束的)
 		* a: 包名：多单词组成时所有字母均小写，使用.连接  aaa.bbb.ccc
-		* b: 类名&接口名：大驼峰式   AaaBbbCcc
-		* c: 变量名&方法名：小驼峰式   aaaBbbCcc
-		* d: 常量名：多单词组成是所有字母均大写，使用_连接AAA_BBB_CCC
+				* b: 类名&接口名：大驼峰式   AaaBbbCcc
+				* c: 变量名&方法名：小驼峰式   aaaBbbCcc
+				* d: 常量名：多单词组成是所有字母均大写，使用_连接AAA_BBB_CCC
+		
 	* C: 案例代码
+		
+		```java
 		/*
 		   标识符
 		   Java中，自己定义的内容
 		   自定义类的名字，上一个案例 HelloWorld
 		   标识符的规则：
 			 组成： 字母52个A-Z a-z 数字0-9 _ 下划线 $ 美元符
-
-			 注意： 不能数字开头，不能是关键字
+		
+		 注意： 不能数字开头，不能是关键字
+		
+		 定义名字：
+			_abc  0a  a0  a#a  a$a   void
+			 YES  NO  YES NO   YES   NO
 			 
-			 定义名字：
-				_abc  0a  a0  a#a  a$a   void
-				 YES  NO  YES NO   YES   NO
-				 
-			 类的名字： 首字母大写，第二个单词首字母大写
-			  BeiJingShiHaiDianQuYiYuan
-			  MeiGuoJiaLiFuNiYa
-			 
-			 方法的名字：首字母小写，每个单词首字母大写
-			   addStudent  
+		 类的名字： 首字母大写，第二个单词首字母大写
+		  BeiJingShiHaiDianQuYiYuan
+		  MeiGuoJiaLiFuNiYa
+		
+		 方法的名字：首字母小写，每个单词首字母大写
+		   addStudent  
+		
 		*/
 		public class Demo{
 			
 		}
+		```
 
+### 14Java中的数据类型
 
-###14Java中的数据类型
 	* A:为什么有数据类型
 		* Java语言是强类型语言，对于每一种数据都定义了明确的具体数据类型
 	* B:Java中数据类型的分类
@@ -229,8 +234,10 @@
 		* 引用数据类型: 是强大的数据类型，它是基于基本数据类型创建的。JavaSE中提供了一个超级类库，类库中包含了近万种引用数据类型。
 			不过现在我们先要学习的是基本类型！
 			* 数组、类、接口
-			 
-###15Java中的常量
+			
+
+### 15Java中的常量
+
 	* A: 常量的定义
 		* 常量就是不变的数据量, 在程序执行的过程中其值不可以发生改变
 	* B: 常量分类
@@ -251,22 +258,22 @@
 			* 如“我爱Java”，“0123”，“”，“null”
 			* 字符串必须使用“”包裹，其中可以包含0~N个字符。
 
-###16程序中输出Java中的常量
+### 16程序中输出Java中的常量			
+
 	* A: 案例代码
-		/*
-		   Demo_1类，演示Java中的所有类型的常量
-		   程序当中输出：
-			 输出整数常量
-			 小数常量
-			 布尔常量
-			 字符常量
-			 字符串常量
-		*/
-		public class Demo_1{
-			public static void main(String[] args){
-				//输出整数 十进制
-				System.out.println(50);
-				
+			/*
+			   Demo_1类，演示Java中的所有类型的常量
+			   程序当中输出：
+				 输出整数常量
+				 小数常量
+				 布尔常量
+				 字符常量
+				 字符串常量
+			*/
+			public class Demo_1{
+				public static void main(String[] args){
+					//输出整数 十进制
+					System.out.println(50);
 				//输出整数，二进制, 数字开头0B
 				System.out.println(0B11);
 				
@@ -291,5 +298,6 @@
 			}
 		}
 
-###17总结
+### 17总结
+
 * 把今天的知识点总结一遍。
