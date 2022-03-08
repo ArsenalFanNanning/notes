@@ -6,7 +6,7 @@
 
 
 ### 01switch语句解构
-​	* A:switch语句解构
+	* A:switch语句解构；
     * a:switch只能针对某个表达式的值作出判断，从而决定程序执行哪一段代码。
 
       	* b:格式如下:
@@ -43,40 +43,40 @@
 ### 02switch语句的星期判断
 ​	* A: switch语句的星期判断
 ​		* a: 明确需求
-​			需求:初始化int类型变量(1-7)代表星期几,使用switch语句进行判断,并打印出该整数对应的星期.
+​			需求:初始化int类型变量(1-7)代表星期几,使用switch语句进行判断,并打印出该整数对应的星期。
 ​								
-		* b: 代码实现
-			 public class SwitchDemo01 {
-				public static void main(String[] args) {
-					int week = 5;
-					switch (week) {
-					case 1:
-						System.out.println("星期一");
-						break;
-					case 2:
-						System.out.println("星期二");
-						break;
-					case 3:
-						System.out.println("星期三");
-						break;
-					case 4:
-						System.out.println("星期四");
-						break;
-					case 5:
-						System.out.println("星期五");
-						break;
-					case 6:
-						System.out.println("星期六");
-						break;
-					case 7:
-						System.out.println("星期天");
-						break;
-					default:
-						System.out.println("输入的数字不正确...");
-						break;
-					}
-				}
-			}
+​		* b: 代码实现
+​			 public class SwitchDemo01 {
+​				public static void main(String[] args) {
+​					int week = 5;
+​					switch (week) {
+​					case 1:
+​						System.out.println("星期一");
+​						break;
+​					case 2:
+​						System.out.println("星期二");
+​						break;
+​					case 3:
+​						System.out.println("星期三");
+​						break;
+​					case 4:
+​						System.out.println("星期四");
+​						break;
+​					case 5:
+​						System.out.println("星期五");
+​						break;
+​					case 6:
+​						System.out.println("星期六");
+​						break;
+​					case 7:
+​						System.out.println("星期天");
+​						break;
+​					default:
+​						System.out.println("输入的数字不正确...");
+​						break;
+​					}
+​				}
+​			}
 
 
 ### 03switch语句接受的数据类型
@@ -348,7 +348,7 @@
 ### 21二维数组的遍历
 	  * A:二维数组遍历
 ​		 int[][] arr = {{1,2,4},{4,7},{0,9,3}};
-    		 先使用for循环遍历arr这个二维数组,得到每一个元素为arr[i]为一维数组
+​    		 先使用for循环遍历arr这个二维数组,得到每一个元素为arr[i]为一维数组
 ​		 再外层for循环中嵌套一个for循环遍历每一个一维数组arr[i],得到每一元素
 
 	  *	B:举例:遍历二维数组
@@ -412,7 +412,7 @@
 ### 23随机点名器案例分析
 ​	 * A 随机点名器案例分析
 ​	  
-	 * B: 需求
+​	 * B: 需求
    * 随机点名器，即在全班同学中随机的打印出一名同学名字。
 
 	 * C:分析:
