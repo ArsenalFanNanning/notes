@@ -6,20 +6,22 @@
 
 ### 01引用数据类型_类
 	* A: 数据类型
-		* a: java中的数据类型分为：基本类型和引用类型
+		* a: java中的数据类型分为：基本类型和引用类型。
 	* B: 引用类型的分类
 		* a: Java为我们提供好的类，比如说：Scanner,Random等。
 		* b: 我们自己创建的类，按照类的定义标准，可以在类中包含多个方法与属性，来供我们使用。 
-		
-	
+
+
+​	
 ### 02自定义类的概述
 	* A: 自定义类的概述
 		* java代码映射成现实事物的过程就是定义类的过程。
 		* 举例：
 			我们就拿一部手机进行分析，它能用来做什么呢？它可以打电话，上网，聊微信等，这些就是手机所提供的功能，也就是方法；手机也有它的特征，如颜色、尺寸大小、品牌型号等，这些就是手机的特征，也就是属性
 		* 目前，我们只关注类中的属性，类中的方法在面向对象部分再进行学习。
-				
-			
+
+
+​			
 ### 03自定义类的格式
 	* A: 自定义类的格式
 		* a: 使用类的形式,对现实中的事物进行描述。
@@ -30,7 +32,7 @@
 			public class 类名{
 				属性定义
 				  修饰符 数据类型 变量名 = 值
-				
+
 
 				方法定义
 				  修饰符 返回值类型  方法名(参数列表){
@@ -62,7 +64,7 @@
 					// 2: 创建引用类型的变量
 					Phone p = new Phone();
 					//System.out.println(p);  //输出内存的地址
-				
+
 
 			     	//3: 变量.类型中的功能
 					//变量 p.的方式,调用类中的属性
@@ -98,7 +100,7 @@
 		    电饭锅，包含属性（品牌、容量大小、颜色等）
 			定义类,描述事物,电饭锅
 			  属性: 品牌,大小 ,颜色
-			
+
 
 			定义类,类名字,电饭锅
 			类的范围,定义三个属性
@@ -178,7 +180,7 @@
 		* c: 变量名.方法 
 	    	注意: 集合存储的数据,8个基本类型对应8个引用类型
 		   		存储引用类型,不存储基本类型
-		
+
 ### 11ArrayList创建变量举例
 	* A: ArrayList创建变量的示例代码
 		import java.util.ArrayList;
@@ -187,7 +189,7 @@
 				//创建集合容器,指定存储的数据类型
 				//存储字符串
 				ArrayList<String> array = new ArrayList<String>();
-				
+
 
 				//创建集合容器,存储整数
 				ArrayList<Integer> array2 = new ArrayList<Integer>();
@@ -216,7 +218,7 @@
 				//输出集合的长度,调用集合方法size, size方法的返回值类型 int
 				int size = array.size();
 				System.out.println(size);
-				
+
 
 				//获取出集合中的一个元素,获取1索引的元素
 				//集合的方法get, 获取元素后结果数据类型
@@ -225,12 +227,12 @@
 
 
 ​				
-				System.out.println(array.get(0));
-				System.out.println(array.get(1));
-				System.out.println(array.get(2));
-				System.out.println(array.get(3));
-			}
-		}
+​				System.out.println(array.get(0));
+​				System.out.println(array.get(1));
+​				System.out.println(array.get(2));
+​				System.out.println(array.get(3));
+​			}
+​		}
 
 ### 13ArrayList集合的遍历
 	* A: 案例代码
@@ -249,7 +251,7 @@
 				array.add(123);
 				array.add(120);
 				array.add(128);
-				
+
 
 				//对集合进行遍历
 				//使用方法 size+get组合进行遍历
@@ -269,7 +271,7 @@
 		import java.util.ArrayList;
 		public class ArrayListDemo_3{
 			public static void main(String[] args){
-				
+
 
 				ArrayList<Integer> array = new ArrayList<Integer>();
 				array.add(1);
@@ -315,7 +317,7 @@
 		   随机点名器,集合改进 (学生的姓名和年龄)
 		   现实中有学生这个事物,使用定义类的形式,描述学生事物
 		   属性: 姓名,年龄
-		   
+
 
 		   姓名存储了数组, 将容器换成是集合
 		   String[] s = {"",""};
@@ -411,7 +413,7 @@
 		   商品 4个属性
 		     商品名字  大小     价格    库存
 			  String    double   double  int
-			  
+
 
 			定义类,类名Goods
 			这个类型的变量,存储到集合中
@@ -474,7 +476,7 @@
 			  1.存储商品信息
 			    存储商品类型变量
 				将商品类型的变量,存储到集合中
-				
+
 
 		      2.查看库存清单
 			    将集合进行遍历, 获取出集合中存储的Goods类型变量
@@ -545,7 +547,7 @@
 			  1.存储商品信息
 			    存储商品类型变量
 				将商品类型的变量,存储到集合中
-				
+
 
 		      2.查看库存清单
 			    将集合进行遍历, 获取出集合中存储的Goods类型变量
