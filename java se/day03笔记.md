@@ -13,8 +13,9 @@
 		* c: 引用数据类型的使用
 			* 每种引用数据类型都有其功能，我们可以调用该类型实例的功能。
 			* 变量名.方法名();
-		
-	
+
+
+​	
 ### 02Scanner类的使用
 	* A: Scanner类的使用
 		* a: 导包import java.util.Scanner;
@@ -29,7 +30,7 @@
 			public static void main(String[] args) 
 			{
 				Scanner sc = new Scanner(System.in);
-
+	
 				int enterNumber = sc.nextInt();
 				System.out.println("用户输入的整数为"+enterNumber);
 	
@@ -60,7 +61,7 @@
 			   // Random类中的,产生随机数的功能
 			   int i = ran.nextInt(100);
 			   System.out.println(i);
-			   
+
 
 			   //问题? 产生随机数,范围 1-100之间
 			   // nextInt(100) 0-99 + 1
@@ -99,7 +100,7 @@
 					  System.out.println("if中的条件是true");
 					  i++;
 				  }
-				  
+
 
 				  System.out.println(i);
 			}
@@ -148,7 +149,7 @@
 			* 首先计算比较表达式1看其返回值是true还是false，
 			* 如果是true，就执行语句体1，if语句结束。
 			* 如果是false，接着计算比较表达式2看其返回值是true还是false，
-
+	
 			* 如果是true，就执行语句体2，if语句结束。
 			* 如果是false，接着计算比较表达式3看其返回值是true还是false，
 			
@@ -195,7 +196,7 @@
 				}else{
 					System.out.println(j+" 是最大值");
 				}
-				
+
 
 				//使用三元运算实现
 				int k = i>j ? i : j;
@@ -251,7 +252,7 @@
 				}
 			}
 		}
-		
+
 ### 11for循环_2
 	* A: for循环的执行流程
 		for（① ; ② ; ③）{
@@ -262,7 +263,7 @@
 		第三步，执行④
 		第四步，执行③，然后重复执行第二步
 		第五步，退出循环
-		
+
 
 ### 12for循环_3
 
@@ -281,7 +282,7 @@
 				System.out.println(sum);
 			}
 		}
-	
+
 ### 13do_while循环
 	* A: do_while循环
 		* a: 使用格式
@@ -326,7 +327,7 @@
 	* C: 各模块解释
 		* 总的循环次数 =  内循环次数 * 外循环的次数
 		* 内循环,是外循环的循环体
-
+	
 		* 外循环,控制的是行数
 		* 内循环,控制的是每行的个数
 
@@ -369,7 +370,7 @@
 		* c: 运行规律
 			* 不需要判断任何条件，只要遇到break变直接跳出执行后续代码。会完全跳出选择或者循环结构
 			* 只能跳出最近的代码块，不能跨越多级代码块
-
+	
 	* C：循环标号
 		* a: 为什么使用循环标号
 			* 当在双层循环或者循环内有switch选择语句时，我们发现，使用break或者continue所作用的对象均是内层语句，无法直接跳出外层循环，这时就需要使用标号语句跳转了.
@@ -418,7 +419,7 @@
 	* B: 案例代码
 		/*
 			猜数字小游戏
-			
+
 
 			完成猜数字小游戏：
 			1、产生随机数
@@ -467,9 +468,9 @@
 					}else {//如果猜错了
 						//如果猜大了
 						if(guessNumber>randomNumber) {
-							System.out.println("sorry，您猜大了!");
+							System.out.println("sorry，您猜大了！");
 						}else {//如果猜小了
-							System.out.println("sorry，您猜小了!");
+							System.out.println("sorry，您猜小了！");
 						}
 					}
 					//如果猜到了最后的第5次仍然没有猜对就跳出循环
