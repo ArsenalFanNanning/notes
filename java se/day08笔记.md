@@ -6,7 +6,7 @@
 
 
 
-###01Eclipse的下载安装
+### 01Eclipse的下载安装
 	* A: Eclipse的下载安装		
 		* a: 下载
 			* http://www.eclipse.org
@@ -22,7 +22,7 @@
 		* c: 免安装
 		* d: 扩展性强
 		
-###02Eclipse的工作空间和新建工程
+### 02Eclipse的工作空间和新建工程
 	* A: Eclipse的工作空间和新建工程
 		* a: 工作空间
 			*  其实就是我们写的源代码所在的目录						
@@ -40,8 +40,7 @@
 			* 方式2：点击菜单栏中Run， 点击Run 运行  快捷键是 ctrl+F11
 			* 方式3：选中要运行的java文件，或者在编写代码的空白区域，右键选择 Run As --> 运行java程序
 
-			
-###03Eclipse的HelloWorld编写
+### 03Eclipse的HelloWorld编写
 	* A:HelloWorld编写
 		* a: 编写过程(参照上个知识点)
 			* 建立day08项目
@@ -53,15 +52,13 @@
 					System.out.println("Hello World");
 				}
 			}
-			
-	
 
-###04Eclipse的字体设置
+### 04Eclipse的字体设置
 	* A: Eclipse的字体设置
 		* a: 修改编译环境和运行环境
 			* 编译环境：Window -- Preferences – Java - Compiler
 			* 运行环境：Window -- Preferences – Java - Installed JREs
-			
+
 		* b: 显示行号与隐藏行号
 			* 显示：在代码区域的左边空白区域，右键 -- Show Line Numbers
 			* 隐藏：将上面的操作再做一遍
@@ -73,16 +70,15 @@
 				* window -- Preferences -- General -- Appearance -- Colors And Fonts -- Debug -- Console font
 			* 其他文件
 				* window -- Preferences -- General -- Appearance -- Colors And Fonts -- Basic -- Text Font
-				
 
-###05Eclipse的窗口设置
+### 05Eclipse的窗口设置
 	* A: 窗口设置
 		* a: 显示的窗口乱了，还原默认显示模式
 			* Window – Perspective -- Reset Prespective
 		* b: 显示控制台
 			* Window--Show View—Console		
 			
-###06Eclipse的去掉多余的注释
+### 06Eclipse的去掉多余的注释
 	* A: Eclipse的去掉多余的注释
 		* a:如何去掉默认注释
 			* Window -- Preferences -- Java -- Code Style -- Code Templates -- Comments – Methods，点击Edit ，将注释部分删除 (不建议删除)
@@ -90,11 +86,11 @@
 		* b: 切换工作空间
 			* File – Switch Workspace – 指定工作空间 – ok
 			
-###07Eclipse的快捷键
+### 07Eclipse的快捷键
 	* A: Eclipse的快捷键
 		* a: 内容辅助键  Alt+/
 			* 自动补齐main方法  main 然后 Alt+/
-			* 自动补齐输出语句  syso 然后 Alt+/
+					* 自动补齐输出语句  syso 然后 Alt+/
 		* b: 格式化代码
 			* Ctrl+Shift+f
 			* 代码区域右键 -- Source – Format
@@ -105,7 +101,7 @@
 			* 单行注释
 				* 加注释： 先选中需要注释的内容，然后 Ctrl+/
 				* 取消注释：先选中需要取消注释的内容， 然后 Ctrl+/
-			* 多行注释
+				* 多行注释
 				* 加注释： 先选中需要注释的内容，然后 Ctrl+Shift+/
 				* 取消注释：先选中需要取消注释的内容， 然后 Ctrl+Shift+\
 		* e: 补充
@@ -126,14 +122,14 @@
 			* 改名
 				* alt + shift + r（类名，方法名，变量名）
 				
-###08Eclipse的断点调试
+### 08Eclipse的断点调试
 	* A:断点调试(又称为Debug调试)的作用
 		* 调试程序
 		* 查看程序执行流程
 	* B:如何查看程序执行流程		
 		* 什么是断点：
 			* 就是一个标记，从哪里开始。
-			
+
 		* 如何设置断点：
 			* 你想看哪里的程序，你就在那个有效程序的左边双击即可。
 			
@@ -155,7 +151,7 @@
 			* a:再次双击即可
 			* b:找到Debug视图，Variables界面，找到Breakpoints，并点击，然后看到所有的断点，最后点击那个双叉		
 
-###09Eclipse的工程删除和导入
+### 09Eclipse的工程删除和导入
 	* A:删除项目
 		* 选中项目 – 右键 – 删除
 			* 从项目区域中删除
@@ -169,11 +165,10 @@
 
 
 
-		
-###10超市管理系统功能介绍			
+### 10超市管理系统功能介绍			
 	* A：超市管理系统功能介绍
 		* a: 显示主菜单
-		
+
 			============欢迎光临ItCast超市============
 			1: 货物 清单   2: 添加货物   3: 删除货物   4: 修改货物  5: 退出
 			请您输入要操作的功能序号
@@ -216,8 +211,7 @@
 			商品修改成功
 		* f: 输入5:退出系统
 
-
-###11超市管理系统案例分析
+### 11超市管理系统案例分析
 	* A: 超市管理系统案例分析
 		* 完成超市商品初始化。创建商品，将商品添加到集合
 		* 显示来到超市能做的操作，也就是显示主菜单
@@ -229,8 +223,7 @@
 		* 退出系统,结束main方法的运行
 		* 循环，回到 2.显示主菜单
 
-				
-###12自定义商品类
+### 12自定义商品类
 	* A: 自定义商品类
 		* a: 目的
 			* 每种库存商品都拥有多项商品信息，为了方便管理每种商品的信息，我们对商品信息进行封装，编写FruitItem.java文件
@@ -245,7 +238,7 @@
 		* 补充
 			* 上述代码中，对商品信息（编号、名称、单价、数量、金额）进行了封装。这样做的好处在于以后只要找到这个商品，就能够知道该商品的每项信息了。
 
-###13初始化商品属性
+### 13初始化商品属性
 	* A: 初始化商品属性
 		* a: 案例代码
 			import java.util.ArrayList;
@@ -267,7 +260,7 @@
 			 *   主方法main  调用作用
 			 */
 			public class Shopp {
-
+	
 				public static void main(String[] args) {
 					//创建ArrayList集合,存储商品类型,存储数据类型FruitItem类型
 					ArrayList<FruitItem> array = new ArrayList<FruitItem>();
@@ -308,11 +301,11 @@
 				
 			}
 
-
-###14主菜单功能
+### 14主菜单功能
 	* A: 主菜单功能
 		* a: 案例代码
 			
+
 			import java.util.ArrayList;
 			import java.util.Scanner;
 			/*
@@ -331,7 +324,7 @@
 			 *   主方法main  调用作用
 			 */
 			public class Shopp {
-
+	
 				public static void main(String[] args) {
 					//创建ArrayList集合,存储商品类型,存储数据类型FruitItem类型
 					ArrayList<FruitItem> array = new ArrayList<FruitItem>();
@@ -386,8 +379,8 @@
 				}
 				
 			}				
-				
-###15用户选择功能
+
+### 15用户选择功能
 	* A: 用户选择功能
 		* a: 案例代码
 			import java.util.ArrayList;
@@ -409,7 +402,7 @@
 			 *   主方法main  调用作用
 			 */
 			public class Shopp {
-
+	
 				public static void main(String[] args) {
 					//创建ArrayList集合,存储商品类型,存储数据类型FruitItem类型
 					ArrayList<FruitItem> array = new ArrayList<FruitItem>();
@@ -443,7 +436,7 @@
 						
 						case 5:
 							return ;
-
+	
 						default:
 							System.out.println("输入的序号没有");
 							break;
@@ -504,7 +497,7 @@
 				
 			}
 
-###16商品的清单功能
+### 16商品的清单功能
 	* A: 商品的清单功能
 		* a: 案例代码(显示商品清单的showFruitList(ArrayList<FruitItem>)方法的代码如下)
 			/*
@@ -513,7 +506,7 @@
 			 *  参数: 集合
 			 *  遍历集合,获取集合中的每个FruitItem变量,变量,调用属性
 			 */
-			public static void showFruitList(ArrayList<FruitItem> array){
+			 public static void showFruitList(ArrayList<FruitItem> array){
 				System.out.println();
 				System.out.println("================商品库存清单================");
 				System.out.println("商品编号         商品名称                商品单价");
@@ -524,8 +517,8 @@
 					//变量item调用类中属性
 					System.out.println(item.ID+"   "+item.name+"        "+item.price);
 				}
-			}
-###17商品的添加功能
+			 }
+### 17商品的添加功能
 	* A: 商品的添加功能
 		* a: 案例代码(商品添加功能的addFruit(ArrayList<FruitItem>)方法的代码如下)
 			/*
@@ -539,7 +532,7 @@
 			 * 创建FruitItem变量,变量调用的属性
 			 * 将输入的每个商品属性进行赋值
 			 */
-			public static void addFruit(ArrayList<FruitItem> array){
+			 public static void addFruit(ArrayList<FruitItem> array){
 				System.out.println("选择的是添加商品功能");
 				//创建Scanner变量
 				Scanner sc = new Scanner(System.in);
@@ -560,8 +553,8 @@
 				item.price = price;
 				array.add(item);
 				System.out.println("商品添加成功");
-			}
-###18商品的删除功能
+			 }
+### 18商品的删除功能
 	* A: 商品的删除功能(删除商品deleteFruit(ArrayList<FruitItem>)方法的代码如下)
 		* a: 案例代码
 			/*
@@ -575,11 +568,11 @@
 			 *  遍历集合，获取集合中的每个FruitItem变量
 			 *  变量调用属性　ID， 和用户的输入的编号,对比,相同就删除
 			 */
-			public static void deleteFruit(ArrayList<FruitItem> array){
+				public static void deleteFruit(ArrayList<FruitItem> array){
 				System.out.println("选择的是删除功能");
 				System.out.print("请输入商品的编号:");
 				Scanner sc = new Scanner(System.in);
-				
+
 				int ID = sc.nextInt();
 				//遍历集合
 				for(int i = 0 ; i < array.size(); i++){
@@ -596,7 +589,7 @@
 				}
 				System.out.println("你输入的编号不存在");
 			}
-###19商品的修改功能
+### 19商品的修改功能
 	* A: 商品的修改功能
 		* a: 案例代码(修改商品updateFruit(ArrayList<FruitItem>)方法的代码如下)
 			/*
@@ -611,11 +604,11 @@
 			 *  如果相同:
 			 *    修改调FruitItem中的属性值
 			 *    键盘输入
-			 */
-			public static void updateFruit(ArrayList<FruitItem> array){
+				 */
+				public static void updateFruit(ArrayList<FruitItem> array){
 				System.out.println("选择的是修改功能");
 				System.out.print("请输入您要修改的商品的编号:");
-				
+
 				Scanner sc = new Scanner(System.in);
 				int ID = sc.nextInt();
 				//遍历集合,获取每个FruitItem变量
@@ -637,5 +630,6 @@
 				}
 				System.out.println("输入的编号不存在");
 			}
-###20总结
+### 20总结
+
 * 把今天的知识点总结一遍。
