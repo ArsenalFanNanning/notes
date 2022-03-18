@@ -3,10 +3,7 @@
 2、String
 3、StringBuilder
 
-=======================第一节课开始=============================================
-
-
-###01API概念
+### 01API概念
 
 	* A:API(Application Programming Interface) 
 		* 应用程序编程接口
@@ -14,8 +11,8 @@
 		* 就是Java提供给我们使用的类，这些类将底层的实现封装了起来，
 		* 我们不需要关心这些类是如何实现的，只需要学习这些类如何使用。
 	* C: 演示查看Object类中的相关方法
-	
-###02Object类概述
+
+### 02Object类概述
 	* A:Object类概述
 		* 类层次结构的根类
 		* 所有类都直接或者间接的继承自该类
@@ -26,13 +23,12 @@
 		* 回想面向对象中为什么说：
 			* 子类的构造方法默认访问的是父类的无参构造方法
 
-			
-###03equals方法比较内存地址
+### 03equals方法比较内存地址
 	* A:equals方法比较内存地址
 		* a: Object类中的equals方法
 			* 用于比较两个对象是否相同，Object类中就是使用两个对象的内存地址在比较。
 			* Object类中的equals方法内部使用的就是==比较运算符。
-			
+
 		* b: 案例代码
 		
 			public class Person extends Object{
@@ -73,17 +69,17 @@
 					//Person类继承Object类,继承下来了父类的方法equals
 					Person p1 = new Person("李四",20);
 					Person p2 = new Person("张三",20);
-					
-				  
+
+
+​				  
 					//Person对象p1,调用父类的方法equals,进行对象的比较
 					boolean b = p1.equals(p1);
 					System.out.println(b);
 					
 				}
 			}
-	
 
-###04重写equals方法
+### 04重写equals方法
 	* A: 重写equals方法
 		* a: 开发中要比较两个对象是否相同，经常会根据对象中的属性值进行比较			
 		* b: 在开发经常需要子类重写equals方法根据对象的属性值进行比较。	
@@ -96,6 +92,7 @@
 				private String name;
 				private int age;
 				
+
 				public Person(){}
 				
 				public Person(String name, int age) {
@@ -110,8 +107,9 @@
 				public String toString(){
 					return name + age;
 				}
-				
-				
+
+
+​				
 				/*
 				 * 将父类的equals方法写过来,重写父类的方法
 				 * 但是,不改变父类方法的源代码, 方法equals 比较两个对象的内存地址
@@ -160,8 +158,9 @@
 					//Person类继承Object类,继承下来了父类的方法equals
 					Person p1 = new Person("李四",20);
 					Person p2 = new Person("张三",20);
-					
-				  
+
+
+​				  
 					//Person对象p1,调用父类的方法equals,进行对象的比较
 					boolean b = p1.equals(p1);
 					System.out.println(b);
@@ -169,7 +168,7 @@
 				}
 			}			
 
-###05重写toString方法
+### 05重写toString方法
 	* A: 重写toString方法
 		* a: 为什么要重写toString方法
 			* toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。
@@ -183,16 +182,16 @@
 			 * 没有必要让调用者看到内存地址
 			 * 要求: 方法中,返回类中所有成员变量的值
 			 */
-			public String toString(){
+				public String toString(){
 				return name + age;
-			}	
-			//Eclipse中自动生成的toString
-			@Override
-			public String toString() {
+				}	
+				//Eclipse中自动生成的toString
+				@Override
+				public String toString() {
 				return "Person [name=" + name + ", age=" + age + "]";
-			}
-			//测试代码
-			public class TestToString {
+				}
+				//测试代码
+				public class TestToString {
 				public static void main(String[] args) {
 					//调用Person类的方法toString()
 					//输出语句中,写的是一个对象,默认调用对象的toString方法
@@ -204,7 +203,7 @@
 					 * System.out.println(p);
 					 * System.out.println(p.toString());
 					 */
-					
+
 					/*Random r = new Random();
 					System.out.println(r.toString());
 					
@@ -213,9 +212,11 @@
 				}
 			}
 
-========================================================第二节课开始===================================================
-			
-###06String类的概念和不变性
+
+​			
+
+### 06String类的概念和不变性
+
 	* A: String类的概念和不变性
 		* a:String类
 			* API中的String类的描述，发现String 类代表字符串
@@ -226,7 +227,7 @@
 				private final char value[]
 				private 修饰说明value只能在String类内部使用,而且又没有提供get方法,所以外部无法获取value数组,就无法改变数组中元素的值
 				final修饰说明value是常量,一旦创建,就不能被改变,value一旦被初始化成某个数组,将永远指向这个数组,不可能再指向其它的数组了
-				
+
 		* b: 案例代码
 			/*
 			 *   String类特点:
@@ -244,17 +245,18 @@
 					System.out.println(str);
 					str = "itheima";
 					System.out.println(str);
-					
-					
+
+
+​					
 				}
 			}
-			
-###07String类创建方式和比较
+
+### 07String类创建方式和比较
 	* A: String类创建方式和比较
 		* a: 创建对象的数量比较
 			* String s3 = "abc";
 				* 在内存中只有一个对象。这个对象在字符串常量池中
-			* String s4 = new String("abc");
+							* String s4 = new String("abc");
 				* 在内存中有两个对象。一个new的对象在堆中，一个字符串本身对象，在字符串常量池中
 		* b: 案例代码
 			public class StringDemo2 {
@@ -265,12 +267,13 @@
 					System.out.println(str1);
 					System.out.println(str2);
 					
+
 					System.out.println(str1==str2);//引用数据类型,比较对象的地址 false
 					System.out.println(str1.equals(str2));//true
 				}
 			}
-						
-###08String类构造方法
+
+### 08String类构造方法
 	* A: String类构造方法
 		* a: 常见构造方法
 			* public String():空构造
@@ -297,12 +300,12 @@
 				 *  offset 数组的起始的索引
 				 *  length 个数,转几个   , 不是结束的索引
 				 */
-				public static void function(){
+					public static void function(){
 					byte[] bytes = {97,98,99,100};
 					//调用String类的构造方法,传递字节数组
 					String s = new String(bytes);
 					System.out.println(s);
-					
+
 					byte[] bytes1 ={65,66,67,68,69};
 					//调用String构造方法,传递数组,传递2个int值
 					String s1 = new String(bytes1,1,3);
@@ -310,8 +313,7 @@
 				}
 			}
 
-
-###09String类构造方法_2
+### 09String类构造方法_2
 	* A: String类构造方法
 		* a: 常见构造方法
 			* public String(char[] value):把字符数组转成字符串
@@ -321,8 +323,8 @@
 		  *  String类构造方法
 		  *  String类的构造方法,重载形式
 		  * 
-		  */
-		public class StringDemo3 {
+		    */
+			public class StringDemo3 {
 			public static void main(String[] args) {
 				function_1();
 			}
@@ -335,12 +337,12 @@
 			 * offset  数组开始索引
 			 * count   个数
 			 */
-			public static void function_1(){
+				public static void function_1(){
 				char[] ch = {'a','b','c','d','e','f'};
 				//调用String构造方法,传递字符数组
 				String s = new String(ch);
 				System.out.println(s);
-				
+
 				String s1 = new String(ch,1,4);
 				System.out.println(s1);
 			}
@@ -349,8 +351,7 @@
 
 
 
-		
-###10String类的其他方法			
+### 10String类的其他方法			
 	* A：String类的其他方法
 		* a: 方法介绍
 			* int length(): 返回字符串的长度
@@ -364,7 +365,7 @@
 			* char[] toCharArray(): 将字符串转成字符数组,功能和构造方法相反
 			* boolean equals(Object obj): 方法传递字符串,判断字符串中的字符是否完全相同,如果完全相同返回true
 			* boolean equalsIgnoreCase(String s): 传递字符串,判断字符串中的字符是否相同,忽略大小写			
-			
+
 		* b: 案例代码
 		
 			public class StringDemo4 {
@@ -494,8 +495,8 @@
 					System.out.println(length);
 				}
 			}
-				
-###11String类练习
+
+### 11String类练习
 	* A: 获取指定字符串中，大写字母、小写字母、数字的个数
 		* a: 题目分析
 			* 为了统计大写字母、小写字母、数字的个数。创建3个计数的变量。
@@ -542,7 +543,7 @@
 				}
 			}
 
-###12String类练习_2
+### 12String类练习_2
 	* A: 将字符串中，第一个字母转换成大写，其他字母转换成小写，并打印改变后的字符串。
 		* a: 题目分析
 			* 把字符串分为两个部分，第一部分为字符串中第一个字母，第二部分为剩下的字符串。
@@ -554,6 +555,7 @@
 			public class StringTest {
 				public static void main(String[] args) {
 					
+
 					System.out.println(toConvert("aBc5%4dEF"));
 					
 				}
@@ -579,7 +581,7 @@
 
 
 
-###13String类练习_3
+### 13String类练习_3
 	* A: 查询大字符串中，出现指定小字符串的次数
 		* a: 题目分析
 			* 在大串中，查找小串出现的位置，出现了就次数+1
@@ -617,9 +619,8 @@
 			}
 
 
-======================================================================第三节课开始=========================================================
-				
-###14StringBuffer特点可变字符数组
+​				
+### 14StringBuffer特点可变字符数组
 	* A:StringBuffer类概述
 		* 通过JDK提供的API，查看StringBuffer类的说明
 		* 线程安全的可变字符序列 
@@ -628,34 +629,7 @@
 		* String是一个不可变的字符序列
 		* StringBuffer是一个可变的字符序列
 
-###15StringBuffer类的方法
-	* A: StringBuffer类的方法
-		* a: 方法介绍
-			* StringBuffer append(), 将任意类型的数据,添加缓冲区
-				*  append 返回值,写return this
-				*  调用者是谁,返回值就是谁
-			* delete(int start,int end): 删除缓冲区中字符
-				*  开始索引包含,结尾索引不包含
-			* insert(int index, 任意类型): 将任意类型数据,插入到缓冲区的指定索引上
-			* replace(int start,int end, String str): 将指定的索引范围内的所有字符,替换成新的字符串
-			* reverse(): 将缓冲区中的字符反转
-			* String toString(): 继承Object,重写toString()
-				*   将缓冲区中的所有字符,变成字符串
-		* b: 案例代码
-			public class StringBufferDemo {
-				public static void main(String[] args) {
-					function_5();
-				}
-				/*
-				 *  StringBuffer类的方法
-				 *   String toString() 继承Object,重写toString()
-				 *   将缓冲区中的所有字符,变成字符串
-				 */
-				public static void function_5(){
-					StringBuffer buffer = new StringBuffer();
-					buffer.append("abcdef");
-					buffer.append(12345);
-					
+### 15StringBuffer类的方法
 					//将可变的字符串缓冲区对象,变成了不可变String对象
 					String s = buffer.toString();
 					System.out.println(s);
@@ -728,8 +702,8 @@
 				}
 			}
 
-		
-###16StringBuilder类
+
+### 16StringBuilder类
 	* A:StringBuilder的概述
 		* 通过查看API了解一下StringBuilder类
 	* B:面试题
@@ -741,11 +715,10 @@
 			* String和StringBuffer,StringBuilder的区别
 				* String是一个不可变的字符序列
 				* StringBuffer,StringBuilder是可变的字符序列
-	
 
 
-		
-###17StringBuffer类案例拼接数组
+
+### 17StringBuffer类案例拼接数组
 	* A: StringBuffer类案例拼接数组
 		* a: 题目分析
 			* 定义StringBuffer对象
@@ -783,6 +756,7 @@
 					}
 					return buffer.toString();
 				}
-			}
-###18总结
+				}
+### 18总结
+
 * 把今天的知识点总结一遍。
