@@ -5,10 +5,7 @@
 
 
 
-==========================================第一阶段========================================
-
-
-###01正则表达式的概念和作用
+### 01正则表达式的概念和作用
 	* A: 正则表达式的概念和作用
 		* a: 正则表达式的概述
 			* 正则表达式也是一个字符串，用来定义匹配规则，在Pattern类中有简单的规则定义。
@@ -17,8 +14,7 @@
 		* b: 正则表达式的作用
 		* 比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的
 
-		
-###02正则表达式语法规则
+### 02正则表达式语法规则
 	* A: 正则表达式语法规则
 		* a: 字符
 			* x  代表的是字符x
@@ -48,8 +44,7 @@
 			* X{n,}  X，至少 n 次 
 			* X{n,m} X，至少 n 次，但是不超过 m 次
 
-
-###03正则表达式练习和相关的String类方法
+### 03正则表达式练习和相关的String类方法
 	* A: 正则表达式练习和相关的String类方法
 		* a: boolean matches(String 正则的规则)
 			* "abc".matches("[a]")  
@@ -62,7 +57,7 @@
 			* 按照正则的规则,替换字符串
 	
 	
-###04正则表达式匹配练习
+### 04正则表达式匹配练习
 	* A: 正则表达式匹配练习
 		* a: 案例代码
 			public class RegexDemo {
@@ -71,6 +66,7 @@
 				}
 				
 				
+
 				/*
 				 *  检查手机号码是否合法
 				 *  1开头 可以是34578  0-9 位数固定11位
@@ -95,9 +91,8 @@
 					System.out.println(b);
 				}
 			}
-	
 
-###05正则表达式切割练习
+### 05正则表达式切割练习
 	* A: 正则表达式切割练习
 		* a: 案例代码
 			public class RegexDemo1 {
@@ -149,8 +144,8 @@
 				}
 			}		
 
-			
-###06正则表达式替换练习
+
+### 06正则表达式替换练习
 	* A: 正则表达式替换练习
 		* a: 案例代码
 			public class RegexDemo1 {
@@ -158,6 +153,7 @@
 					replaceAll_1();
 				}
 				
+
 				/*
 				 * "Hello12345World6789012"将所有数字替换掉
 				 * String类方法replaceAll(正则规则,替换后的新字符串)
@@ -168,9 +164,8 @@
 					System.out.println(str);
 				}
 			}
-			
 
-###07正则表达式邮箱地址验证
+### 07正则表达式邮箱地址验证
 	* A: 正则表达式邮箱地址验证
 		* a: 案例代码
 			public class RegexDemo2 {
@@ -195,9 +190,9 @@
 					boolean b = email.matches("[a-zA-Z0-9_]+@[0-9a-z]+(\\.[a-z]+)+");
 					System.out.println(b);
 				}
-			}
+				}
 				
-###08毫秒值概念 
+### 08毫秒值概念 
 	* A: 毫秒值概念
 		* a: 时间和日期类
 			* java.util.Date
@@ -210,8 +205,7 @@
 			 * 时间2088年8月8日    
 			 * 时间和日期的计算，必须依赖毫秒值
 
-
-###09Date类的构造方法
+### 09Date类的构造方法
 	* A: Date类的构造方法
 		* a: 空参构造
 			* public Date()
@@ -219,19 +213,16 @@
 			* public Date(long times)
 	
 		
-==============================第二阶段====================================		
 
 
-		
-###10Date类的get和set方法			
+### 10Date类的get和set方法			
 	* A：Date类的get和set方法
 		* public long getTime()	
 			* 将当前的日期对象，转为对应的毫秒值
 		* public void setTime(long times);
 			* 根据给定的毫秒值，生成对应的日期对象
 
-
-###11日期格式化SimpleDateFormat
+### 11日期格式化SimpleDateFormat
 	* A: 日期格式化SimpleDateFormat
 		* a: 对日期进行格式化(自定义)
 			* 对日期格式化的类 java.text.DateFormat 抽象类, 普通方法,也有抽象的方法
@@ -242,16 +233,15 @@
 			* 2: SimpleDateFormat调用方法format对日期进行格式化
 				* public String format(Date date) 传递日期对象,返回字符串
 				* 日期模式:
-	 			* yyyy    年份
-	 			* MM      月份
+				 			* yyyy    年份
+				 		 			* MM      月份
 				* dd      月中的天数
 				* HH       0-23小时
 				* mm      小时中的分钟
-	 			* ss      秒
-	 			* yyyy年MM月dd日 HH点mm分钟ss秒  汉字修改,: -  字母表示的每个字段不可以随便写
+				 			* ss      秒
+				 		 			* yyyy年MM月dd日 HH点mm分钟ss秒  汉字修改,: -  字母表示的每个字段不可以随便写
 
-				
-###12字符串转成日期对象
+### 12字符串转成日期对象
 	* A: 字符串转成日期对象
 		* a: 使用步骤
 			* 1: 创建SimpleDateFormat的对象
@@ -259,8 +249,7 @@
 			* 2: 子类对象,调用方法 parse 传递String,返回Date
 				* 注意: 时间和日期的模式yyyy-MM-dd, 必须和字符串中的时间日期匹配
 
-
-###13Calendar类_1
+### 13Calendar类_1
 	* A: Calendar类_1
 		* a: 日历类(抽象类)
 			* java.util.Calendar
@@ -268,8 +257,7 @@
 			* Calendar类写了静态方法 getInstance() 直接返回了子类的对象
 			* 不需要直接new子类的对象,通过静态方法直接获取
 
-
-###14Calendar类_2
+### 14Calendar类_2
 	* A: Calendar类_2
 		* a: 成员方法
 			* getTime() 把日历对象,转成Date日期对象
@@ -285,7 +273,7 @@
 			System.out.println(year + "年" + month + "月" + day + "日");
 			
 			
-###15Calendar类_3
+### 15Calendar类_3
 	* A: Calendar类_3
 		* a: 成员方法
 			* set(int field,int value)  设置指定的时间
@@ -296,11 +284,11 @@
 			 * 
 			 * set(int year,int month,int day) 传递3个整数的年,月,日
 			 */
-			public static void function_1() {
+				public static void function_1() {
 				Calendar c = Calendar.getInstance();
 				// 设置,月份,设置到10月分
 				// c.set(Calendar.MONTH, 9);
-		
+
 				// 设置年,月,日
 				c.set(2099, 4, 1);
 		
@@ -312,9 +300,8 @@
 				int day = c.get(Calendar.DAY_OF_MONTH);
 				System.out.println(year + "年" + month + "月" + day + "日");
 			}
-		
 
-###16Calendar类_4
+### 16Calendar类_4
 	* A: Calendar类_4
 		* a: 成员方法
 			* add(int field, int value) 进行整数的偏移
@@ -325,7 +312,7 @@
 			 * 可以指定一个日历中的字段,
 			 * 进行整数的偏移 add(int field, int value)
 			 */
-			public static void function_2() {
+			 public static void function_2() {
 				Calendar c = Calendar.getInstance();
 				// 让日历中的天数,向后偏移280天
 				c.add(Calendar.DAY_OF_MONTH, -280);
@@ -336,18 +323,17 @@
 				// 获取天数
 				int day = c.get(Calendar.DAY_OF_MONTH);
 				System.out.println(year + "年" + month + "月" + day + "日");
-			}
+			 }
 
-
-###17日期练习_活了多少天
+### 17日期练习_活了多少天
 	* A: 日期练习_活了多少天
 		* a: 案例代码
 			/*
 			 *  计算活了多少天
 			 *   生日  今天的日期
 			 *   两个日期变成毫秒值,减法
-			 */
-			public static void function() throws Exception {
+				 */
+				public static void function() throws Exception {
 				System.out.println("请输入出生日期 格式 YYYY-MM-dd");
 				//获取出生日期,键盘输入
 				String birthdayString = new Scanner(System.in).next();
@@ -356,7 +342,7 @@
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				//调用方法parse,字符串转成日期对象
 				Date birthdayDate = sdf.parse(birthdayString);
-				
+
 				//获取今天的日期对象
 				Date todayDate = new Date();
 				
@@ -374,8 +360,7 @@
 				
 			}
 
-
-###18日期练习_闰年计算
+### 18日期练习_闰年计算
 	* A: 日期练习_闰年计算
 		* a: 案例代码
 			/*
@@ -383,7 +368,7 @@
 			 *  2000 3000
 			 *  高级的算法: 日历设置到指定年份的3月1日,add向前偏移1天,获取天数,29闰年
 			 */
-			public static void function_1(){
+			 public static void function_1(){
 				Calendar c = Calendar.getInstance();
 				//将日历,设置到指定年的3月1日
 				c.set(2088, 2, 1);
@@ -392,8 +377,8 @@
 				//get方法获取天数
 				int day = c.get(Calendar.DAY_OF_MONTH);
 				System.out.println(day);
-			}
+			 }
 
 
-###19总结
+### 19总结
 * 把今天的知识点总结一遍。
