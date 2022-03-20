@@ -4,38 +4,30 @@
 3、Math类
 4、Arrays类
 5、大数据运算
- 
- 
- 
 
  
 
+### 01基本数据类型对象包装类概述
+​	 *A:基本数据类型对象包装类概述
+​	   *a.基本类型包装类的产生
+​           在实际程序使用中，程序界面上用户输入的数据都是以字符串类型进行存储的。而程序开发中，我们需要把字符串数据，根据需求转换成指定的基本数据类型，如年龄需要转换成int类型，考试成绩需要转换成double类型等
+​       *b.八种基本类型对应的包装类
+​           char    Character
+​           int     Integer
+​           byte    Byte
+​           short   Short
+​           long    Long
+​           float   Float
+​           double  Double
+​           boolean Boolean
 
+### 02Integer类parseInt方法
+​	   *A:Integer类parseInt方法:
+​	    *a:parseInt()
+​		    int i = Integer.parseInt("12");
+​		    System.out.println(i/2);//6
+​		 
 
-
-=======================第一节课开始=============================================
-
-
-###01基本数据类型对象包装类概述
-	 *A:基本数据类型对象包装类概述
-	   *a.基本类型包装类的产生
-           在实际程序使用中，程序界面上用户输入的数据都是以字符串类型进行存储的。而程序开发中，我们需要把字符串数据，根据需求转换成指定的基本数据类型，如年龄需要转换成int类型，考试成绩需要转换成double类型等
-       *b.八种基本类型对应的包装类
-           char    Character
-           int     Integer
-           byte    Byte
-           short   Short
-           long    Long
-           float   Float
-           double  Double
-           boolean Boolean
-
-###02Integer类parseInt方法
-	   *A:Integer类parseInt方法:
-	    *a:parseInt()
-		    int i = Integer.parseInt("12");
-		    System.out.println(i/2);//6
-		 
 		*b:parseInt(String s, int radix)
 		    /*
 		 	 * Integer类静态方法parseInt(String s, int radix)
@@ -47,34 +39,34 @@
 		 		int i = Integer.parseInt("110", 2);
 		 		System.out.println(i);
 		 	}
-###03Integer类int转成字符串 
-    *A:Integer类int转成字符串:
-       *a:使用+与字符串拼接
-            int i = 3;
-          	String s = i+"";
-          	System.out.println(s+1);//"31"
-      
+### 03Integer类int转成字符串 
+​    *A:Integer类int转成字符串:
+​       *a:使用+与字符串拼接
+​            int i = 3;
+​          	String s = i+"";
+​          	System.out.println(s+1);//"31"
+​      
+
        *b:toString(int ,int 进制),任意进制整数转成任意进制的字符串 (了解)
           	String s1 = Integer.toString(5,2);
           	System.out.println(s1);
 
-###04Integer类构造方法
-	 *A:Integer类构造方法
-	    /*
+### 04Integer类构造方法
+​	 *A:Integer类构造方法
+​	    /*
 	     *  Integer类构造方法
 	     *   Integer (String s)
-	     *   将数字格式的字符串,传递到Integer类的构造方法中
-	     *   创建Integer对象,包装的是一个字符串
-	     *   将构造方法中的字符串,转成基本数据类型,调用方法,非静态的, intValue()
-	     */
-	    public static void function_3(){
-	    	Integer in = new Integer("100");
-	    	int i = in.intValue();
-	    	System.out.println(--i);//99
-	    }
+	          *   将数字格式的字符串,传递到Integer类的构造方法中
+	               *   创建Integer对象,包装的是一个字符串
+	                    *   将构造方法中的字符串,转成基本数据类型,调用方法,非静态的, intValue()
+	                         */
+	                    public static void function_3(){
+	                    	Integer in = new Integer("100");
+	                    	int i = in.intValue();
+	                    	System.out.println(--i);//99
+	                    }
 
-
-###05Integer类其他方法
+### 05Integer类其他方法
    *A:Integer类其他方法
 	     /*
 		 * Integer类的3个静态方法
@@ -83,25 +75,25 @@
 		 * 十进制转成八进制  toOctalString(int)
 		 * 十进制转成十六进制 toHexString(int)
 		 * 三个方法,返回值都是以String形式出现
-		 */
-	      a:十进制转二,八,十六进制
-	          public static void function_1(){
-	        		System.out.println(Integer.toBinaryString(99));
-	        		System.out.println(Integer.toOctalString(99));
-	        		System.out.println(Integer.toHexString(999));
-	          }
-	      b:获取int的最大值和最小值
-	      /*
-	       *   Integer类的静态成员变量
-	       *   MAX_VALUE
-	       *   MIN_VALUE
-	       */
-	      public static void function(){
-	      	System.out.println(Integer.MAX_VALUE);
-	      	System.out.println(Integer.MIN_VALUE);
-	      }
- 
-###06自动装箱和自动拆箱 
+			 */
+		      a:十进制转二,八,十六进制
+		          public static void function_1(){
+		        		System.out.println(Integer.toBinaryString(99));
+		        		System.out.println(Integer.toOctalString(99));
+		        		System.out.println(Integer.toHexString(999));
+		          }
+		      b:获取int的最大值和最小值
+		      /*
+		       *   Integer类的静态成员变量
+		       *   MAX_VALUE
+		              *   MIN_VALUE
+		                     */
+		                  public static void function(){
+		                  	System.out.println(Integer.MAX_VALUE);
+		                  	System.out.println(Integer.MIN_VALUE);
+		                  }
+
+### 06自动装箱和自动拆箱 
   *A:自动装箱与自动拆箱:
     //JDK1.5新特性
 	//自动装箱,拆箱的 好处: 基本类型和引用类直接运算
@@ -111,6 +103,7 @@
 		//引用类型 , 引用变量一定指向对象
 		//自动装箱, 基本数据类型1, 直接变成了对象
 		
+
 		Integer in = 1; // Integer in = new Integer(1)
 		//in 是引用类型,不能和基本类型运算, 自动拆箱,引用类型in,转换基本类型
 		
@@ -121,15 +114,15 @@
 		System.out.println(in);
 		
 	}
-      
 
-###07自动装箱和自动拆箱练习题 
+### 07自动装箱和自动拆箱练习题 
    *A:自动装箱与自动拆箱:
 	    Integer i = new Integer(1);
 	 	Integer j = new Integer(1);
 	 	System.out.println(i==j);// false 对象地址
 	 	System.out.println(i.equals(j));// true  继承Object重写equals,比较的对象数据
 	 	
+
 	 	System.out.println("===================");
 	 	
 	 	Integer a = 500;//Integer integer=Integer.valueOf(500)
@@ -139,34 +132,36 @@
 	 	System.out.println(a.equals(b));//true
 	 	
 	 	System.out.println("===================");
-	 	
-	 	
+
+
+​	 	
 	 	//数据在byte(-128~127)范围内,JVM不会从新new对象
 	 	Integer aa = 127; // Integer aa = new Integer(127)
 	 	Integer bb = 127; // Integer bb = aa;
 	 	System.out.println(aa==bb); //true
 	 	System.out.println(aa.equals(bb));//true
-       
-=========================第二节课开始====================================        
-###08System类方法currentTimeMillis 
+
+
+
+### 08System类方法currentTimeMillis 
    *A:System类方法currentTimeMillis():用于计算程序的执行时间
         /*
       	 *  获取系统当前毫秒值
-      	 *  static long currentTimeMillis()
-      	 *  对程序执行时间测试
-      	 */
-      	public static void function(){
-      		long start = System.currentTimeMillis();//当前时间x-1970年1月1日零时零分零秒
-      		for(int i = 0 ; i < 10000; i++){
-      			System.out.println(i);
-      		}
-      		long end = System.currentTimeMillis();//当前时间y-1970年1月1日零时零分零秒
-      		System.out.println(end - start);//当前时间y-当前时间x 
-      	}
- 
-###09System类方法exit 
-     *A:System类方法exit()方法
-		     /*
+            	 *  static long currentTimeMillis()
+                  	 *  对程序执行时间测试
+                        	 */
+                        	public static void function(){
+                        		long start = System.currentTimeMillis();//当前时间x-1970年1月1日零时零分零秒
+                        		for(int i = 0 ; i < 10000; i++){
+                        			System.out.println(i);
+                        		}
+                        		long end = System.currentTimeMillis();//当前时间y-1970年1月1日零时零分零秒
+                        		System.out.println(end - start);//当前时间y-当前时间x 
+                        	}
+
+### 09System类方法exit 
+​     *A:System类方法exit()方法
+​		     /*
 		 	 *  退出虚拟机,所有程序全停止
 		 	 *  static void exit(0)
 		 	 */
@@ -176,13 +171,13 @@
 		 			System.exit(0);//该方法会在以后的finally代码块中使用(讲到再说)
 		 		}
 		 	}
-###10System类方法gc 
-   A:System类方法gc
-        public class Person {
+        	###10 System类方法gc 
+         A:System类方法gc
+        	public class Person {
         	public void finalize(){
         		System.out.println("垃圾收取了");
         	}
-        }
+        	}
 
         /*
      	 *  JVM在内存中,收取对象的垃圾
@@ -202,19 +197,20 @@
      		System.gc();
      	}
 
-###11System类方法getProperties 
+### 10System类方法getProperties 
   A:System类方法getProperties(了解)
      /*
       *  获取当前操作系统的属性:例如操作系统名称,
-      *  static Properties getProperties() 
-      */
-     public static void function_3(){
-     	System.out.println( System.getProperties() );
-     }
-      
-###12System类方法arraycopy
-	 A:System类方法arraycopy：
-	  /*
+            *  static Properties getProperties() 
+            */
+          public static void function_3(){
+          	System.out.println( System.getProperties() );
+          }
+
+### 11System类方法arraycopy
+​	 A:System类方法arraycopy：
+​	  /*
+
 	   * System类方法,复制数组
 	   * arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
 	   * Object src, 要复制的源数组
@@ -222,28 +218,28 @@
 	   * Object dest,复制后的目标数组
 	   * int destPos,目标数组起始索引 
 	   * int length, 复制几个
-	   */
-	  public static void function_4(){
-	  	int[] src = {11,22,33,44,55,66};
-	  	int[] desc = {77,88,99,0};
-	  	
+	   	*/
+	  	public static void function_4(){
+		  	int[] src = {11,22,33,44,55,66};
+		  	int[] desc = {77,88,99,0};
+
 	  	System.arraycopy(src, 1, desc, 1, 2);//将src数组的1位置开始(包含1位置)的两个元素,拷贝到desc的1,2位置上
 	  	for(int i = 0 ;  i < desc.length ; i++){
 	  		System.out.println(desc[i]);
 	  	}
 	  }
-================================第三节课开始======================================================
-###13Math类的方法_1
+
+### 12Math类的方法_1
    A:Math类中的方法
    /*
    	 * static double sqrt(double d)
-   	 * 返回参数的平方根
-   	 */
-   	public static void function_4(){
-   		double d = Math.sqrt(-2);
-   		System.out.println(d);
-   	}
-   	
+      	 * 返回参数的平方根
+      	 */
+      	public static void function_4(){
+      		double d = Math.sqrt(-2);
+      		System.out.println(d);
+      	}
+
    	/*0
    	 * static double pow(double a, double b)
    	 * a的b次方
@@ -280,29 +276,32 @@
    		System.out.println(i);
    	 }
 
-###14Math类的方法_2
+### 13Math类的方法_2
  A:Math类的方法_2
   /*
+
    *  static double round(doubl d)
    *  获取参数的四舍五入,取整数
-   */
-  public static void function_6(){
+      */
+    public static void function_6(){
+
   	double d = Math.round(5.4195);
   	System.out.println(d);
   }
-  
+
   /*
    *  static double random() 返回随机数 0.0-1.0之间
    *  来源,也是Random类
-   */
-  public static void function_5(){
+      */
+    public static void function_5(){
+
   	for(int i = 0 ; i < 10 ;i++){
   		double d = Math.random();
   		System.out.println(d);
   	}
   }
 
-###15Arrays工具类 
+### 14Arrays工具类 
   A:Arrays工具类:
     public class ArraysDemo {
     	public static void main(String[] args) {
@@ -313,21 +312,21 @@
     	}
     	/*
     	 *  定义方法,接收输入,存储的是10个人考试成绩
-    	 *  将最后三个人的成绩,存储到新的数组中,返回新的数组
-    	 */
-    	public static int[] test(int[] arr){
-    		//对数组排序
-    		Arrays.sort(arr);
-    		//将最后三个成绩存储到新的数组中
-    		int[] result = new int[3];
-    		//成绩数组的最后三个元素,复制到新数组中
-    	//	System.arraycopy(arr, 0, result, 0, 3);
-    		for(int i = 0 ;  i < 3 ;i++){
-    			result[i] = arr[i];
-    		}
-    		return result;
-    	}
-    	
+        	 *  将最后三个人的成绩,存储到新的数组中,返回新的数组
+            	 */
+            	public static int[] test(int[] arr){
+            		//对数组排序
+            		Arrays.sort(arr);
+            		//将最后三个成绩存储到新的数组中
+            		int[] result = new int[3];
+            		//成绩数组的最后三个元素,复制到新数组中
+            	//	System.arraycopy(arr, 0, result, 0, 3);
+            		for(int i = 0 ;  i < 3 ;i++){
+            			result[i] = arr[i];
+            		}
+            		return result;
+            	}
+
     	/*
     	 *  static String toString(数组)
     	 *  将数组变成字符串
@@ -364,7 +363,8 @@
     }
 
  
-###16数组复制练习
+
+### 15数组复制练习
    *A:数组复制练习:
 	    public static void main(String[] args) {
 	    		int[] arr = {56,65,11,98,57,43,16,18,100,200};
@@ -374,38 +374,38 @@
 	    	/*
 	    	 *  定义方法,接收输入,存储的是10个人考试成绩
 	    	 *  将最后三个人的成绩,存储到新的数组中,返回新的数组
-	    	 */
-	    	public static int[] test(int[] arr){
-	    		//对数组排序
-	    		Arrays.sort(arr);
-	    		//将最后三个成绩存储到新的数组中
-	    		int[] result = new int[3];
-	    		//成绩数组的最后三个元素,复制到新数组中
-	    	    //System.arraycopy(arr, 0, result, 0, 3);
-	    		for(int i = 0 ;  i < 3 ;i++){
-	    			result[i] = arr[i];
-	    		}
-	    		return result;
-	    	}
+	        	 */
+	        	public static int[] test(int[] arr){
+	        		//对数组排序
+	        		Arrays.sort(arr);
+	        		//将最后三个成绩存储到新的数组中
+	        		int[] result = new int[3];
+	        		//成绩数组的最后三个元素,复制到新数组中
+	        	    //System.arraycopy(arr, 0, result, 0, 3);
+	        		for(int i = 0 ;  i < 3 ;i++){
+	        			result[i] = arr[i];
+	        		}
+	        		return result;
+	        	}
 
-====================第四节课开始============================
-###17BigInteger类概述和构造方法   
+
+### 16BigInteger类概述和构造方法   
  A:BigInteger类概述和构造方法
    public static void main(String[] args) {
    		function();
    	}
     /*
    	 * BigInteger类的构造方法
-   	 * 传递字符串,要求数字格式,没有长度限制
-   	 */
-   	public static void function(){
-   		BigInteger b = new BigInteger("8465846668464684562385634168451684568645684564564");
-   		System.out.println(b);
-   		BigInteger b1 = new BigInteger("5861694569514568465846668464684562385634168451684568645684564564");
-   		System.out.println(b1);
-   	}
+      	 * 传递字符串,要求数字格式,没有长度限制
+      	 */
+      	public static void function(){
+      		BigInteger b = new BigInteger("8465846668464684562385634168451684568645684564564");
+      		System.out.println(b);
+      		BigInteger b1 = new BigInteger("5861694569514568465846668464684562385634168451684568645684564564");
+      		System.out.println(b1);
+      	}
 
-###18BigInteger类四则运算  
+### 17BigInteger类四则运算  
  A:BigInteger类四则运算
     public static void main(String[] args) {
    		function_1();
@@ -414,10 +414,10 @@
 	 * BigInteger对象的四则运算
 	 * 调用方法计算,计算结果也只能是BigInteger对象
 	 */
-	 public static void function_1(){
+		 public static void function_1(){
 		 BigInteger b1 = new BigInteger("5665464516451051581613661405146");
 		 BigInteger b2 = new BigInteger("965855861461465516451051581613661405146");
-		 
+
 		 //计算 b1+b2对象的和,调用方法 add
 		 BigInteger bigAdd = b1.add(b2);//965855867126930032902103163227322810292
 		 System.out.println(bigAdd);
@@ -435,9 +435,10 @@
 		 System.out.println(bigDiv);
 	 }
 
-###19员工案例的子类的编写
+### 18员工案例的子类的编写
  A:BigDecimal类概述 
     
+
     /*
      * 计算结果,未知
      * 原因: 计算机二进制中,表示浮点数不精确造成
@@ -448,19 +449,20 @@
     System.out.println(1.301 / 100);//0.013009999999999999 
     */
 
-###20BigDecimal类实现加法减法乘法  
+### 19BigDecimal类实现加法减法乘法  
  A:BigDecimal类实现加法减法乘法
   /*
+
   	 *  BigDecimal实现三则运算
-  	 *  + - *
-  	 */
-  	public static void function(){
-  		BigDecimal b1 =  new BigDecimal("0.09");
-  		BigDecimal b2 =  new BigDecimal("0.01");
-  		//计算b1+b2的和,调用方法add
-  		BigDecimal bigAdd = b1.add(b2);
-  		System.out.println(bigAdd);
-  		
+    	 *  + - *
+      	 */
+      	public static void function(){
+      		BigDecimal b1 =  new BigDecimal("0.09");
+      		BigDecimal b2 =  new BigDecimal("0.01");
+      		//计算b1+b2的和,调用方法add
+      		BigDecimal bigAdd = b1.add(b2);
+      		System.out.println(bigAdd);
+
   		BigDecimal b3 = new BigDecimal("1");
   		BigDecimal b4 = new BigDecimal("0.32");
   		//计算b3-b2的差,调用方法subtract
@@ -474,9 +476,9 @@
   		System.out.println(bigMul);
   	}
 
-###21BigDecimal类实现除法
-	 A:BigDecimal类实现除法
-	 /*
+### 20BigDecimal类实现除法
+​	 A:BigDecimal类实现除法
+​	 /*
 	  * BigDecimal实现除法运算
 	  * divide(BigDecimal divisor, int scale, int roundingMode) 
 	  * int scale : 保留几位小数
@@ -487,11 +489,11 @@
 	  *   static int ROUND_HALF_UP  >= 0.5 向上+1
 	  *   static int ROUND_HALF_DOWN   > 0.5 向上+1 ,否则直接舍去
 	  */
-	 public static void function_1(){
-	 	BigDecimal b1 = new BigDecimal("1.0301");
-	 	BigDecimal b2 = new BigDecimal("100");
-	 	//计算b1/b2的商,调用方法divied
-	 	BigDecimal bigDiv = b1.divide(b2,2,BigDecimal.ROUND_HALF_UP);//0.01301
-	 	System.out.println(bigDiv);
-	 }
+	   public static void function_1(){
+	   	BigDecimal b1 = new BigDecimal("1.0301");
+	   	BigDecimal b2 = new BigDecimal("100");
+	   	//计算b1/b2的商,调用方法divied
+	   	BigDecimal bigDiv = b1.divide(b2,2,BigDecimal.ROUND_HALF_UP);//0.01301
+	   	System.out.println(bigDiv);
+	   }
 
