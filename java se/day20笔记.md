@@ -3,13 +3,8 @@
 2、模拟斗地主洗牌发牌
 
 
- 
- 
 
-
-=======================第一节课开始=============================================
-
-###01Map集合概述
+### 01Map集合概述
   A:Map集合概述:
     我们通过查看Map接口描述,发现Map接口下的集合与Collection接口下的集合，它们存储数据的形式不同
     	a:Collection中的集合，元素是孤立存在的（理解为单身），向集合中存储元素采用一个个元素的方式存储。
@@ -22,27 +17,27 @@
      |--HashMap
      |--LinkedHashMap
 
-###02Map接口中的常用方法 
+### 02Map接口中的常用方法 
   A:Map接口中的常用方法 
        /*
         *  Map接口中的常用方法
-        *    使用Map接口的实现类 HashMap
-        */
-       public class MapDemo {
-       	public static void main(String[] args) {
-       		function_2();
-       	}
-       	/*
-       	 *  移除集合中的键值对,返回被移除之前的值
-       	 *  V remove(K)
-       	 */
-       	public static void function_2(){
-       		Map<Integer,String> map = new HashMap<Integer, String>();
-       		map.put(1, "a");
-       		map.put(2, "b");
-       		map.put(3, "c");
-       		System.out.println(map);
-       		
+                *    使用Map接口的实现类 HashMap
+                */
+              public class MapDemo {
+              	public static void main(String[] args) {
+              		function_2();
+              	}
+              	/*
+              	 *  移除集合中的键值对,返回被移除之前的值
+                     	 *  V remove(K)
+                            	 */
+                            	public static void function_2(){
+                            		Map<Integer,String> map = new HashMap<Integer, String>();
+                            		map.put(1, "a");
+                            		map.put(2, "b");
+                            		map.put(3, "c");
+                            		System.out.println(map);
+
        		String value = map.remove(33);
        		System.out.println(value);
        		System.out.println(map);
@@ -87,30 +82,30 @@
 
 
 
-###03Map集合遍历方式keySet方法
+### 03Map集合遍历方式keySet方法
   A:Map集合遍历方式keySet方法
      1.获取Map集合中所有的键，由于键是唯一的，所以返回一个Set集合存储所有的键
      2.遍历键的Set集合，得到每一个键
      3.根据键利用get(key)去Map找所对应的值
      /*
       *  Map集合的遍历
-      *    利用键获取值
-      *    Map接口中定义方法keySet
-      *    所有的键,存储到Set集合
-      */
-     public class MapDemo1 {
-     	public static void main(String[] args) {
-     		/*
-     		 *  1. 调用map集合的方法keySet,所有的键存储到Set集合中
-     		 *  2. 遍历Set集合,获取出Set集合中的所有元素 (Map中的键)
-     		 *  3. 调用map集合方法get,通过键获取到值
-     		 */
-     		Map<String,Integer> map = new HashMap<String,Integer>();
-     		map.put("a", 11);
-     		map.put("b", 12);
-     		map.put("c", 13);
-     		map.put("d", 14);
-     		
+            *    利用键获取值
+            *    Map接口中定义方法keySet
+                  *    所有的键,存储到Set集合
+                        */
+                    public class MapDemo1 {
+                    	public static void main(String[] args) {
+                    		/*
+                    		 *  1. 调用map集合的方法keySet,所有的键存储到Set集合中
+                         		 *  2. 遍历Set集合,获取出Set集合中的所有元素 (Map中的键)
+                              		 *  3. 调用map集合方法get,通过键获取到值
+                                  		 */
+                                  		Map<String,Integer> map = new HashMap<String,Integer>();
+                                  		map.put("a", 11);
+                                  		map.put("b", 12);
+                                  		map.put("c", 13);
+                                  		map.put("d", 14);
+
      		//1. 调用map集合的方法keySet,所有的键存储到Set集合中
      		Set<String> set = map.keySet();
      		//2. 遍历Set集合,获取出Set集合中的所有元素 (Map中的键)
@@ -124,7 +119,7 @@
      		}
      		
      		System.out.println("=======================");
-     		
+
 
      		for(String key : map.keySet()){
      			Integer value = map.get(key);
@@ -132,9 +127,8 @@
      		}
      	}
      }
-    
 
-###04Map集合Entry对象
+### 04Map集合Entry对象
    A:Map集合Entry对象
      interface Map{
      	interface Entry{//Entry是Map的一个内部接口
@@ -157,82 +151,83 @@
        getValue()方法：获取Entry对象中的值
        entrySet()方法：用于返回Map集合中所有的键值对(Entry)对象，以Set集合形式返回。
 
-###05Map集合遍历方式entrySet方法 
+### 05Map集合遍历方式entrySet方法 
    A:Map集合遍历方式entrySet方法
     *
      *  Map集合获取方式
-     *  entrySet方法,键值对映射关系(结婚证)获取
-     *  实现步骤:
-     *    1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
-     *        Set<Entry <K,V> >
-     *    2. 迭代Set集合
-     *    3. 获取出的Set集合的元素,是映射关系对象
-     *    4. 通过映射关系对象方法 getKet, getValue获取键值对
-     *    
-     *    创建内部类对象 外部类.内部类 = new 
-     */
-    public class MapDemo2 {
-    	public static void main(String[] args) {
-    		Map<Integer,String> map = new HashMap<Integer, String>();
-    		map.put(1, "abc");
-    		map.put(2, "bcd");
-    		map.put(3, "cde");
-    		//1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
-    		Set<Map.Entry <Integer,String> >  set = map.entrySet();
-    		//2. 迭代Set集合
-    		Iterator<Map.Entry <Integer,String> > it = set.iterator();
-    		while(it.hasNext()){
-    			//  3. 获取出的Set集合的元素,是映射关系对象
-    			// it.next 获取的是什么对象,也是Map.Entry对象
-    			Map.Entry<Integer, String> entry = it.next();
-    			//4. 通过映射关系对象方法 getKet, getValue获取键值对
-    			Integer key = entry.getKey();
-    			String value = entry.getValue();
-    			System.out.println(key+"...."+value);
-    		}
-    		
-    		 
+          *  entrySet方法,键值对映射关系(结婚证)获取
+          *  实现步骤:
+               *    1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
+               *        Set<Entry <K,V> >
+                    *    2. 迭代Set集合
+                         *    3. 获取出的Set集合的元素,是映射关系对象
+                         *    4. 通过映射关系对象方法 getKet, getValue获取键值对
+                         *    
+                         *    创建内部类对象 外部类.内部类 = new 
+                         	*/
+                    	public class MapDemo2 {
+                    	public static void main(String[] args) {
+                    		Map<Integer,String> map = new HashMap<Integer, String>();
+                    		map.put(1, "abc");
+                    		map.put(2, "bcd");
+                    		map.put(3, "cde");
+                    		//1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
+                    		Set<Map.Entry <Integer,String> >  set = map.entrySet();
+                    		//2. 迭代Set集合
+                    		Iterator<Map.Entry <Integer,String> > it = set.iterator();
+                    		while(it.hasNext()){
+                    			//  3. 获取出的Set集合的元素,是映射关系对象
+                    			// it.next 获取的是什么对象,也是Map.Entry对象
+                    			Map.Entry<Integer, String> entry = it.next();
+                    			//4. 通过映射关系对象方法 getKet, getValue获取键值对
+                    			Integer key = entry.getKey();
+                    			String value = entry.getValue();
+                    			System.out.println(key+"...."+value);
+                    		}
+
+​    		 
+
     	}
     }
 
 
 
-=======================第二节课开始============================================
-###06Map集合遍历方式增强for循环
+
+### 06Map集合遍历方式增强for循环
    A:Map集合遍历方式增强for循环
      A:Map集合遍历方式entrySet方法
       *
        *  Map集合获取方式
-       *  entrySet方法,键值对映射关系(结婚证)获取
-       *  实现步骤:
-       *    1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
-       *        Set<Entry <K,V> >
-       *    2. 迭代Set集合
-       *    3. 获取出的Set集合的元素,是映射关系对象
-       *    4. 通过映射关系对象方法 getKet, getValue获取键值对
-       *    
-       *    创建内部类对象 外部类.内部类 = new 
-       */
-      public class MapDemo2 {
-      	public static void main(String[] args) {
-      		Map<Integer,String> map = new HashMap<Integer, String>();
-      		map.put(1, "abc");
-      		map.put(2, "bcd");
-      		map.put(3, "cde");
-      		//1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
-      		Set<Map.Entry <Integer,String> >  set = map.entrySet();
-      		//2. 迭代Set集合
-      		Iterator<Map.Entry <Integer,String> > it = set.iterator();
-      		while(it.hasNext()){
-      			//  3. 获取出的Set集合的元素,是映射关系对象
-      			// it.next 获取的是什么对象,也是Map.Entry对象
-      			Map.Entry<Integer, String> entry = it.next();
-      			//4. 通过映射关系对象方法 getKet, getValue获取键值对
-      			Integer key = entry.getKey();
-      			String value = entry.getValue();
-      			System.out.println(key+"...."+value);
-      		}
-      		
+              *  entrySet方法,键值对映射关系(结婚证)获取
+              *  实现步骤:
+                     *    1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
+                     *        Set<Entry <K,V> >
+                     *    2. 迭代Set集合
+                     *    3. 获取出的Set集合的元素,是映射关系对象
+                     *    4. 通过映射关系对象方法 getKet, getValue获取键值对
+                     *    
+                     *    创建内部类对象 外部类.内部类 = new 
+                     	*/
+                  	public class MapDemo2 {
+                  	public static void main(String[] args) {
+                  		Map<Integer,String> map = new HashMap<Integer, String>();
+                  		map.put(1, "abc");
+                  		map.put(2, "bcd");
+                  		map.put(3, "cde");
+                  		//1. 调用map集合方法entrySet()将集合中的映射关系对象,存储到Set集合
+                  		Set<Map.Entry <Integer,String> >  set = map.entrySet();
+                  		//2. 迭代Set集合
+                  		Iterator<Map.Entry <Integer,String> > it = set.iterator();
+                  		while(it.hasNext()){
+                  			//  3. 获取出的Set集合的元素,是映射关系对象
+                  			// it.next 获取的是什么对象,也是Map.Entry对象
+                  			Map.Entry<Integer, String> entry = it.next();
+                  			//4. 通过映射关系对象方法 getKet, getValue获取键值对
+                  			Integer key = entry.getKey();
+                  			String value = entry.getValue();
+                  			System.out.println(key+"...."+value);
+                  		}
+
       		System.out.println("=========================");
       		for(Map.Entry<Integer, String> entry : map.entrySet()){
       			System.out.println(entry.getKey()+"..."+entry.getValue());
@@ -241,37 +236,37 @@
       }
       
       注意：Map集合不能直接使用迭代器或者foreach进行遍历。但是转成Set之后就可以使用了。
-###07HashMap集合存储和遍历
+### 07HashMap集合存储和遍历
   A:HashMap集合存储和遍历
      /*
       *  使用HashMap集合,存储自定义的对象
-      *  自定义对象,作为键,出现,作为值出现
-      */
-     public class HashMapDemo {
-     	public static void main(String[] args) {
-     		function_1();
-     	}
-     	/*
-     	 * HashMap 存储自定义对象Person,作为键出现
-     	 * 键的对象,是Person类型,值是字符串
-     	 * 保证键的唯一性,存储到键的对象,重写hashCode equals
-     	 */
-     	public static void function_1(){
-     		HashMap<Person, String> map = new HashMap<Person, String>();
-     		map.put(new Person("a",20), "里约热内卢");
-     		map.put(new Person("b",18), "索马里");
-     		map.put(new Person("b",18), "索马里");
-     		map.put(new Person("c",19), "百慕大");
-     		for(Person key : map.keySet()){
-     			String value = map.get(key);
-     			System.out.println(key+"..."+value);
-     		}
-     		System.out.println("===================");
-     		for(Map.Entry<Person, String> entry : map.entrySet()){
-     			System.out.println(entry.getKey()+"..."+entry.getValue());
-     		}
-     	}
-     	
+            *  自定义对象,作为键,出现,作为值出现
+            */
+          public class HashMapDemo {
+          	public static void main(String[] args) {
+          		function_1();
+          	}
+          	/*
+          	 * HashMap 存储自定义对象Person,作为键出现
+               	 * 键的对象,是Person类型,值是字符串
+               	 * 保证键的唯一性,存储到键的对象,重写hashCode equals
+                    	 */
+               ​     	public static void function_1(){
+               ​     		HashMap<Person, String> map = new HashMap<Person, String>();
+               ​     		map.put(new Person("a",20), "里约热内卢");
+               ​     		map.put(new Person("b",18), "索马里");
+               ​     		map.put(new Person("b",18), "索马里");
+               ​     		map.put(new Person("c",19), "百慕大");
+               ​     		for(Person key : map.keySet()){
+               ​     			String value = map.get(key);
+               ​     			System.out.println(key+"..."+value);
+               ​     		}
+               ​     		System.out.println("===================");
+               ​     		for(Map.Entry<Person, String> entry : map.entrySet()){
+               ​     			System.out.println(entry.getKey()+"..."+entry.getValue());
+               ​     		}
+               ​     	}
+
      	/*
      	 * HashMap 存储自定义的对象Person,作为值出现
      	 * 键的对象,是字符串,可以保证唯一性
@@ -294,10 +289,10 @@
      	}
      }
 
-
-###08LinkedHashMap的特点
+### 08LinkedHashMap的特点
    *A:LinkedHashMap的特点
 	  
+
 	  /*
 	   *  LinkedHashMap继承HashMap
 	   *  保证迭代的顺序
@@ -313,32 +308,30 @@
 	  	}
 	  }
 
-
-###09Hashtable的特点
+### 09Hashtable的特点
    *A:Hashtable的特点
 	   /*
 	    *  Map接口实现类 Hashtable
 	    *  底层数据结果哈希表,特点和HashMap是一样的
-	    *  Hashtable 线程安全集合,运行速度慢
-	    *  HashMap 线程不安全的集合,运行速度快
-	    *  
-	    *  Hashtable命运和Vector是一样的,从JDK1.2开始,被更先进的HashMap取代
-	    *  
-	    *  HashMap 允许存储null值,null键
-	    *  Hashtable 不允许存储null值,null键
-	    *  
-	    *  Hashtable他的孩子,子类 Properties 依然活跃在开发舞台
-	    */
-	   public class HashtableDemo {
-	   	public static void main(String[] args) {	
-	   		Map<String,String> map = new Hashtable<String,String>();
-	   		map.put(null, null);
-	   		System.out.println(map);
-	   	}
-	   }
+	        *  Hashtable 线程安全集合,运行速度慢
+	        *  HashMap 线程不安全的集合,运行速度快
+	        *  
+	        *  Hashtable命运和Vector是一样的,从JDK1.2开始,被更先进的HashMap取代
+	        *  
+	        *  HashMap 允许存储null值,null键
+	        *  Hashtable 不允许存储null值,null键
+	        *  
+	        *  Hashtable他的孩子,子类 Properties 依然活跃在开发舞台
+	        */
+	      public class HashtableDemo {
+	      	public static void main(String[] args) {	
+	      		Map<String,String> map = new Hashtable<String,String>();
+	      		map.put(null, null);
+	      		System.out.println(map);
+	      	}
+	      }
 
-
-###10静态导入
+### 10静态导入
    *A:静态导入:如果本类中有和静态导入的同名方法会优先使用本类的
                如果还想使用静态导入的,依然需要类名来调用
 	   /*
@@ -361,21 +354,21 @@
 	   	}
 	   }
 
-###11方法的可变参数
+### 11方法的可变参数
    *A:方法的可变参数
      /*
       *  JDK1.5新的特性,方法的可变参数
-      *  前提: 方法参数数据类型确定,参数的个数任意
-      *  可变参数语法: 数据类型...变量名
-      *  可变参数,本质就是一个数组
-      */
-     public class VarArgumentsDemo {
-     	public static void main(String[] args) {
-     		//调用一个带有可变参数的方法,传递参数,可以任意
-     	//	getSum();
-     		int sum = getSum(5,34,3,56,7,8,0);
-     		System.out.println(sum);
- 
+            *  前提: 方法参数数据类型确定,参数的个数任意
+            *  可变参数语法: 数据类型...变量名
+                  *  可变参数,本质就是一个数组
+                  */
+               public class VarArgumentsDemo {
+               	public static void main(String[] args) {
+               		//调用一个带有可变参数的方法,传递参数,可以任意
+               	//	getSum();
+               		int sum = getSum(5,34,3,56,7,8,0);
+               		System.out.println(sum);
+
      	}
      
      	/*
@@ -407,43 +400,43 @@
 
 
 
-###12可变参数的注意事项
+### 12可变参数的注意事项
    *A:可变参数的注意事项    
 	   /*
 	    * 可变参数的注意事项
 	    * 1. 一个方法中,可变参数只能有一个
 	    * 2. 可变参数,必须写在参数列表的最后一位
-	    */
-	    public static void function(Object...o){
-	   	 
+	        */
+	        public static void function(Object...o){
+
 	    }
-=======================第三节课开始=============================================
-###13Collections工具类
+
+### 13Collections工具类
    A:Collections工具类
       /*
        *  集合操作的工具类
-       *    Collections
-       */
-      public class CollectionsDemo {
-      	public static void main(String[] args) {
-      		function_2();
-      	}
-      	/*
-      	 * Collections.shuffle方法
-      	 * 对List集合中的元素,进行随机排列
-      	 */
-      	public static void function_2(){
-      		List<Integer> list = new ArrayList<Integer>();
-      		list.add(1);
-      		list.add(5);
-      		list.add(9);
-      		list.add(11);
-      		list.add(8);
-      		list.add(10);
-      		list.add(15);
-      		list.add(20);	
-      		System.out.println(list);
-      		
+              *    Collections
+              */
+            public class CollectionsDemo {
+            	public static void main(String[] args) {
+            		function_2();
+            	}
+            	/*
+            	 * Collections.shuffle方法
+                  	 * 对List集合中的元素,进行随机排列
+                  	 */
+                  	public static void function_2(){
+                  		List<Integer> list = new ArrayList<Integer>();
+                  		list.add(1);
+                  		list.add(5);
+                  		list.add(9);
+                  		list.add(11);
+                  		list.add(8);
+                  		list.add(10);
+                  		list.add(15);
+                  		list.add(20);	
+                  		System.out.println(list);
+
       		//调用工具类方法shuffle对集合随机排列
       		Collections.shuffle(list);
       		System.out.println(list);
@@ -485,39 +478,38 @@
       	}
       }
 
-
-###14集合的嵌套
+### 14集合的嵌套
    A:集合的嵌套
     /*
      *  Map集合的嵌套,Map中存储的还是Map集合
-     *  要求:
-     *    传智播客  
-     *      Java基础班
-     *        001  张三
-     *        002  李四
-     *      
-     *      Java就业班
-     *        001  王五
-     *        002  赵六
-     *  对以上数据进行对象的存储
-     *   001 张三  键值对
-     *   Java基础班: 存储学号和姓名的键值对
-     *   Java就业班:
-     *   传智播客: 存储的是班级
-     *   
-     *   基础班Map   <学号,姓名>
-     *   传智播客Map  <班级名字, 基础班Map>
-     */
-    public class MapMapDemo {
-    	public static void main(String[] args) {
-    		//定义基础班集合
-    		HashMap<String, String> javase = new HashMap<String, String>();
-    		//定义就业班集合
-    		HashMap<String, String> javaee = new HashMap<String, String>();
-    		//向班级集合中,存储学生信息
-    		javase.put("001", "张三");
-    		javase.put("002", "李四");
-    		
+          *  要求:
+          *    传智播客  
+               *      Java基础班
+                    *        001  张三
+                         *        002  李四
+                              *      
+                                   *      Java就业班
+                                        *        001  王五
+                                             *        002  赵六
+                                                  *  对以上数据进行对象的存储
+                                                       *   001 张三  键值对
+                                                       *   Java基础班: 存储学号和姓名的键值对
+                                                            *   Java就业班:
+                                                                 *   传智播客: 存储的是班级
+                                                                      *   
+                                                                           *   基础班Map   <学号,姓名>
+                                                                                *   传智播客Map  <班级名字, 基础班Map>
+                                                                                     */
+                                                                    public class MapMapDemo {
+                                                                    	public static void main(String[] args) {
+                                                                    		//定义基础班集合
+                                                                    		HashMap<String, String> javase = new HashMap<String, String>();
+                                                                    		//定义就业班集合
+                                                                    		HashMap<String, String> javaee = new HashMap<String, String>();
+                                                                    		//向班级集合中,存储学生信息
+                                                                    		javase.put("001", "张三");
+                                                                    		javase.put("002", "李四");
+
     		javaee.put("001", "王五");
     		javaee.put("002", "赵六");
     		//定义传智播客集合容器,键是班级名字,值是两个班级容器
@@ -532,39 +524,38 @@
 
 
 
-   
-###15集合的嵌套keySet遍历
+### 15集合的嵌套keySet遍历
    A:集合的嵌套keySet遍历
 	   /*
 	    *  Map集合的嵌套,Map中存储的还是Map集合
 	    *  要求:
-	    *    传智播客  
-	    *      Java基础班
-	    *        001  张三
-	    *        002  李四
-	    *      
-	    *      Java就业班
-	    *        001  王五
-	    *        002  赵六
-	    *  对以上数据进行对象的存储
-	    *   001 张三  键值对
-	    *   Java基础班: 存储学号和姓名的键值对
-	    *   Java就业班:
-	    *   传智播客: 存储的是班级
-	    *   
-	    *   基础班Map   <学号,姓名>
-	    *   传智播客Map  <班级名字, 基础班Map>
-	    */
-	   public class MapMapDemo {
-	   	public static void main(String[] args) {
-	   		//定义基础班集合
-	   		HashMap<String, String> javase = new HashMap<String, String>();
-	   		//定义就业班集合
-	   		HashMap<String, String> javaee = new HashMap<String, String>();
-	   		//向班级集合中,存储学生信息
-	   		javase.put("001", "张三");
-	   		javase.put("002", "李四");
-	   		
+	        *    传智播客  
+	        *      Java基础班
+	        *        001  张三
+	        *        002  李四
+	        *      
+	        *      Java就业班
+	        *        001  王五
+	        *        002  赵六
+	        *  对以上数据进行对象的存储
+	        *   001 张三  键值对
+	        *   Java基础班: 存储学号和姓名的键值对
+	        *   Java就业班:
+	        *   传智播客: 存储的是班级
+	        *   
+	        *   基础班Map   <学号,姓名>
+	        *   传智播客Map  <班级名字, 基础班Map>
+	        	*/
+	      	public class MapMapDemo {
+	      	public static void main(String[] args) {
+	      		//定义基础班集合
+	      		HashMap<String, String> javase = new HashMap<String, String>();
+	      		//定义就业班集合
+	      		HashMap<String, String> javaee = new HashMap<String, String>();
+	      		//向班级集合中,存储学生信息
+	      		javase.put("001", "张三");
+	      		javase.put("002", "李四");
+
 	   		javaee.put("001", "王五");
 	   		javaee.put("002", "赵六");
 	   		//定义传智播客集合容器,键是班级名字,值是两个班级容器
@@ -576,9 +567,10 @@
 	   		 keySet(czbk);
 	   		 
 	   	}
-	   	
-	   	 
-	   	
+
+
+​	   	 
+​	   	
 	   	public static void keySet(HashMap<String,HashMap<String,String>> czbk){
 	   		//调用czbk集合方法keySet将键存储到Set集合
 	   		Set<String> classNameSet = czbk.keySet();
@@ -611,43 +603,43 @@
 	   	       }
 	   	    }
 	   	}
-
+	
 	   } 
-      
 
 
-###16集合的嵌套entrySet遍历
-    A:集合的嵌套entrySet遍历
-    /*
+
+### 16集合的嵌套entrySet遍历
+​    A:集合的嵌套entrySet遍历
+​    /*
      *  Map集合的嵌套,Map中存储的还是Map集合
-     *  要求:
-     *    传智播客  
-     *      Java基础班
-     *        001  张三
-     *        002  李四
-     *      
-     *      Java就业班
-     *        001  王五
-     *        002  赵六
-     *  对以上数据进行对象的存储
-     *   001 张三  键值对
-     *   Java基础班: 存储学号和姓名的键值对
-     *   Java就业班:
-     *   传智播客: 存储的是班级
-     *   
-     *   基础班Map   <学号,姓名>
-     *   传智播客Map  <班级名字, 基础班Map>
-     */
-    public class MapMapDemo {
-    	public static void main(String[] args) {
-    		//定义基础班集合
-    		HashMap<String, String> javase = new HashMap<String, String>();
-    		//定义就业班集合
-    		HashMap<String, String> javaee = new HashMap<String, String>();
-    		//向班级集合中,存储学生信息
-    		javase.put("001", "张三");
-    		javase.put("002", "李四");
-    		
+          *  要求:
+          *    传智播客  
+               *      Java基础班
+                    *        001  张三
+                         *        002  李四
+                              *      
+                                   *      Java就业班
+                                        *        001  王五
+                                             *        002  赵六
+                                                  *  对以上数据进行对象的存储
+                                                       *   001 张三  键值对
+                                                       *   Java基础班: 存储学号和姓名的键值对
+                                                            *   Java就业班:
+                                                                 *   传智播客: 存储的是班级
+                                                                      *   
+                                                                           *   基础班Map   <学号,姓名>
+                                                                                *   传智播客Map  <班级名字, 基础班Map>
+                                                                                     */
+                                                                    public class MapMapDemo {
+                                                                    	public static void main(String[] args) {
+                                                                    		//定义基础班集合
+                                                                    		HashMap<String, String> javase = new HashMap<String, String>();
+                                                                    		//定义就业班集合
+                                                                    		HashMap<String, String> javaee = new HashMap<String, String>();
+                                                                    		//向班级集合中,存储学生信息
+                                                                    		javase.put("001", "张三");
+                                                                    		javase.put("002", "李四");
+
     		javaee.put("001", "王五");
     		javaee.put("002", "赵六");
     		//定义传智播客集合容器,键是班级名字,值是两个班级容器
@@ -697,154 +689,153 @@
     			}
     		}
     	}
-    	
-    
+
+
+​    
     }
 
 
-=======================第四节课开始=============================================
-        
-###17斗地主的功能分析
+​        
+### 17斗地主的功能分析
    A:斗地主的功能分析
 	   a:具体规则：
 		   	1. 组装54张扑克牌
 		    2. 将54张牌顺序打乱
 		   	3. 三个玩家参与游戏，三人交替摸牌，每人17张牌，最后三张留作底牌。
-		   	4. 查看三人各自手中的牌（按照牌的大小排序）、底牌
-       b:分析:
-	      1.准备牌：
-	       完成数字与纸牌的映射关系：
-	       使用双列Map(HashMap)集合，完成一个数字与字符串纸牌的对应关系(相当于一个字典)。
-	      2.洗牌：
-	       通过数字完成洗牌发牌
-	      3.发牌：
-	       将每个人以及底牌设计为ArrayList<String>,将最后3张牌直接存放于底牌，剩余牌通过对3取模依次发牌。
-	       存放的过程中要求数字大小与斗地主规则的大小对应。
-	       将代表不同纸牌的数字分配给不同的玩家与底牌。
-	      4.看牌：
-	       通过Map集合找到对应字符展示。
-	       通过查询纸牌与数字的对应关系，由数字转成纸牌字符串再进行展示。
+		      	4. 查看三人各自手中的牌（按照牌的大小排序）、底牌
+                     b:分析:
+	                        1.准备牌：
+	              完成数字与纸牌的映射关系：
+	              使用双列Map(HashMap)集合，完成一个数字与字符串纸牌的对应关系(相当于一个字典)。
+	                        2.洗牌：
+	              通过数字完成洗牌发牌
+	                        3.发牌：
+	              将每个人以及底牌设计为ArrayList<String>,将最后3张牌直接存放于底牌，剩余牌通过对3取模依次发牌。
+	              存放的过程中要求数字大小与斗地主规则的大小对应。
+	              将代表不同纸牌的数字分配给不同的玩家与底牌。
+	                        4.看牌：
+	              通过Map集合找到对应字符展示。
+	              通过查询纸牌与数字的对应关系，由数字转成纸牌字符串再进行展示。
 
-###18斗地主的准备牌
+### 18斗地主的准备牌
    A:斗地主的准备牌
      /*
       *  实现模拟斗地主的功能
-      *   1. 组合牌
-      *   2. 洗牌
-      *   3. 发牌
-      *   4. 看牌
-      */
-     public class DouDiZhu {
-     	public static void main(String[] args) {
-     		//1. 组合牌
-     		//创建Map集合,键是编号,值是牌
-     		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
-     		//创建List集合,存储编号
-     		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
-     		//定义出13个点数的数组
-     		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
-     		//定义4个花色数组
-     		String[] colors = {"♠","♥","♣","♦"};
-     		//定义整数变量,作为键出现
-     		int index = 2;
-     		//遍历数组,花色+点数的组合,存储到Map集合
-     		for(String number : numbers){
-     			for(String color : colors){
-     				pooker.put(index, color+number);
-     				pookerNumber.add(index);
-     				index++;
-     			}
-     		}
-     		//存储大王,和小王,索引是从0~54,对应大王,小王,...3(牌的顺序从大到小)
-     		pooker.put(0, "大王");
-     		pookerNumber.add(0);
-     		pooker.put(1, "小王");
-     		pookerNumber.add(1);
-     	 
+            *   1. 组合牌
+            *   2. 洗牌
+            *   3. 发牌
+            *   4. 看牌
+            		*/
+          		public class DouDiZhu {
+          		public static void main(String[] args) {
+          		//1. 组合牌
+          		//创建Map集合,键是编号,值是牌
+          		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
+          		//创建List集合,存储编号
+          		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
+          		//定义出13个点数的数组
+          		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
+          		//定义4个花色数组
+          		String[] colors = {"♠","♥","♣","♦"};
+          		//定义整数变量,作为键出现
+          		int index = 2;
+          		//遍历数组,花色+点数的组合,存储到Map集合
+          		for(String number : numbers){
+          			for(String color : colors){
+          				pooker.put(index, color+number);
+          				pookerNumber.add(index);
+          				index++;
+          			}
+          		}
+          		//存储大王,和小王,索引是从0~54,对应大王,小王,...3(牌的顺序从大到小)
+          		pooker.put(0, "大王");
+          		pookerNumber.add(0);
+          		pooker.put(1, "小王");
+          		pookerNumber.add(1);
+
      }
 
-
-###19斗地主的洗牌
-    A:斗地主的洗牌
-	  /*
+### 19斗地主的洗牌
+​    A:斗地主的洗牌
+​	  /*
 	   *  实现模拟斗地主的功能
-	   *   1. 组合牌
-	   *   2. 洗牌
-	   *   3. 发牌
-	   *   4. 看牌
-	   */
-	  public class DouDiZhu {
-	  	public static void main(String[] args) {
-	  		//1. 组合牌
-	  		//创建Map集合,键是编号,值是牌
-	  		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
-	  		//创建List集合,存储编号
-	  		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
-	  		//定义出13个点数的数组
-	  		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
-	  		//定义4个花色数组
-	  		String[] colors = {"♠","♥","♣","♦"};
-	  		//定义整数变量,作为键出现
-	  		int index = 2;
-	  		//遍历数组,花色+点数的组合,存储到Map集合
-	  		for(String number : numbers){
-	  			for(String color : colors){
-	  				pooker.put(index, color+number);
-	  				pookerNumber.add(index);
-	  				index++;
-	  			}
-	  		}
-	  		//存储大王,和小王
-	  		pooker.put(0, "大王");
-	  		pookerNumber.add(0);
-	  		pooker.put(1, "小王");
-	  		pookerNumber.add(1);
-	  		
+		   *   1. 组合牌
+		   *   2. 洗牌
+		   *   3. 发牌
+		   *   4. 看牌
+		     	*/
+		    	public class DouDiZhu {
+		    	public static void main(String[] args) {
+		    		//1. 组合牌
+		    		//创建Map集合,键是编号,值是牌
+		    		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
+		    		//创建List集合,存储编号
+		    		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
+		    		//定义出13个点数的数组
+		    		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
+		    		//定义4个花色数组
+		    		String[] colors = {"♠","♥","♣","♦"};
+		    		//定义整数变量,作为键出现
+		    		int index = 2;
+		    		//遍历数组,花色+点数的组合,存储到Map集合
+		    		for(String number : numbers){
+		    			for(String color : colors){
+		    				pooker.put(index, color+number);
+		    				pookerNumber.add(index);
+		    				index++;
+		    			}
+		    		}
+		    		//存储大王,和小王
+		    		pooker.put(0, "大王");
+		    		pookerNumber.add(0);
+		    		pooker.put(1, "小王");
+		    		pookerNumber.add(1);
+
 	  		//洗牌,将牌的编号打乱
 	  		Collections.shuffle(pookerNumber);
-	  		
-	  	 
+
+
+​	  	 
 	  	}
 	  	 
 	  }
-   
 
-###20斗地主的发牌
+### 20斗地主的发牌
   A:斗地主的发牌
     /*
      *  实现模拟斗地主的功能
-     *   1. 组合牌
-     *   2. 洗牌
-     *   3. 发牌
-     *   4. 看牌
-     */
-    public class DouDiZhu {
-    	public static void main(String[] args) {
-    		//1. 组合牌
-    		//创建Map集合,键是编号,值是牌
-    		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
-    		//创建List集合,存储编号
-    		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
-    		//定义出13个点数的数组
-    		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
-    		//定义4个花色数组
-    		String[] colors = {"♠","♥","♣","♦"};
-    		//定义整数变量,作为键出现
-    		int index = 2;
-    		//遍历数组,花色+点数的组合,存储到Map集合
-    		for(String number : numbers){
-    			for(String color : colors){
-    				pooker.put(index, color+number);
-    				pookerNumber.add(index);
-    				index++;
-    			}
-    		}
-    		//存储大王,和小王
-    		pooker.put(0, "大王");
-    		pookerNumber.add(0);
-    		pooker.put(1, "小王");
-    		pookerNumber.add(1);
-    		
+          *   1. 组合牌
+          *   2. 洗牌
+               *   3. 发牌
+               *   4. 看牌
+               		*/
+            		public class DouDiZhu {
+            		public static void main(String[] args) {
+            		//1. 组合牌
+            		//创建Map集合,键是编号,值是牌
+            		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
+            		//创建List集合,存储编号
+            		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
+            		//定义出13个点数的数组
+            		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
+            		//定义4个花色数组
+            		String[] colors = {"♠","♥","♣","♦"};
+            		//定义整数变量,作为键出现
+            		int index = 2;
+            		//遍历数组,花色+点数的组合,存储到Map集合
+            		for(String number : numbers){
+            			for(String color : colors){
+            				pooker.put(index, color+number);
+            				pookerNumber.add(index);
+            				index++;
+            			}
+            		}
+            		//存储大王,和小王
+            		pooker.put(0, "大王");
+            		pookerNumber.add(0);
+            		pooker.put(1, "小王");
+            		pookerNumber.add(1);
+
     		//洗牌,将牌的编号打乱
     		Collections.shuffle(pookerNumber);
     		
@@ -877,42 +868,42 @@
     	 
     }
 
-###21斗地主的看牌
+### 21斗地主的看牌
   A:斗地主的看牌
      /*
       *  实现模拟斗地主的功能
-      *   1. 组合牌
-      *   2. 洗牌
-      *   3. 发牌
-      *   4. 看牌
-      */
-     public class DouDiZhu {
-     	public static void main(String[] args) {
-     		//1. 组合牌
-     		//创建Map集合,键是编号,值是牌
-     		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
-     		//创建List集合,存储编号
-     		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
-     		//定义出13个点数的数组
-     		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
-     		//定义4个花色数组
-     		String[] colors = {"♠","♥","♣","♦"};
-     		//定义整数变量,作为键出现
-     		int index = 2;
-     		//遍历数组,花色+点数的组合,存储到Map集合
-     		for(String number : numbers){
-     			for(String color : colors){
-     				pooker.put(index, color+number);
-     				pookerNumber.add(index);
-     				index++;
-     			}
-     		}
-     		//存储大王,和小王
-     		pooker.put(0, "大王");
-     		pookerNumber.add(0);
-     		pooker.put(1, "小王");
-     		pookerNumber.add(1);
-     		
+            *   1. 组合牌
+            *   2. 洗牌
+            *   3. 发牌
+            *   4. 看牌
+            		*/
+          		public class DouDiZhu {
+          		public static void main(String[] args) {
+          		//1. 组合牌
+          		//创建Map集合,键是编号,值是牌
+          		HashMap<Integer,String> pooker = new HashMap<Integer, String>();
+          		//创建List集合,存储编号
+          		ArrayList<Integer> pookerNumber = new ArrayList<Integer>();
+          		//定义出13个点数的数组
+          		String[] numbers = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
+          		//定义4个花色数组
+          		String[] colors = {"♠","♥","♣","♦"};
+          		//定义整数变量,作为键出现
+          		int index = 2;
+          		//遍历数组,花色+点数的组合,存储到Map集合
+          		for(String number : numbers){
+          			for(String color : colors){
+          				pooker.put(index, color+number);
+          				pookerNumber.add(index);
+          				index++;
+          			}
+          		}
+          		//存储大王,和小王
+          		pooker.put(0, "大王");
+          		pookerNumber.add(0);
+          		pooker.put(1, "小王");
+          		pookerNumber.add(1);
+
      		//洗牌,将牌的编号打乱
      		Collections.shuffle(pookerNumber);
      		
