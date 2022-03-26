@@ -2,10 +2,9 @@
 1、File
 2、递归
 
-=======================第一节课开始=============================================
 
 
-###01IO技术概述.avi（02:49）
+### 01IO技术概述.avi（02:49）
 	* A:IO技术概述
 		* a: Output
 			* 把内存中的数据存储到持久化设备上这个动作称为输出（写）Output操作
@@ -14,20 +13,20 @@
 		* c: IO操作
 			* 把上面的这种输入和输出动作称为IO操作
 	
-###02File类的概述和作用
+### 02File类的概述和作用
 	* A:File类的概述和作用
 		* a: File的概念
 			* File类是文件和目录路径名的抽象表示形式
 			* Java中把文件或者目录（文件夹）都封装成File对象
 			* 我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可
 			
-###03File类静态的成员变量
+### 03File类静态的成员变量
 	* A:File类静态的成员变量
 		* a: pathSeparator
 			* 与系统有关的路径分隔符，为了方便，它被表示为一个字符串
 		* b: separator
 			* 与系统有关的默认名称分隔符，为了方便，它被表示为一个字符串
-			
+
 		* c: 案例代码
 		
 			/*
@@ -52,9 +51,10 @@
 				}
 			}
 
-	
 
-###04File类构造方法_1
+​	
+
+### 04File类构造方法_1
 	* A: File类构造方法_1
 		* a: File(String pathname)
 			* 通过将给定路径名字符串转换为一个File对象,之后可以使用File中的方法
@@ -70,13 +70,13 @@
 				 *  c:\\abc   c:\\abc\\Demo.java
 				 *  将路径封装File类型对象
 				 */
-				public static void function(){
+				 public static void function(){
 					File file = new File("d:\\eclipse");
 					System.out.println(file);
-				}
-			}
+				 }
+				 }
 
-###05相对路径和绝对路径
+### 05相对路径和绝对路径
 	* A: 相对路径和绝对路径
 		* a: 绝对路径
 			* 绝对路径是一个固定的路径,从盘符开始
@@ -97,12 +97,12 @@
 					子目录是可以多个
 
 
-			
-###06File类的构造方法_2
+### 06File类的构造方法_2
 	* A: File类的构造方法_2
 		* a:File(String parent, String child) 
 			* 根据 parent 路径名字符串和 child 路径名字符串创建一个新 File 对象
 							
+
 		* b: File(File parent, String child)
 		
 		* c: 案例代码
@@ -132,12 +132,13 @@
 			}
 		}
 
-			
-###07File类创建文件功能
+
+### 07File类创建文件功能
 	* A: File类创建文件功能
 		* a: public boolean createNewFile()
 			* 创建文件 如果存在这样的文件，就不创建了
 				
+
 		* b: 案例代码
 			public class FileDemo2 {
 				public static void main(String[] args)throws IOException {
@@ -156,8 +157,8 @@
 				}
 			}
 
-						
-###08File类创建目录功能
+
+### 08File类创建目录功能
 	* A: File类创建目录功能
 		* a: 创建目录
 			* public boolean mkdir():创建文件夹 如果存在这样的文件夹，就不创建了
@@ -173,16 +174,16 @@
 				 *  创建的路径也在File构造方法中给出
 				 *  文件夹已经存在了,不在创建
 				 */
-				public static void function_1(){
+				 public static void function_1(){
 					File file = new File("c:\\abc");
 					boolean b = file.mkdirs();
 					System.out.println(b);
-				}				
-			}
+				 }				
+				 }
 
 
 
-###09File类删除功能
+### 09File类删除功能
 	* A: File类删除功能
 		* a: 删除功能
 			* public boolean delete():删除文件或者文件夹
@@ -199,14 +200,14 @@
 			 *  删除方法,不走回收站,直接从硬盘中删除
 			 *  删除有风险,运行需谨慎
 			 */
-			public static void function_2(){
+			 public static void function_2(){
 				File file = new File("c:\\a.txt");
 				boolean b = file.delete();
 				System.out.println(b);
-			}			
-		}
+			 }			
+			 }
 		
-###10File类获取功能			
+### 10File类获取功能			
 	* A：File类获取功能
 		* a: 方法介绍
 			* String getName(): 返回路径中表示的文件或者文件夹名
@@ -218,6 +219,7 @@
 			* String getParent(): 获取父路径,返回String对象
 			* File getParentFile(): 获取父路径,返回File对象
 					
+
 		* b: 案例代码
 		
 			public class FileDemo3 {
@@ -277,8 +279,8 @@
 				}
 			}
 
-				
-###11File类判断功能
+
+### 11File类判断功能
 	* A: File类判断功能
 		* a: 方法介绍
 			* boolean exists(): 判断File构造方法中封装路径是否存在
@@ -287,7 +289,7 @@
 				* 如果是文件夹,返回true,不是文件返回false
 			* boolean isFile(): 判断File构造方法中封装的路径是不是文件
 				* 如果是文件,返回true,不是文件返回false
-	
+
 		* b: 案例代码
 			public class FileDemo4 {
 				public static void main(String[] args) {
@@ -323,8 +325,7 @@
 				}
 			}
 
-
-###12File类list获取功能
+### 12File类list获取功能
 	* A: File类list获取功能
 		* a: 方法介绍
 			* String[] list()：获取到File构造方法中封装的路径中的文件和文件夹名 (遍历一个目录)
@@ -332,7 +333,7 @@
 			* File[] listFiles()：获取到,File构造方法中封装的路径中的文件和文件夹名 (遍历一个目录)
 				* 返回的是目录或者文件的全路径
 			* static File[] listRoots(): 列出可用的文件系统根 
-		
+
 		* b: 案例代码
 			public class FileDemo {
 				public static void main(String[] args) {
@@ -376,11 +377,11 @@
 				}
 			}
 
-###13文件过滤器
+### 13文件过滤器
 	* A: 文件过滤器
 		* a: 作用
-			* 过滤一个目录下的指定扩展名的文件，或者包含某些关键字的文件夹
-			
+		 * 过滤一个目录下的指定扩展名的文件，或者包含某些关键字的文件夹
+
 		* b: 方法介绍
 			* public String[] list(FilenameFilter filter)
 			* public File[] listFiles(FileFilter filter)
@@ -422,8 +423,8 @@
 					}
 				}
 			}
-				
-###14文件过滤器_原理分析
+
+### 14文件过滤器_原理分析
 	* A:文件过滤器_原理分析
 		* listFiles()遍历目录的同时，获取到了文件名全路径，调用过滤器的方法accept，将获取到的路径传递给accept方法的参数pathname
 		* accept方法接收了参数pathname，参数是listFiles传递来的
@@ -431,14 +432,14 @@
 		* 一旦方法返回了true
 		* listFiles将路径保存到File数组中
 	
-###15递归遍历全目录
+### 15递归遍历全目录
 	* A: 递归遍历全目录
 		* a: 案例代码
 			/*
 			 *  对一个目录的下的所有内容,进行完全的遍历
 			 *  编程技巧,方法的递归调用,自己调用自己
 			 */
-			public class FileDemo {
+			 public class FileDemo {
 				public static void main(String[] args) {
 					File dir = new File("d:\\eclipse");
 					getAllDir(dir);
@@ -446,7 +447,7 @@
 				/*
 				 *  定义方法,实现目录的全遍历
 				 */
-				public static void getAllDir(File dir){
+				 public static void getAllDir(File dir){
 					System.out.println(dir);
 					//调用方法listFiles()对目录,dir进行遍历
 					File[] fileArr = dir.listFiles();
@@ -461,12 +462,11 @@
 							System.out.println(f);
 						}
 					}
-				}
-			}
+				 }
+			  }
 
 
-		
-###16递归概念和注意事项
+### 16递归概念和注意事项
 	* A:递归概念和注意事项
 		* a: 递归概念
 			* 递归，指在当前方法内调用自己的这种现象
@@ -477,14 +477,14 @@
 			* 递归次数不能过多
 			* 构造方法,禁止递归
 		
-###17递归求和计算
+### 17递归求和计算
 	* A: 递归求和计算
 		* a: 题目分析
 			* 1+2+3+...+(n-1)+n:求1到n的和
 			* 总结规律：1到n的和等于1到(n-1)的和再加n
 			* getSum(n-1)+ n
 			* 递归出口：getSum(1) return 1;
-		
+
 		* b: 案例代码	
 			/*
 			 *  方法的递归调用
@@ -501,7 +501,8 @@
 					System.out.println(sum);
 				}
 
-						
+
+​						
 				/*
 				 *  计算 1+2+3+100和 = 5050
 				 *  计算规律:
@@ -515,8 +516,9 @@
 				}
 				
 			}
-			
-###18递归求阶乘
+
+### 18递归求阶乘
+
 	* A: 递归求和计算
 		* a: 题目分析
 			* 5!=5*4*3*2*1
@@ -536,11 +538,12 @@
 			 *     递归一定要有出口, 必须可以让程序停下
 			 *     递归次数不能过多
 			 *     构造方法,禁止递归
-			 */
-			public class DiGuiDemo {
+				 */
+				public class DiGuiDemo {
 				public static void main(String[] args) {					
 					System.out.println(getJieCheng(5));
 					
+
 				}
 								
 				/* 
@@ -553,7 +556,7 @@
 					return n * getJieCheng(n-1);
 				}								
 			}
-###19递归计算斐波那契数列
+### 19递归计算斐波那契数列
 	* A: 递归计算斐波那契数列
 		* a：题目分析
 			* 1 1 2 3 5 8 13 21
@@ -576,15 +579,15 @@
 				 *  方法递归,计算斐波那契数列
 				 *  
 				 */
-				public static int getFBNQ(int month){
+				 public static int getFBNQ(int month){
 					if( month == 1)
 						return 1;
 					if( month == 2)
 						return 1;
 					return getFBNQ(month-1)+getFBNQ(month-2);
-				}
-			}
-###20遍历目录下的所有java文件
+				 }
+			 }
+### 20遍历目录下的所有java文件
 	* A: 遍历目录下的所有java文件
 		* a: 案例代码
 			public class MyJavaFilter implements FileFilter {
@@ -624,6 +627,6 @@
 					}
 				}
 			}
-			
-###21总结
+
+### 21总结
 	* 把今天的知识点总结一遍。
