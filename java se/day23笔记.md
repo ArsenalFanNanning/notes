@@ -3,10 +3,9 @@
 2、字符流
 
 
-=======================第一节课开始=============================================
 
 
-###01输入和输出
+### 01输入和输出
 
 	* A:输入和输出
 		* a: 参照物
@@ -19,8 +18,8 @@
 			* 文件到程序称为输入
 		* d: IO操作
 			* 把上面的这种输入和输出动作称为IO操作
-	
-###02字节输出流OutputStream
+
+### 02字节输出流OutputStream
 	* A: 字节输出流OutputStream
 		* a.概念
 			* IO流用来处理设备之间的数据传输
@@ -46,10 +45,9 @@
 			*  void write(byte[] b)： 将 b.length 个字节从指定的 byte 数组写入此输出流
 			*  void write(byte[] b, int off, int len) ：将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此输出流。
 			* abstract  void write(int b) ： 将指定的字节写入此输出流。
- 
-				
-			
-###03字节输出流FileOutputStream写字节
+
+
+### 03字节输出流FileOutputStream写字节
 	* A: 字节输出流FileOutputStream写字节
 		* a: FileOutputStream
 			* 写入数据文件,学习父类方法,使用子类对象
@@ -69,7 +67,7 @@
 			*  3. close释放资源
 		* d: 注意事项
 			* 流对象的构造方法,可以创建文件,如果文件存在,直接覆盖
-			
+
 		* e: 案例代码
 		
 			/*
@@ -101,9 +99,9 @@
 			}
 
 
-	
+​	
 
-###04字节输出流FileOutputStream写字节数组
+### 04字节输出流FileOutputStream写字节数组
 	* A: 字节输出流FileOutputStream写字节数组
 		* a: 方法介绍
 			*  void write(byte[] b)： 将 b.length 个字节从指定的 byte 数组写入此输出流
@@ -124,8 +122,8 @@
 			 *     3. close释放资源
 			 *     
 			 *    流对象的构造方法,可以创建文件,如果文件存在,直接覆盖
-			 */
-			public class FileOutputStreamDemo {
+				 */
+				public class FileOutputStreamDemo {
 				public static void main(String[] args)throws IOException {
 					FileOutputStream fos = new FileOutputStream("c:\\a.txt");
 					//流对象的方法write写数据
@@ -133,21 +131,21 @@
 					byte[] bytes = {65,66,67,68};
 					fos.write(bytes);
 					
+
 					//写字节数组的一部分,开始索引,写几个
 					fos.write(bytes, 1, 2);
 					
 					//写入字节数组的简便方式
 					//写字符串
 					fos.write("hello".getBytes());
-
+	
 					//关闭资源
 					fos.close();
 					
 				}
 			}
 
-
-###05文件的续写和换行符号
+### 05文件的续写和换行符号
 	* A: 文件的续写和换行符号
 		* a: 文件的续写
 			*  FileOutputStream构造方法, 的第二个参数中,加入true
@@ -161,7 +159,7 @@
 				 *  在文件中,写入换行,符号换行  \r\n
 				 *  \r\n 可以写在上一行的末尾, 也可以写在下一行的开头
 				 */
-				public class FileOutputStreamDemo1 {
+				 public class FileOutputStreamDemo1 {
 					public static void main(String[] args)throws IOException {
 						File file = new File("c:\\b.txt");
 						FileOutputStream fos = new FileOutputStream(file,true);
@@ -169,15 +167,15 @@
 						fos.write("world".getBytes());
 						fos.close();
 					}
-				}
+				 }
 
 
-			
-###06IO中的异常处理
+### 06IO中的异常处理
 	* A: IO中的异常处理
 		* a:IO流的异常处理
 			* try catch finally
 							
+
 		* b: 细节
 			* 1. 保证流对象变量,作用域足够
 			* 2. catch里面,怎么处理异常
@@ -211,8 +209,7 @@
 			}
 
 
-			
-###07字节输入流InputStream
+### 07字节输入流InputStream
 	* A: 字节输入流InputStream
 		* a: 方法介绍
 			* abstract  int read() ：
@@ -225,6 +222,7 @@
 				* 关闭此输入流并释放与该流关联的所有系统资源。
 				
 				
+
 		* b: 案例代码
 			/*
 			 *   字节输入流
@@ -235,11 +233,11 @@
 			 *     int  read(byte[] b) 读取一定量的字节,存储到数组中
 			 */
 			public class InputStreamDemo {
-
+	
 			}
 
-						
-###08字节输入流FileInputStream读取字节
+
+### 08字节输入流FileInputStream读取字节
 	* A: 字节输入流FileInputStream读取字节
 		* a: 方法介绍
 			* abstract  int read() ：
@@ -268,14 +266,14 @@
 			 *     read()方法,
 			 *       read()执行一次,就会自动读取下一个字节
 			 *       返回值,返回的是读取到的字节, 读取到结尾返回-1
-			 */
-			public class FileInputStreamDemo {
+				 */
+				public class FileInputStreamDemo {
 				public static void main(String[] args) throws IOException{
 					FileInputStream fis = new FileInputStream("c:\\a.txt");
 					//读取一个字节,调用方法read 返回int
 					//使用循环方式,读取文件,  循环结束的条件  read()方法返回-1
 					int len = 0;//接受read方法的返回值
-				
+
 					while( (len = fis.read()) != -1){
 						System.out.print((char)len);
 					}
@@ -283,7 +281,7 @@
 					fis.close();
 				}
 			}
-
+	
 			/*
 			 * int i = fis.read();
 					System.out.println(i);
@@ -300,7 +298,7 @@
 
 
 
-###09字节输入流FileInputStream读取字节数组
+### 09字节输入流FileInputStream读取字节数组
 	* A: 字节输入流FileInputStream读取字节数组
 		* a: 方法介绍
 			* int read(byte[] b)  
@@ -314,8 +312,8 @@
 			 *   读取方法  int read(byte[] b) 读取字节数组
 			 *   数组作用: 缓冲的作用, 提高效率
 			 *   read返回的int,表示什么含义 读取到多少个有效的字节数
-			 */
-			public class FileInputStreamDemo1 {
+				 */
+				public class FileInputStreamDemo1 {
 				public static void main(String[] args) throws IOException {
 					FileInputStream fis = new FileInputStream("c:\\a.txt");
 					// 创建字节数组
@@ -324,29 +322,30 @@
 					int len = fis.read(b);
 					System.out.println(new String(b));// ab
 					System.out.println(len);// 2
-
+	
 					len = fis.read(b);
 					System.out.println(new String(b));// cd
 					System.out.println(len);// 2
-
+	
 					len = fis.read(b);
 					System.out.println(new String(b));// ed
 					System.out.println(len);// 1
-
+	
 					len = fis.read(b);
 					System.out.println(new String(b));// ed
 					System.out.println(len);// -1
-
+	
 					fis.close();
 				}
 			}
-		
-###10字节输入流FileInputStream读取字节数组的实现原理		
+
+### 10字节输入流FileInputStream读取字节数组的实现原理		
 	* A：字节输入流FileInputStream读取字节数组的实现原理
 		* a: 原理
 			* 参见day23_source文件夹中的"读取数组的原理.jpg"
 		
-					
+			​		
+
 		* b: 案例代码
 		
 			public class FileInputStreamDemo1 {
@@ -363,14 +362,14 @@
 				}
 			}
 
-				
-###11文件复制原理
+
+### 11文件复制原理
 	* A: 文件复制原理
 		* a: 见day23_source/文件复制原理.jpg
 
 
 
-###12字节流复制文件读取单个字节
+### 12字节流复制文件读取单个字节
 	* A: 字节流复制文件读取单个字节
 		* a: 案例代码
 			/*
@@ -382,7 +381,7 @@
 			 *  输入,读取1个字节
 			 *  输出,写1个字节
 			 */
-			public class Copy {
+			 public class Copy {
 				public static void main(String[] args) {
 					//定义两个流的对象变量
 					FileInputStream fis = null;
@@ -415,10 +414,9 @@
 						}
 					}
 				}
-			}
+			 }
 
-
-###13字节流复制文件读取字节数组
+### 13字节流复制文件读取字节数组
 	* A: 字节流复制文件读取字节数组
 		* a: 案例代码
 			/*
@@ -427,8 +425,8 @@
 			 *   字节数组
 			 *   FileInputStream 读取字节数组
 			 *   FileOutputStream 写字节数组
-			 */
-			public class Copy_1 {
+				 */
+				public class Copy_1 {
 				public static void main(String[] args) {
 					long s = System.currentTimeMillis();
 					FileInputStream fis = null;
@@ -464,9 +462,9 @@
 					long e = System.currentTimeMillis();
 					System.out.println(e-s);
 				}
-			}
+				}
 				
-###14编码表
+### 14编码表
 	* A: 编码表
 		* a: 定义：
 			* 生活中字符和计算机二进制的对应关系表,就是编码表
@@ -485,7 +483,9 @@
 				* 文字--->(数字) ：编码。 “abc”.getBytes()  byte[]
 				* (数字)--->文字  : 解码。 byte[] b={97,98,99}  new String(b) 
 	
-###15字符输出流写文本FileWriter类
+
+### 15字符输出流写文本FileWriter类
+
 	* A: 字符输出流写文本FileWriter类
 		* a: 方法介绍
 			*  void write(int c)
@@ -518,11 +518,12 @@
 			 *     
 			 *   字符输出流写数据的时候,必须要运行一个功能,刷新功能
 			 *   flush()
-			 */
-			public class WriterDemo {
+				 */
+				public class WriterDemo {
 				public static void main(String[] args) throws IOException{
 					FileWriter fw = new FileWriter("c:\\1.txt");
 					
+
 					//写1个字符
 					fw.write(100);
 					fw.flush();
@@ -544,8 +545,8 @@
 				}
 			}
 
-		
-###16字符输入流读取文本FileReader类
+
+### 16字符输入流读取文本FileReader类
 	* A: 字符输入流读取文本FileReader类
 		* a: 方法介绍
 			*  int read() 
@@ -570,8 +571,8 @@
 			 *     参数:
 			 *        File  类型对象
 			 *        String文件名
-			 */
-			public class ReaderDemo {
+				 */
+				public class ReaderDemo {
 				public static void main(String[] args) throws IOException{
 					FileReader fr = new FileReader("c:\\1.txt");
 					/*int len = 0 ;
@@ -584,19 +585,22 @@
 						System.out.print(new String(ch,0,len));
 					}
 					
+
 					fr.close();
 				}
 			}
 
-		
-###17flush方法和close方法区别
+
+### 17flush方法和close方法区别
 	* A: flush方法和close方法区别
 		*a: flush()方法
 			* 用来刷新缓冲区的,刷新后可以再次写出,只有字符流才需要刷新
 		*b: close()方法
 			* 用来关闭流释放资源的的,如果是带缓冲区的流对象的close()方法,不但会关闭流,还会再关闭流之前刷新缓冲区,关闭后不能再写出 
 			
-###18字符流复制文本文件
+
+### 18字符流复制文本文件
+
 	* A: 字符流复制文本文件
 		* a: 案例代码
 			/*
@@ -605,7 +609,7 @@
 			 *  FileReader读取数据源
 			 *  FileWriter写入到数据目的
 			 */
-			public class Copy_2 {
+				public class Copy_2 {
 				public static void main(String[] args) {
 					FileReader fr = null;
 					FileWriter fw = null;
@@ -619,6 +623,7 @@
 							fw.flush();
 						}
 						
+
 					}catch(IOException ex){
 						System.out.println(ex);
 						throw new RuntimeException("复制失败");
@@ -640,5 +645,5 @@
 				}
 			}
 
-###19总结
+### 19总结
 	* 把今天的知识点总结一遍。
