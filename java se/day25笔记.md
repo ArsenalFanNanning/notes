@@ -4,8 +4,7 @@
 3、打印流
 4、commons-IO
 
-
-###01Properties集合的特点
+### 01Properties集合的特点
 	* A: Properties集合的特点
 		* a: Properties类介绍
 			* Properties 类表示了一个持久的属性集。Properties 可保存在流中或从流中加载。属性列表中每个键及其对应值都是一个字符串
@@ -19,11 +18,9 @@
 			* load(Reader reader) 按简单的面向行的格式从输入字符流中读取属性列表（键和元素对）
 			* store(OutputStream outputStream,String commonts) 把集合中的数据，保存到指定的流所对应的文件中，参数commonts代表对描述信息
 			* stroe(Writer writer,String comments) 以适合使用 load(Reader) 方法的格式，将此 Properties 表中的属性列表（键和元素对）写入输出字符
-			
 
-		
-	
-###02Properties集合存储键值对
+
+### 02Properties集合存储键值对
 	* A: Properties集合存储键值对		
 		* a: 方法介绍
 			*  集合对象Properties类,继承Hashtable,实现Map接口
@@ -43,13 +40,13 @@
 				 * setProperty(String key, String value)
 				 * 通过键获取值, getProperty(String key)
 				 */
-				public static void function(){
+					public static void function(){
 					Properties pro = new Properties();
 					pro.setProperty("a", "1");
 					pro.setProperty("b", "2");
 					pro.setProperty("c", "3");
 					System.out.println(pro);
-					
+
 					String value = pro.getProperty("c");
 					System.out.println(value);
 					
@@ -61,8 +58,8 @@
 				}
 			}
 
-			
-###03Properties集合的方法load
+
+### 03Properties集合的方法load
 	* A: Properties集合的方法load
 		* a: 方法介绍
 			* Properties集合特有方法 load
@@ -70,7 +67,7 @@
 			* load(Reader r)
 			* 传递任意的字节或者字符输入流
 			* 流对象读取文件中的键值对,保存到集合
-			
+
 		* b: 案例代码		
 				public class PropertiesDemo {
 					public static void main(String[] args)throws IOException {
@@ -93,7 +90,7 @@
 					}					
 				}
 
-###04Properties集合的方法store
+### 04Properties集合的方法store
 	* A: Properties集合的方法store
 		* a: 方法介绍			
 			* Properties集合的特有方法store
@@ -111,7 +108,7 @@
 				 * store(Writer w)
 				 * 接收所有的字节或者字符的输出流,将集合中的键值对,写回文件中保存
 				 */
-				public static void function_2()throws IOException{
+				 public static void function_2()throws IOException{
 					Properties pro = new Properties();
 					pro.setProperty("name", "zhangsan");
 					pro.setProperty("age", "31");
@@ -120,11 +117,10 @@
 					//键值对,存回文件,使用集合的方法store传递字符输出流
 					pro.store(fw, "");
 					fw.close();
-				}				
-			}
+				 }				
+				  }
 
-
-###05对象的序列化与反序列化
+### 05对象的序列化与反序列化
 	* A: 对象的序列化与反序列化
 		* a: 基本概念
 			* 对象的序列化
@@ -134,7 +130,7 @@
 				* 在文件中，以流的形式，将对象读出来，读取对象，对象的反序列化
 				* ObjectInputStream 将文件对象读取出来
 					
-###06ObjectOutputStream流写对象
+### 06ObjectOutputStream流写对象
 	* A: ObjectOutputStream流写对象
 		* a: 简单介绍
 			 *  IO流对象,实现对象Person序列化,和反序列化
@@ -192,8 +188,8 @@
 					oos.close();
 				}
 			}
-			
-###07ObjectInputStream流读取对象
+
+### 07ObjectInputStream流读取对象
 	* A: ObjectInputStream流读取对象
 		* a: 简单介绍
 			* ObjectInputStream
@@ -206,7 +202,7 @@
 			 *  ObjectOutputStream 写对象,实现序列化
 			 *  ObjectInputStream 读取对象,实现反序列化
 			 */
-			public class ObjectStreamDemo {
+				public class ObjectStreamDemo {
 				public static void main(String[] args)throws IOException, ClassNotFoundException {
 					readObject();
 				}
@@ -216,7 +212,7 @@
 				 * 传递任意的字节输入流,输入流封装文件,必须是序列化的文件
 				 * Object readObject()  读取对象
 				 */
-				public static void readObject() throws IOException, ClassNotFoundException{
+					public static void readObject() throws IOException, ClassNotFoundException{
 					FileInputStream fis = new FileInputStream("c:\\person.txt");
 					//创建反序列化流,构造方法中,传递字节输入流
 					ObjectInputStream ois = new ObjectInputStream(fis);
@@ -224,48 +220,48 @@
 					Object obj =ois.readObject();
 					System.out.println(obj);
 					ois.close();
-				}				
-			}
+					}				
+					}
 						
-###08静态不能序列化
+### 08静态不能序列化
 	* A: 静态不能序列化
 		* a: 原因
 			* 序列化是把对象数据进行持久化存储
 			* 静态的东西不属于对象，而属于类
- 
-###09transient关键字
+
+### 09transient关键字
 	* A: transient关键字
 		* a: 作用
 			* 被transient修饰的属性不会被序列化
 			* transient关键字只能修饰成员变量
 			
 		
-###10Serializable接口的含义
+### 10Serializable接口的含义
 	* A：Serializable接口的含义
 		* a: 作用
 			* 给需要序列化的类上加标记。该标记中没有任何抽象方法
 			* 只有实现了 Serializable接口的类的对象才能被序列化
 				
-###11序列化中的序列号冲突问题
+### 11序列化中的序列号冲突问题
 	* A: 序列化中的序列号冲突问题
 		* a: 问题产生原因
 			* 当一个类实现Serializable接口后，创建对象并将对象写入文件，之后更改了源代码(比如：将成员变量的修饰符有private改成public)，
 				再次从文件中读取对象时会报异常
 			* 见day25_source文件夹下的"序列号的冲突.JPG"文件
 
-###12序列化中自定义的序列号
+### 12序列化中自定义的序列号
 	* A: 序列化中自定义的序列号
 		* a: 定义方式
 			* private static final long serialVersionUID = 1478652478456L;
 				* 这样每次编译类时生成的serialVersionUID值都是固定的 	
-		
+
 		* b: 案例代码
 			public class Person implements Serializable{
 				public String name;
 				public /*transient阻止成员变量序列化*/ int age;
 				//类,自定义了序列号,编译器不会计算序列号
 				private static final long serialVersionUID = 1478652478456L;
-
+	
 				public Person(String name, int age) {
 					super();
 					this.name = name;
@@ -291,7 +287,7 @@
 				}				
 			}
 
-###13打印流和特性
+### 13打印流和特性
 	* A: 打印流和特性
 		* a: 概述
 			* 打印流添加输出数据的功能，使它们能够方便地打印各种数据值表示形式.
@@ -312,8 +308,7 @@
 			* PrintWriter构造方法
 				* 接收File类型,接收字符串文件名,接收字节输出流OutputStream, 接收字符输出流Writer
 
-				
-###14打印流输出目的是File对象
+### 14打印流输出目的是File对象
 	* A: 打印流输出目的是File对象
 		* a: 案例代码
 			public class PrintWriterDemo {
@@ -335,8 +330,8 @@
 					pw.close();
 				}
 			}
-			
-###15输出语句是char数组
+
+### 15输出语句是char数组
 	* A: 输出语句是char数组
 		* a: 案例代码
 			public class Demo {
@@ -344,6 +339,7 @@
 					int[] arr = {1};
 					System.out.println(arr);
 					
+
 					char[] ch = {'a','b'};
 					System.out.println(ch);
 					
@@ -355,8 +351,8 @@
 			* println数组，只有打印字符数组时只有容，其余均打印数组的地址
 				* 因为api中定义了打印字符数组的方法，其底层是在遍历数组中的元素
 				* 而其他打印数组的方法，都是将数组对象编程Object，其底层再将对象编程String，调用了String s = String.valueOf(x);方法
-		
-###16打印流输出目的是String和流对象
+
+### 16打印流输出目的是String和流对象
 	* A: 打印流输出目的是String和流对象
 		* a: 案例代码
 			public class PrintWriterDemo {
@@ -387,8 +383,8 @@
 				}	
 				
 			}
-			
-###17打印流开启自动刷新
+
+### 17打印流开启自动刷新
 	* A: 打印流开启自动刷新
 		* 案例代码
 			public class PrintWriterDemo {
@@ -413,8 +409,8 @@
 					pw.close();
 				}
 			}
-			
-###18打印流复制文本文件
+
+### 18打印流复制文本文件
 	* A: 打印流复制文本文件
 		* a: 案例代码
 			/*
@@ -435,7 +431,7 @@
 				}
 			}
 			
-###19commons-io工具类介绍
+### 19commons-io工具类介绍
 	* A: commons-io工具类介绍
 		* a: 工具类介绍
 			* 解压缩commons-io-2.4.zip文件
@@ -443,7 +439,7 @@
 			* commons-io-2.4-sources.jar工具类中原代码
 			* docs是帮助文档
 			
-###20使用工具类commons_io
+### 20使用工具类commons_io
 	* A: 使用工具类commons_io
 		* a: 导入jar包
 			* 加入classpath的第三方jar包内的class文件才能在项目中使用
@@ -452,7 +448,7 @@
 			* 右键点击commons-io.jar，Build Path→Add to Build Path
 		* b: 学会如何看源代码
 
-###21IO工具类FilenameUtils
+### 21IO工具类FilenameUtils
 	* A: IO工具类FilenameUtils
 		* a: 方法介绍
 			* getExtension(String path)：获取文件的扩展名；
@@ -468,11 +464,11 @@
 				 * static boolean isExtension(String filename,String extension)
 				 * 判断文件名的后缀是不是extension
 				 */
-				public static void function_2(){
+				 public static void function_2(){
 					boolean b = FilenameUtils.isExtension("Demo.java", "java");
 					System.out.println(b);
-				}
-				
+				 }
+
 				/*
 				 * FilenameUtils类的方法
 				 * static String getName(String filename)
@@ -494,14 +490,14 @@
 				 }
 			}
 
-###22IO工具类FileUtils
+### 22IO工具类FileUtils
 	* A: IO工具类FileUtils
 		* a: 方法介绍
 			* readFileToString(File file)：读取文件内容，并返回一个String；
 			* writeStringToFile(File file，String content)：将内容content写入到file中；
 			* copyDirectoryToDirectory(File srcDir,File destDir);文件夹复制
 			* copyFile(File srcFile,File destFile);文件复制
-			
+
 		* b: 案例代码
 			public class Commons_IODemo1 {
 				public static void main(String[] args)throws IOException {
@@ -544,6 +540,6 @@
 				 }
 			}
 
-###23总结
+### 23总结
 	* 把今天的知识点总结一遍。
 			
