@@ -3,31 +3,29 @@
 2、等待唤醒机制
 
  
- 
 
 
-=======================第一节课开始=============================================
 
-###01线程操作共享数据的安全问题
+### 01线程操作共享数据的安全问题
   *A:线程操作共享数据的安全问题
     如果有多个线程在同时运行，而这些线程可能会同时运行这段代码。
     程序每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。
-  
-###02售票的案例
+
+### 02售票的案例
  *A:售票的案例
      /*
       * 多线程并发访问同一个数据资源
-      * 3个线程,对一个票资源,出售
-      */
-     public class ThreadDemo {
-      public static void main(String[] args) {
+            * 3个线程,对一个票资源,出售
+            */
+          public class ThreadDemo {
+            public static void main(String[] args) {
         //创建Runnable接口实现类对象
         Tickets t = new Tickets();
         //创建3个Thread类对象,传递Runnable接口实现类
         Thread t0 = new Thread(t);
         Thread t1 = new Thread(t);
         Thread t2 = new Thread(t);
-        
+
         t0.start();
         t1.start();
         t2.start();
@@ -53,22 +51,21 @@
       }
      }
 
-
-###03线程安全问题引发
+### 03线程安全问题引发
  *A:线程安全问题引发
     /*
      * 多线程并发访问同一个数据资源
-     * 3个线程,对一个票资源,出售
-     */
-    public class ThreadDemo {
-     public static void main(String[] args) {
+          * 3个线程,对一个票资源,出售
+          */
+        public class ThreadDemo {
+          public static void main(String[] args) {
        //创建Runnable接口实现类对象
        Tickets t = new Tickets();
        //创建3个Thread类对象,传递Runnable接口实现类
        Thread t0 = new Thread(t);
        Thread t1 = new Thread(t);
        Thread t2 = new Thread(t);
-       
+
        t0.start();
        t1.start();
        t2.start();
@@ -86,7 +83,7 @@
      
      public void run(){
        while(true){
- 
+     
          //对票数判断,大于0,可以出售,变量--操作
            if( ticket > 0){
              try{
@@ -98,22 +95,22 @@
      }
     }
 
-###04同步代码块解决线程安全问题
+### 04同步代码块解决线程安全问题
   *A:同步代码块解决线程安全问题
       *A:售票的案例
           /*
            * 多线程并发访问同一个数据资源
-           * 3个线程,对一个票资源,出售
-           */
-          public class ThreadDemo {
-           public static void main(String[] args) {
+                      * 3个线程,对一个票资源,出售
+                      */
+                    public class ThreadDemo {
+                      public static void main(String[] args) {
              //创建Runnable接口实现类对象
              Tickets t = new Tickets();
              //创建3个Thread类对象,传递Runnable接口实现类
              Thread t0 = new Thread(t);
              Thread t1 = new Thread(t);
              Thread t2 = new Thread(t);
-             
+
              t0.start();
              t1.start();
              t2.start();
@@ -151,7 +148,7 @@
            }
           }
 
-###05同步代码块的执行原理
+### 05同步代码块的执行原理
    A:同步代码块的执行原理
      同步代码块: 在代码块声明上 加上synchronized
      synchronized (锁对象) {
@@ -160,8 +157,7 @@
      同步代码块中的锁对象可以是任意的对象；但多个线程时，要使用同一个锁对象才能够保证线程安全。
 
 
-=======================第二节课开始============================================= 
-###06同步的上厕所原理
+### 06同步的上厕所原理
   *A:同步的上厕所原理
     a:不使用同步:线程在执行的过程中会被打扰
        线程比喻成人
@@ -174,14 +170,15 @@
       第一个人上厕所,会锁门
       第二个人上厕所,看到门锁上了,等待第一个人上完再去上厕所
 
-
-###07同步方法
+### 07同步方法
   *A:同步方法:
   /*
+
    * 多线程并发访问同一个数据资源
    * 3个线程,对一个票资源,出售
-   */
-  public class ThreadDemo {
+      */
+    public class ThreadDemo {
+
     public static void main(String[] args) {
       //创建Runnable接口实现类对象
       Tickets t = new Tickets();
@@ -234,7 +231,7 @@
 
 
 
-###08JDK1.5新特性Lock接口
+### 08JDK1.5新特性Lock接口
    *A:JDK1.5新特性Lock接口
 	    查阅API，查阅Lock接口描述，Lock 实现提供了比使用 synchronized 方法和语句可获得的更广泛的锁定操作。
        Lock接口中的常用方法
@@ -245,21 +242,21 @@
 
 
 
-###09Lock接口改进售票案例
+### 09Lock接口改进售票案例
    *A:Lock接口改进售票案例
       /*
        * 多线程并发访问同一个数据资源
-       * 3个线程,对一个票资源,出售
-       */
-      public class ThreadDemo {
-        public static void main(String[] args) {
+              * 3个线程,对一个票资源,出售
+              */
+            public class ThreadDemo {
+                public static void main(String[] args) {
           //创建Runnable接口实现类对象
           Tickets t = new Tickets();
           //创建3个Thread类对象,传递Runnable接口实现类
           Thread t0 = new Thread(t);
           Thread t1 = new Thread(t);
           Thread t2 = new Thread(t);
-          
+
           t0.start();
           t1.start();
           t2.start();
@@ -300,18 +297,18 @@
         }
       }
 
-=======================第三节课开始============================================= 
-###10线程的死锁原理
+
+### 10线程的死锁原理
    *A:线程的死锁原理  
      当线程任务中出现了多个同步(多个锁)  时，如果同步中嵌套了其他的同步。这时容易引发一种现象：程序出现无限等待，这种现象我们称为死锁。这种情况能避免就避免掉。
         synchronzied(A锁){
             synchronized(B锁){
                       
+
             }
         }
 
-
-###11线程的死锁代码实现
+### 11线程的死锁代码实现
    *A:线程的死锁代码实现
        public class DeadLock implements Runnable{
         private int i = 0;
@@ -339,6 +336,7 @@
         }
        }
     
+
       public class DeadLockDemo {
         public static void main(String[] args) {
           DeadLock dead = new DeadLock();
@@ -356,7 +354,8 @@
         public  static final LockA locka = new LockA();
       }
 
-      
+
+​      
       public class LockB {
         private LockB(){}
         
@@ -365,7 +364,7 @@
 
 
 
- ###12线程等待与唤醒案例介绍
+ ### 12线程等待与唤醒案例介绍
    *A:线程等待与唤醒案例介绍 
      等待唤醒机制所涉及到的方法：
          wait（） :等待，将正在执行的线程释放其执行资格 和 执行权，并存储到线程池中。
@@ -375,32 +374,30 @@
 
 
 
-
-###13线程等待与唤醒案例资源类编写
+### 13线程等待与唤醒案例资源类编写
   *A:线程等待与唤醒案例资源类编写
     /*
      *  定义资源类,有2个成员变量
-     *  name,sex
-     *  同时有2个线程,对资源中的变量操作
-     *  1个对name,age赋值
-     *  2个对name,age做变量的输出打印
-     */
-    public class Resource {
-      public String name;
-      public String sex;
-    }
+          *  name,sex
+          *  同时有2个线程,对资源中的变量操作
+               *  1个对name,age赋值
+               *  2个对name,age做变量的输出打印
+                    */
+                public class Resource {
+                        public String name;
+                        public String sex;
+                }
 
- 
-###14线程等待与唤醒案例输入和输出线程
+### 14线程等待与唤醒案例输入和输出线程
    A:线程等待与唤醒案例输入和输出线程
      /*
        *  输入的线程,对资源对象Resource中成员变量赋值
-       *  一次赋值 张三,男
-       *  下一次赋值 lisi,nv
-     */
-      public class Input implements Runnable {
-        private Resource r=new Resource();
-       
+              *  一次赋值 张三,男
+              *  下一次赋值 lisi,nv
+               */
+            ​      public class Input implements Runnable {
+                ​        private Resource r=new Resource();
+
         public void run() {
           int i=0;
           while(true){
@@ -415,7 +412,7 @@
           }
         }
       }
-
+    
       /*
        *  输出线程,对资源对象Resource中成员变量,输出值
        */
@@ -429,15 +426,15 @@
           }
       }
 
-=================================第四节课=========================================
-###15线程等待与唤醒案例测试类
+
+### 15线程等待与唤醒案例测试类
    A:线程等待与唤醒案例测试类
       /*
        *  开启输入线程和输出线程,实现赋值和打印值
-       */
-      public class ThreadDemo{
-        public static void main(String[] args) {
-          
+              */
+      ​      public class ThreadDemo{
+        ​        public static void main(String[] args) {
+
           Resource r = new Resource();
           
           Input in = new Input();
@@ -452,21 +449,20 @@
       }
 
 
- 
-   
-###16线程等待与唤醒案例null值解决
+
+### 16线程等待与唤醒案例null值解决
    A:线程等待与唤醒案例null值解决
 	    /*
         *  输入的线程,对资源对象Resource中成员变量赋值
-        *  一次赋值 张三,男
-        *  下一次赋值 lisi,nv
-      */
-       public class Input implements Runnable {
-         private Resource r;
-         public Input(Resource r){
-           this.r=r;
-         }
-        
+                *  一次赋值 张三,男
+                *  下一次赋值 lisi,nv
+                  */
+              ​       public class Input implements Runnable {
+                  ​         private Resource r;
+                  ​         public Input(Resource r){
+                    this.r=r;
+                  ​         }
+
          public void run() {
            int i=0;
            while(true){
@@ -481,7 +477,7 @@
            }
          }
        }
-
+    
        /*
         *  输出线程,对资源对象Resource中成员变量,输出值
         */ 
@@ -496,7 +492,7 @@
              }
            }
          }
-
+    
        }
        /*
         *  开启输入线程和输出线程,实现赋值和打印值
@@ -519,19 +515,19 @@
 
 
 
-###17线程等待与唤醒案例数据安全解决
-    A:线程等待与唤醒案例数据安全解决
-            /*
+### 17线程等待与唤醒案例数据安全解决
+​    A:线程等待与唤醒案例数据安全解决
+​            /*
               *  输入的线程,对资源对象Resource中成员变量赋值
-              *  一次赋值 张三,男
-              *  下一次赋值 lisi,nv
-            */
-             public class Input implements Runnable {
-               private Resource r;
-               public Input(Resource r){
-                 this.r=r;
-               }
-              
+                            *  一次赋值 张三,男
+                            *  下一次赋值 lisi,nv
+                                    */
+                          ​             public class Input implements Runnable {
+                              ​               private Resource r;
+                              ​               public Input(Resource r){
+                                this.r=r;
+                              ​               }
+
                public void run() {
                  int i=0;
                  while(true){
@@ -545,10 +541,10 @@
                      }
                    i++;
                  }
-
+    
                }
              }
-
+    
              /*
               *  输出线程,对资源对象Resource中成员变量,输出值
               */ 
@@ -565,7 +561,7 @@
                    }
                  }
                }
-
+    
              }
              /*
               *  开启输入线程和输出线程,实现赋值和打印值
@@ -586,16 +582,15 @@
                }
              }
 
+### 18线程等待与唤醒案例通信的分析
+​    *A:线程等待与唤醒案例通信的分析
+​        输入:赋值后,执行方法wait()永远等待
+​        输出:变量值打印输出,在输出等待之前,唤醒
+​        输入的notify(),自己在wait()永远等待
+​        输入:被唤醒后,重新对变量赋值,赋值后,必须唤醒输出的线程notify(),
+​             自己的wait()
 
-###18线程等待与唤醒案例通信的分析
-    *A:线程等待与唤醒案例通信的分析
-        输入:赋值后,执行方法wait()永远等待
-        输出:变量值打印输出,在输出等待之前,唤醒
-        输入的notify(),自己在wait()永远等待
-        输入:被唤醒后,重新对变量赋值,赋值后,必须唤醒输出的线程notify(),
-             自己的wait()
-
-###19线程等待与唤醒案例的实现
+### 19线程等待与唤醒案例的实现
    *A 线程等待与唤醒案例的实现
 
      /*
@@ -610,7 +605,7 @@
       public String sex;
       public boolean flag = false;
      }
-
+    
      /*
       *  输入的线程,对资源对象Resource中成员变量赋值
       *  一次赋值 张三,男
@@ -646,7 +641,7 @@
           i++;
         }
       }
-
+    
      }
      
      /*
@@ -672,9 +667,9 @@
           }
         }
       }
-
+    
      }
-
+    
      /*
       *  开启输入线程和输出线程,实现赋值和打印值
       */
@@ -694,8 +689,8 @@
       }
      }
 
-###20eclipse问题
+### 20eclipse问题
    A:eclipse问题
-   
 
- 
+
+
