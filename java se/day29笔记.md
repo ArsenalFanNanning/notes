@@ -2,7 +2,7 @@
 1、JDBC
 2、DBUtils
 
-###01JDBC概念和数据库驱动程序
+### 01JDBC概念和数据库驱动程序
 	* A: JDBC概念和数据库驱动程序
 		* a: JDBC概述		
 			* JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，
@@ -14,11 +14,10 @@
 		* b: 总结
 			* JDBC是java提供给开发人员的一套操作数据库的接口
 			* 数据库驱动就是实现该接口的实现类
-			
 
 
 
-###02JDBC原理
+### 02JDBC原理
 	* A: JDBC原理
 		* a: 描述
 			* Java提供访问数据库规范称为JDBC，而生产厂商提供规范的实现类称为驱动
@@ -26,7 +25,7 @@
 				每个数据库厂商都需要提供自己的驱动，用来连接自己公司的数据库，也就是说驱动一般都由数据库生成厂商提供。
 			* 图解见day29_source/JDBC实现原理.JPG
 					
-###03准备数据
+### 03准备数据
 	* A: 准备数据
 		* a: 创建数据库和表结构
 			#创建数据库
@@ -41,6 +40,7 @@
 			  sdesc VARCHAR(500)
 			);
 			
+
 		* b: 向表中插入数据
 			#初始化数据
 			insert into sort(sname,sprice,sdesc) values('家电',2000, '优惠的促销');
@@ -49,8 +49,8 @@
 			insert into sort(sname,sprice,sdesc) values('生鲜',500.99, '生鲜商品');
 			insert into sort(sname,sprice,sdesc) values('服装',24000, '换季销售');
 			insert into sort(sname,sprice,sdesc) values('洗涤',50, '洗发水促销');			
-			
-###04JDBC的开发步骤
+
+### 04JDBC的开发步骤
 	* A: JDBC的开发步骤
 		* a: 步骤介绍
 			1.注册驱动
@@ -65,14 +65,13 @@
 			5.处理结果
 			6.释放资源  一堆close()
 						
-###05导入mysql数据库驱动程序jar包
+### 05导入mysql数据库驱动程序jar包
 	* A: 导入mysql数据库驱动程序jar包
 		* a: 步骤
 			* 创建lib目录，用于存放当前项目需要的所有jar包
 			* 选择jar包，右键执行build path / Add to Build Path
 
- 
-###06注册数据库驱动程序
+### 06注册数据库驱动程序
 	* A: 注册数据库驱动程序
 		* a: 案例代码
 			public class JDBCDemo {
@@ -86,9 +85,8 @@
 				}
 			}
 
-			
-		
-###07获取数据库的连接对象
+
+### 07获取数据库的连接对象
 	* A：获取数据库的连接对象
 		* a: 案例代码
 			public class JDBCDemo {
@@ -100,6 +98,7 @@
 					//驱动类源代码,注册2次驱动程序
 					Class.forName("com.mysql.jdbc.Driver");
 					
+
 					//2.获得数据库连接  DriverManager类中静态方法
 					//static Connection getConnection(String url, String user, String password)  
 					//返回值是Connection接口的实现类,在mysql驱动程序
@@ -113,8 +112,8 @@
 				}
 			}
 
-				
-###08获取SQL语句的执行对象对象
+
+### 08获取SQL语句的执行对象对象
 	* A: 获取SQL语句的执行对象对象
 		* a: 案例代码
 			public class JDBCDemo {
@@ -126,6 +125,7 @@
 					//驱动类源代码,注册2次驱动程序
 					Class.forName("com.mysql.jdbc.Driver");
 					
+
 					//2.获得数据库连接  DriverManager类中静态方法
 					//static Connection getConnection(String url, String user, String password)  
 					//返回值是Connection接口的实现类,在mysql驱动程序
@@ -143,7 +143,7 @@
 				}
 			}
 
-###09执行insert语句获取结果集
+### 09执行insert语句获取结果集
 	* A: 执行insert语句获取结果集
 		* a: 案例代码
 			public class JDBCDemo {
@@ -155,6 +155,7 @@
 					//驱动类源代码,注册2次驱动程序
 					Class.forName("com.mysql.jdbc.Driver");
 					
+
 					//2.获得数据库连接  DriverManager类中静态方法
 					//static Connection getConnection(String url, String user, String password)  
 					//返回值是Connection接口的实现类,在mysql驱动程序
@@ -181,10 +182,10 @@
 					con.close();
 				}
 			}
-			
 
 
-###10执行select语句获取结果集
+
+### 10执行select语句获取结果集
 	* A: 执行select语句获取结果集
 		* a: 案例代码
 			public class JDBCDemo1 {
@@ -212,6 +213,7 @@
 								"   "+rs.getDouble("sprice")+"   "+rs.getString("sdesc"));
 					}
 					
+
 					rs.close();
 					stat.close();
 					con.close();
@@ -219,8 +221,7 @@
 			}
 
 
-				
-###11SQL注入攻击
+### 11SQL注入攻击
 	* A: SQL注入攻击
 		* a: 注入问题
 			* 假设有登录案例SQL语句如下:
@@ -237,21 +238,20 @@
 			);
 
 			INSERT INTO users (username,PASSWORD) VALUES ('a','1'),('b','2');
-
+	
 			SELECT * FROM users;
-
+	
 			-- 登录查询
 			SELECT * FROM users WHERE username='dsfsdfd' AND PASSWORD='wrethiyu'1 
 			OR 1=1
-
+	
 			SELECT * FROM users WHERE username='a' AND PASSWORD='1'OR'1=1'
 			键盘录入：
 			1
 			1'OR' 1=1
-			
 
-			
-###12SQL注入攻击用户登录案例
+
+### 12SQL注入攻击用户登录案例
 	* A: SQL注入攻击用户登录案例
 		* a: 案例代码
 			public class JDBCDemo2 {
@@ -263,6 +263,7 @@
 					Connection con = DriverManager.getConnection(url, username, password);
 					Statement stat = con.createStatement();
 					
+
 					Scanner sc = new Scanner(System.in);
 					String user = sc.nextLine();
 					String pass = sc.nextLine();
@@ -282,15 +283,15 @@
 				}
 			}
 
-		
-###13PrepareStatement接口预编译SQL语句
+
+### 13PrepareStatement接口预编译SQL语句
 	* A: PrepareStatement接口预编译SQL语句
 		* a: 预处理对象
 			* 使用PreparedStatement预处理对象时，建议每条sql语句所有的实际参数，都使用逗号分隔。
 			* String sql = "insert into sort(sid,sname) values(?,?)";;
 			* PreparedStatement预处理对象代码：
 			* PreparedStatement psmt = conn.prepareStatement(sql)
-			
+
 		* b: 执行SQL语句的方法介绍
 			* int executeUpdate(); --执行insert update delete语句.
 			* ResultSet executeQuery(); --执行select语句.
@@ -347,8 +348,7 @@
 
 
 
-			
-###14PrepareStatement接口预编译SQL语句执行修改
+### 14PrepareStatement接口预编译SQL语句执行修改
 	* A: PrepareStatement接口预编译SQL语句执行修改
 		* 案例代码
 			/*
@@ -362,6 +362,7 @@
 					String password="123";
 					Connection con = DriverManager.getConnection(url, username, password);	
 					
+
 					//拼写修改的SQL语句,参数采用?占位
 					String sql = "UPDATE sort SET sname=?,sprice=? WHERE sid=?";
 					//调用数据库连接对象con的方法prepareStatement获取SQL语句的预编译对象
@@ -378,8 +379,8 @@
 				}
 			}
 
-			
-###15PrepareStatement接口预编译SQL语句执行查询
+
+### 15PrepareStatement接口预编译SQL语句执行查询
 	* A: PrepareStatement接口预编译SQL语句执行查询
 		* a: 案例代码
 			/*
@@ -393,6 +394,7 @@
 					String password="123";
 					Connection con = DriverManager.getConnection(url, username, password);	
 					
+
 					String sql = "SELECT * FROM sort";
 					
 					PreparedStatement pst = con.prepareStatement(sql);
@@ -408,8 +410,8 @@
 				}
 			}
 
-			
-###16JDBC的工具类和测试
+
+### 16JDBC的工具类和测试
 	* A: JDBC的工具类和测试
 		* a: 案例代码
 			//JDBCUtils工具类代码
@@ -417,6 +419,7 @@
 				private JDBCUtils(){}
 				private static Connection con ;
 				
+
 				static{
 					try{
 						Class.forName("com.mysql.jdbc.Driver");
@@ -435,8 +438,9 @@
 				public static Connection getConnection(){
 					return con;
 				}
-				
-				
+
+
+​				
 				public static void close(Connection con,Statement stat){
 					 
 					 if(stat!=null){
@@ -452,8 +456,9 @@
 					 }
 					 
 				}
-				
-				
+
+
+​				
 				public static void close(Connection con,Statement stat , ResultSet rs){
 					 if(rs!=null){
 						 try{
@@ -487,13 +492,13 @@
 				JDBCUtils.close(con, pst, rs);
 			}
 		}
-		
-###17数据表数据存储对象
+
+### 17数据表数据存储对象
 	* A: 数据表数据存储对象
 		* a: 准备工作
 			* 导入jar包
 			* 拷贝day32定义的工具类JDBCUtils
-			
+
 		* b: 案例代码
 			//定义实体类Sort
 			public class Sort {
@@ -566,12 +571,12 @@
 				}
 			}
 
-			
+
+​			
 
 
-		
-	
-###18properties配置文件
+​	
+### 18properties配置文件
 	* A: properties配置文件		
 		* a: 相关介绍
 			* 开发中获得连接的4个参数（驱动、URL、用户名、密码）通常都存在配置文件中，方便后期维护，程序如果需要更换数据库，
@@ -583,7 +588,7 @@
 					a)	key命名自定义，如果是多个单词，习惯使用点分隔。例如：jdbc.driver
 					b)	value值不支持中文，如果需要使用非英文字符，将进行unicode转换。
 
-###19properties文件的创建和编写
+### 19properties文件的创建和编写
 	* A: properties文件的创建和编写
 		* a: properties文件的创建
 			* src路径下建立database.properties(其实就是一个文本文件)
@@ -593,7 +598,7 @@
 			username=root
 			password=123		
 
-###20加载配置文件
+### 20加载配置文件
 	* A: 加载配置文件
 		* a: 案例代码		
 			/*
@@ -601,7 +606,7 @@
 			 *  IO读取文件,键值对存储到集合
 			 *  从集合中以键值对方式获取数据库的连接信息,完成数据库的连接
 			 */
-			public class PropertiesDemo {
+			 public class PropertiesDemo {
 				public static void main(String[] args) throws Exception{
 					FileInputStream fis = new FileInputStream("database.properties");
 					System.out.println(fis);
@@ -612,12 +617,11 @@
 					pro.load(in);
 					System.out.println(in);					
 				}
-			}
+			 }
 
 
 
-
-###21通过配置文件连接数据库
+### 21通过配置文件连接数据库
 	* A: 通过配置文件连接数据库
 		* a: 案例代码
 			/*
@@ -625,7 +629,7 @@
 			 *  IO读取文件,键值对存储到集合
 			 *  从集合中以键值对方式获取数据库的连接信息,完成数据库的连接
 			 */
-			public class PropertiesDemo {
+				public class PropertiesDemo {
 				public static void main(String[] args) throws Exception{
 					FileInputStream fis = new FileInputStream("database.properties");
 					System.out.println(fis);
@@ -643,11 +647,12 @@
 					Connection con = DriverManager.getConnection(url, username, password);
 					System.out.println(con);
 					
+
 				}
 			}
 
-					
-###22读取配置文件的工具类
+
+### 22读取配置文件的工具类
 	* A: 读取配置文件的工具类
 		* a: 案例代码
 			/*
@@ -655,13 +660,13 @@
 			 *  获取连接对象采用读取配置文件方式
 			 *  读取文件获取连接,执行一次,static{}
 			 */
-			public class JDBCUtilsConfig {
+				public class JDBCUtilsConfig {
 				private static Connection con ;
 				private static String driverClass;
 				private static String url;
 				private static String username;
 				private static String password;
-				
+
 				static{
 					try{
 						readConfig();
@@ -681,15 +686,16 @@
 					 username = pro.getProperty("username");
 					 password = pro.getProperty("password");
 				}
-				
-				
+
+
+​				
 				public static Connection getConnection(){
 					return con;
 				}
 				
 			}			
-			
-###23测试工具类
+
+### 23测试工具类
 	* A: 测试工具类
 		* a: 案例代码
 			public class TestJDBCUtils {
@@ -699,6 +705,6 @@
 				}
 			}
 
-###24总结
+### 24总结
 	* 把今天的知识点总结一遍。
 			
