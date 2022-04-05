@@ -1,7 +1,7 @@
 今日内容介绍
 1、DBUtils
 2、连接池						
-###01DButils工具类的介绍个三个核心类
+### 01DButils工具类的介绍个三个核心类
 	* A: DButils工具类的介绍个三个核心类
 		* a: 概述
 			* DBUtils是java编程中的数据库操作实用工具，小巧简单实用。
@@ -15,22 +15,13 @@
 			* DbUtils类，它就是一个工具类,定义了关闭资源与事务处理的方法
 
 
- 
-###02事务的简单介绍(此知识点简单了解，难度较大，就业班会详细 讲解)
+
+### 02事务的简单介绍(此知识点简单了解，难度较大，就业班会详细 讲解)
 	* A: 事务的简单介绍
 		* a: 见day32/day32_source/事务.jgp
 		
-###03QueryRunner类的update方法介绍
-	* A：QueryRunner类的update方法介绍
-		* a: 方法介绍
-			* update(Connection conn, String sql, Object... params) ，用来完成表数据的增加、删除、更新操作
-			*  使用QueryRunner类,实现对数据表的insert delete update
-			*  调用QueryRunner类的方法 update (Connection con,String sql,Object...param)
-				*  Object...param 可变参数,Object类型,SQL语句会出现?占位符
-				*  数据库连接对象,自定义的工具类传递
- 
-				
-###04QueryRunner类实现insert添加数据
+### 03QueryRunner类的update方法介绍
+### 04QueryRunner类实现insert添加数据
 	* A: QueryRunner类实现insert添加数据
 		* a: 案例代码
 			public class QueryRunnerDemo {
@@ -54,8 +45,7 @@
 				}
 			}
 
-
-###05QueryRunner类实现update修改数据
+### 05QueryRunner类实现update修改数据
 	* A: QueryRunner类实现update修改数据
 		* a: 案例代码
 			public class QueryRunnerDemo {
@@ -80,10 +70,9 @@
 				}				
 			}
 
-			
+​			
 
-
-###06QueryRunner类实现delete删除数据
+### 06QueryRunner类实现delete删除数据
 	* A: QueryRunner类实现delete删除数据
 		* a: 案例代码
 			public class QueryRunnerDemo {
@@ -107,11 +96,11 @@
 					 *  对返回值row判断
 					 *  if(row>0) 执行成功
 					 */
-					DbUtils.closeQuietly(con);
-				}				
-			}
+					 DbUtils.closeQuietly(con);
+					 }				
+					 }
 				
-###07JavaBean类
+### 07JavaBean类
 	* A: JavaBean类
 		* a: 概念
 			* JavaBean就是一个类，在开发中常用封装数据。具有如下特性
@@ -120,7 +109,7 @@
 				3.	提供getter/setter方法：
 				4.	提供无参构造
 			
-###08DBUtils工具类结果集处理的方式
+### 08DBUtils工具类结果集处理的方式
 	* A: DBUtils工具类结果集处理的方式
 		* a: QueryRunner实现查询操作
 			*	query(Connection conn, String sql, ResultSetHandler<T> rsh, Object... params) ，用来完成表数据的查询操作
@@ -134,7 +123,7 @@
 			* MapHandler	将结果集第一行封装到Map集合中,Key 列名, Value 该列数据
 			* MapListHandler	将结果集第一行封装到Map集合中,Key 列名, Value 该列数据,Map集合存储到List集合
 			
-###09QueryRunner类的方法query
+### 09QueryRunner类的方法query
 	* A: QueryRunner类的方法query
 		* a: QueryRunner数据查询操作
 			* 调用QueryRunner类方法query(Connection con,String sql,ResultSetHandler r, Object..params)
@@ -146,7 +135,7 @@
 				private static Connection con = JDBCUtilsConfig.getConnection();
 			}
 					
-###10结果集处理ArrayHandler
+### 10结果集处理ArrayHandler
 	* A: 结果集处理ArrayHandler
 		* 案例代码
 			public class QueryRunnerDemo1 {
@@ -168,9 +157,9 @@
 						System.out.print(obj);
 					}
 				}	
-			}
+				}
 			
-###11结果集处理ArrayListHandler
+### 11结果集处理ArrayListHandler
 	* A: 结果集处理ArrayListHandler
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -183,13 +172,13 @@
 				 *  将结果集的每一行,封装到对象数组中, 出现很多对象数组
 				 *  对象数组存储到List集合
 				 */
-				public static void arrayListHandler()throws SQLException{
+					public static void arrayListHandler()throws SQLException{
 					QueryRunner qr = new QueryRunner();
 					String sql = "SELECT * FROM sort";		
 					//调用query方法,结果集处理的参数上,传递实现类ArrayListHandler
 					//方法返回值 每行是一个对象数组,存储到List
 					List<Object[]> result=  qr.query(con, sql, new ArrayListHandler());
-					
+
 					//集合的遍历
 					for( Object[] objs  : result){
 						//遍历对象数组
@@ -202,8 +191,7 @@
 			}
 
 
-			
-###12结果集处理BeanHandler
+### 12结果集处理BeanHandler
 	* A: 结果集处理BeanHandler
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -216,18 +204,17 @@
 				 *  将结果集的第一行数据,封装成JavaBean对象
 				 *  注意: 被封装成数据到JavaBean对象, Sort类必须有空参数构造
 				 */
-				public static void beanHandler()throws SQLException{
+				 public static void beanHandler()throws SQLException{
 					QueryRunner qr = new QueryRunner();
 					String sql = "SELECT * FROM sort ";
 					//调用方法,传递结果集实现类BeanHandler
 					//BeanHandler(Class<T> type) 
 					Sort s = qr.query(con, sql, new BeanHandler<Sort>(Sort.class));
 					System.out.println(s);
-				}
-			}
+				 }
+				 }
 
-
-###13结果集处理BeanListHandler
+### 13结果集处理BeanListHandler
 	* A: 结果集处理BeanListHandler
 		* a: 案例代码
 		public class QueryRunnerDemo1 {
@@ -240,7 +227,7 @@
 			 *  结果集每一行数据,封装JavaBean对象
 			 *  多个JavaBean对象,存储到List集合
 			 */
-			public static void beanListHander()throws SQLException{
+			 public static void beanListHander()throws SQLException{
 				QueryRunner qr = new QueryRunner();
 				String sql = "SELECT * FROM sort ";
 				//调用方法query,传递结果集处理实现类BeanListHandler
@@ -248,11 +235,10 @@
 				for(Sort s : list){
 					System.out.println(s);
 				}
-			}
-		}
+			 }
+			 }
 
-		
-###14结果集处理ColumnListHandler
+### 14结果集处理ColumnListHandler
 	* A: 结果集处理ColumnListHandler
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -265,7 +251,7 @@
 				 *  结果集,指定列的数据,存储到List集合
 				 *  List<Object> 每个列数据类型不同
 				 */
-				public static void columnListHandler()throws SQLException{
+				 public static void columnListHandler()throws SQLException{
 					QueryRunner qr = new QueryRunner();
 					String sql = "SELECT * FROM sort ";		
 					//调用方法 query,传递结果集实现类ColumnListHandler
@@ -274,11 +260,10 @@
 					for(Object obj : list){
 						System.out.println(obj);
 					}
-				}	
-			}
+				 }	
+				 }
 
-		
-###15结果集处理ScalarHandler
+### 15结果集处理ScalarHandler
 	* A: 结果集处理ScalarHandler
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -297,9 +282,9 @@
 					long count = qr.query(con, sql, new ScalarHandler<Long>());
 					System.out.println(count);
 				}
-			}
+				}
 
-###16结果集处理MapHandler
+### 16结果集处理MapHandler
 	* A: 结果集处理MapHandler
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -312,7 +297,7 @@
 				 *  将结果集第一行数据,封装到Map集合中
 				 *  Map<键,值> 键:列名  值:这列的数据
 				 */
-				public static void mapHandler()throws SQLException{
+				 public static void mapHandler()throws SQLException{
 					QueryRunner qr = new QueryRunner();
 					String sql = "SELECT  * FROM sort";
 					//调用方法query,传递结果集实现类MapHandler
@@ -322,10 +307,10 @@
 					for(String key : map.keySet()){
 						System.out.println(key+".."+map.get(key));
 					}
-				}
-			}
+				 }
+				 }
 
-###17结果集处理MapListHandler
+### 17结果集处理MapListHandler
 	* A: 结果集处理MapListHandlerr
 		* a: 案例代码
 			public class QueryRunnerDemo1 {
@@ -338,7 +323,7 @@
 				 *  将结果集每一行存储到Map集合,键:列名,值:数据
 				 *  Map集合过多,存储到List集合
 				 */
-				public static void mapListHandler()throws SQLException{
+					public static void mapListHandler()throws SQLException{
 					QueryRunner qr = new QueryRunner();
 					String sql = "SELECT  * FROM sort";
 					//调用方法query,传递结果集实现类MapListHandler
@@ -351,11 +336,11 @@
 						}
 						System.out.println();
 					}
-					
+
 				}
 			}
-			
-###18连接池介绍
+
+### 18连接池介绍
 	* A: 连接池介绍
 		* a: 连接池介绍
 			* 实际上就是存放连接的池子(容器)
@@ -363,7 +348,7 @@
 			* 为了解决此类性能问题，通常情况我们采用连接池技术，来共享连接Connection。
 			* 这样我们就不需要每次都创建连接、释放连接了，这些操作都交给了连接池			
 		
-###19连接池概念规范和DataSource接口
+### 19连接池概念规范和DataSource接口
 	* A: 连接池概念规范和DataSource接口	
 		* a: 连接池概念规范
 			* 用池来管理Connection，这样可以重复使用Connection。
@@ -374,13 +359,13 @@
 			* Java为数据库连接池提供了公共的接口：javax.sql.DataSource
 			* 各个厂商需要让自己的连接池实现这个接口。这样应用程序可以方便的切换不同厂商的连接池
 			* 常见的连接池：DBCP、C3P0
-###20DBCP连接池介绍
+### 20DBCP连接池介绍
 	* A: DBCP连接池介绍
 		* a: DBCP连接池介绍
 			* DBCP也是一个开源的连接池，是Apache Common成员之一，在企业开发中也比较常见，tomcat内置的连接池
 		* tomcat服务器简单介绍	
 
-###21导入jar包
+### 21导入jar包
 	* A: 导入jar包
 		* a: jar包介绍	
 			* mysql-connector-java-5.1.37-bin.jar：数据库驱动
@@ -390,18 +375,17 @@
 		* b: 导入jar包
 			* 在项目根路径下建立文件夹lib
 			* 拷贝以上jar包，选定拷贝的jar包/右键/Build Path/Add to Build Path
-			
 
 
 
-###22BasicDataSource类的使用
+### 22BasicDataSource类的使用
 	* A: BasicDataSource类的使用
 		* a: 案例代码
 			/*
 			 *  连接池jar包中,定义好一个类 BasicDataSource
 			 *  实现类数据源的规范接口 javax.sql.DataSource
 			 */
-			public class DataSoruceDemo {
+				public class DataSoruceDemo {
 				public static void main(String[] args) {
 					//创建DataSource接口的实现类对象
 					//实现类, org.apache.commons.dbcp
@@ -412,6 +396,7 @@
 					dataSource.setUsername("root");
 					dataSource.setPassword("123");
 					
+
 					try{
 					//调用对象方法getConnection获取数据库的连接
 						Connection con = dataSource.getConnection();
@@ -424,8 +409,8 @@
 				}
 			}
 
-					
-###23BasicDataSource类的常见配置
+
+### 23BasicDataSource类的常见配置
 	* A: BasicDataSource类的常见配置
 		* a: 常见配置
 			分类	属性			描述
@@ -440,8 +425,7 @@
 					maxIdle 		最大空闲连接
 					initialSize		初始化连接
 
-			
-###24实现数据库连接池工具类
+### 24实现数据库连接池工具类
 	* A: 实现数据库连接池工具类
 		* a: 案例代码
 			/*
@@ -452,7 +436,7 @@
 			 */
 
 			import javax.sql.DataSource;
-
+	
 			import org.apache.commons.dbcp.BasicDataSource;
 			public class JDBCUtils{
 				//创建出BasicDataSource类对象
@@ -471,16 +455,17 @@
 					datasource.setMaxIdle(5);//最大空闲数
 					datasource.setMinIdle(1);//最小空闲
 				}
-				
-				
+
+
+​				
 				//定义静态方法,返回BasicDataSource类的对象
 				public static DataSource getDataSource(){
 					return datasource;
 				}
 			}
 
-						
-###25工具类的测试
+
+### 25工具类的测试
 	* A: 工具类的测试
 		* a: 案例代码
 			/*
@@ -492,10 +477,10 @@
 
 			import java.sql.SQLException;
 			import java.util.List;
-
+	
 			import org.apache.commons.dbutils.QueryRunner;
 			import org.apache.commons.dbutils.handlers.ArrayListHandler;
-
+	
 			import cn.itcast.jdbcutils.JDBCUtils;
 			public class QueryRunnerDemo{
 				public static void main(String[] args) {
@@ -534,7 +519,7 @@
 				}
 				
 			}
-		
-###26总结
+
+### 26总结
 	* 把今天的知识点总结一遍。
 			
