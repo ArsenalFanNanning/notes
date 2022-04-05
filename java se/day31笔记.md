@@ -1,7 +1,7 @@
 今日内容介绍
 1、管家婆项目
 
-###01项目训练目标
+### 01项目训练目标
 	* A: 项目训练目标
 		* a: 项目目标
 			* 综合运用前面所学习的知识点
@@ -9,7 +9,7 @@
 			* 熟练dbutils操作数据库表完成增删改查
 			* 了解公司项目开发的流程，充分的掌握项目需求分析、设计与功能的代码实现。提高同学们独立分析需求与功能实现的能力。			
 		
-###02项目中的功能模块
+### 02项目中的功能模块
 	* A: 项目中的功能模块	
 		* a: 五大模块
 			* 查询账务
@@ -18,7 +18,7 @@
 			* 编辑账务
 			* 删除账务
 			
-###03技术的选择和相关jar包
+### 03技术的选择和相关jar包
 	* A: 技术的选择和相关jar包
 		* a: apache的commons组件：
 			* commons-dbutils-1.4.jar：封装并简化了JDBC；
@@ -26,22 +26,20 @@
 		* b: commons.pool-1.3.jar：DBCP连接池依赖该jar包；
 			* mysql-connector-java-5.1.28-bin.jar：MySQL的JDBC驱动包，用JDBC连接MySQL数据库必须使用该JAR包。
 
-
-###04项目中的工具类
+### 04项目中的工具类
 	* A: 项目中的工具类
 		* a: 工具类的介绍	
 			* 每个项目中都会有很多个工具类，不要求每个工具类对能独立写出来，但是要会使用工具类
 			* JDBCUtils：用来创建数据库连接池对象
 
-###05数据表的设计
+### 05数据表的设计
 	* A: 数据表的设计
 		* a: 数据表的设计(详见：day34_source/表关系.JPG)
 			* 表与表之间是有关系的
 			* 主表和从表的关系
 			* 主表中的主键作为从表中的外键
 
-					
-###06创建数据库数据表写入测试数据
+### 06创建数据库数据表写入测试数据
 	* A: 创建数据库数据表写入测试数据
 		* a: 创建数据库数据表
 			/*
@@ -51,7 +49,7 @@
 			CREATE DATABASE gjp;
 
 			USE gjp;
-
+	
 			/*
 			  创建数据表,表名账务
 			  字段,列
@@ -62,7 +60,7 @@
 			  创建日期 date
 			  账务描述 可变字符
 			*/
-
+	
 			CREATE TABLE gjp_zhangwu(
 			   -- 主键
 			   zwid INT PRIMARY KEY AUTO_INCREMENT,
@@ -97,8 +95,7 @@
 
 
 
-			
-###07项目中的分层设计
+### 07项目中的分层设计
 	* A: 项目中的分层设计
 		* a: 各层功能介绍
 			* view层作用: 视图层,即项目中的界面
@@ -111,8 +108,7 @@
 			* test 测试包: 存放项目功能测试的代码
 
 
-						
-###08创建项目_分层_导入jar包
+### 08创建项目_分层_导入jar包
 	* A: 创建项目_分层_导入jar包
 		* a: 创建工程包
 			* cn.itcast.gjp.app: 存放main方法类；
@@ -130,13 +126,13 @@
 				* commons-pool-1.5.6.jar：提供高效的数据库连接池技术				
 			* 拷贝以上jar包，选定拷贝的jar包/右键/Build Path/Add to Build Path
 
- 
-###09创建domain包中的类
+### 09创建domain包中的类
 	* A: 创建domain包中的类
 		* a: 案例代码
 			public class ZhangWu {
 				 private int  zwid;
 				  
+
 				 private String flname; 
 				
 				 private double  money; 
@@ -148,8 +144,8 @@
 				 private String description;
 				 //注意生成空参构造、有参构造、set和get方法、toString方法等
 			}
-		
-###10创建JDBCUtils工具类
+
+### 10创建JDBCUtils工具类
 	* A：创建JDBCUtils工具类
 		* a: 案例代码
 			public class JDBCUtils{
@@ -170,9 +166,8 @@
 					return datasource;
 				}
 			}
- 
-				
-###11创建其他包中的类
+
+### 11创建其他包中的类
 
 	* A: 创建其他包中的类
 		* a: cn.itcast.gjp.dao包中创建ZhangWuDao类
@@ -222,8 +217,8 @@
 					new MainView().run();
 				}
 			}
-			
-###12实现用户的界面菜单
+
+### 12实现用户的界面菜单
 	* A: 实现用户的界面菜单
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类中添加run方法
@@ -232,7 +227,7 @@
 			 *  接收用户的输入
 			 *  根据数据,调用不同的功能方法
 			 */
-			public void run(){
+			 public void run(){
 				//创建Scanner类对象,反复键盘输入
 				Scanner sc = new Scanner(System.in);
 				while(true){
@@ -261,13 +256,12 @@
 						break;
 					}
 				}
-			}
-			
+			 }
 
-			
+​			
 
+### 13实现查询的界面菜单
 
-###13实现查询的界面菜单
 	* A: 实现查询的界面菜单
 		* a: 案例核心代码
 			*  cn.itcast.gjp.view包中建立MainView类中添加selectZhangWu方法、selectAll方法、select方法
@@ -276,7 +270,7 @@
 				 * 显示查询的方式 1 所有查询   2 条件查询
 				 * 接收用户的选择
 				 */
-				 public void selectZhangWu(){
+				  public void selectZhangWu(){
 					 System.out.println("1. 查询所有    2. 条件查询");
 					 Scanner sc = new Scanner(System.in);
 					 int selectChooser = sc.nextInt();
@@ -291,12 +285,12 @@
 						 select();
 						 break;
 					 }
-				 }
-				 /*
+				  }
+				  /*
 				  * 定义方法,实现查询所有的账务数据
-				  */
-				 public void selectAll(){
-					 
+				    */
+				     public void selectAll(){
+
 				 }
 				
 				 /*
@@ -309,8 +303,8 @@
 				 public void select(){
 					
 				 }
-		
-###14实现查询所有账务的控制,业务层的实现
+
+### 14实现查询所有账务的控制,业务层的实现
 	* A: 实现查询所有账务的控制,业务层的实现
 		* a: 案例核心代码
 			* a: cn.itcast.gjp.dao包中创建ZhangWuDao类
@@ -318,17 +312,17 @@
 			 *  实现对数据表 gjp_zhangwu 数据增删改查操作
 			 *  dbuils工具类完成,类成员创建QueryRunner对象,指定数据源
 			 */
-			public class ZhangWuDao {
+			 public class ZhangWuDao {
 				private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 				/*
 				 * 定义方法,查询数据库,获取所有的账务数据
 				 * 方法,由业务层调用
 				 * 结果集,将所有的账务数据,存储到Bean对象中,存储到集合中
 				 */
-				public List<ZhangWu> selectAll(){					
+				 public List<ZhangWu> selectAll(){					
 					return null;
-				}
-			}
+				 }
+			  }
 			* b: cn.itcast.gjp.service包中创建ZhangWuService类
 				/*
 				 *  业务层类
@@ -336,35 +330,35 @@
 				 *  经过计算,传递给dao层,操作数据库
 				 *  调用dao层中的类,类成员位置,创建Dao类的对象
 				 */
-				public class ZhangWuService {
+				 public class ZhangWuService {
 					private ZhangWuDao dao = new ZhangWuDao();
 					/*
 					 *  定义方法,实现查询所有的账务数据
 					 *  此方法,由控制层调用, 去调用dao层的方法
 					 *  返回存储ZhangWu对象的List集合
 					 */
-					public List<ZhangWu> selectAll(){
+					 public List<ZhangWu> selectAll(){
 						return dao.selectAll();
-					}
-				}
+					 }
+				  }
 			* c: cn.itcast.gjp.controller包中建立ZhangWuController类
 				/*
 				 *  控制器层
 				 *  接收视图层的数据,数据传递给service层
 				 *  成员位置,创建service对象
 				 */
-				public class ZhangWuController {
+				 public class ZhangWuController {
 					private ZhangWuService service = new ZhangWuService();		
 					/*
 					 * 控制层类定义方法,实现查询所有的账务数据
 					 * 方法由试图层调用,方法调用service层
 					 */
-					public List<ZhangWu> selectAll(){
+					 public List<ZhangWu> selectAll(){
 						return service.selectAll();
-					}					
-				}
+					 }					
+				  }
 			
-###15实现查询所有账务的dao层的实现
+### 15实现查询所有账务的dao层的实现
 	* A: 实现查询所有账务的dao层的实现
 		* a: 案例核心代码
 			* a: cn.itcast.gjp.dao包中创建ZhangWuDao类selectAll方法
@@ -372,14 +366,14 @@
 			 *  实现对数据表 gjp_zhangwu 数据增删改查操作
 			 *  dbuils工具类完成,类成员创建QueryRunner对象,指定数据源
 			 */
-			public class ZhangWuDao {
+			 public class ZhangWuDao {
 				private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 				/*
 				 * 定义方法,查询数据库,获取所有的账务数据
 				 * 方法,由业务层调用
 				 * 结果集,将所有的账务数据,存储到Bean对象中,存储到集合中
 				 */
-				public List<ZhangWu> selectAll(){
+				 public List<ZhangWu> selectAll(){
 					try{
 						//查询账务数据的SQL语句
 							String sql = "SELECT * FROM gjp_zhangwu";
@@ -390,18 +384,17 @@
 							System.out.println(ex);
 							throw new RuntimeException("查询所有账务失败");
 						}
-				}
-			}
+				 }
+			  }
 
-			
-###16实现查询所有账务的view层的实现
+### 16实现查询所有账务的view层的实现
 	* A: 实现查询所有账务的view层的实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类selectAll方法
 			/*
 			  * 定义方法,实现查询所有的账务数据
-			  */
-			 public void selectAll(){
+			    */
+			     public void selectAll(){
 				 //调用控制层中的方法,查询所有的账务数据
 				 List<ZhangWu> list = controller.selectAll();
 				//输出表头
@@ -411,9 +404,9 @@
 					 System.out.println(zw.getZwid()+"\t\t"+zw.getFlname()+"\t\t"+zw.getZhanghu()+"\t\t"+
 					 zw.getMoney()+"\t\t"+zw.getCreatetime()+"\t"+zw.getDescription());
 				 }
-			 }
+			     }
 
-###17实现条件查询账务的菜单实现
+### 17实现条件查询账务的菜单实现
 	* A: 实现条件查询账务的菜单实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类select方法
@@ -423,8 +416,8 @@
 			  * 就2个日期,传递到controller层
 			  * 调用controller的方法,传递2个日期参数
 			  * 获取到controller查询的结果集,打印出来
-			  */
-			 public void select(){
+			    */
+				 public void select(){
 				 System.out.println("选择条件查询,输入日期格式XXXX-XX-XX");
 				 Scanner sc = new Scanner(System.in);
 				 System.out.print("请输入开始日期:");
@@ -432,10 +425,10 @@
 				 System.out.print("请输入结果日期:");
 				 String endDate = sc.nextLine();
 				 //调用controller层的方法,传递日期,获取查询结果集
-				 
+
 			 }
-			 
-###18实现条件查询账务的控制层,业务层实现
+
+### 18实现条件查询账务的控制层,业务层实现
 	* A: 实现条件查询账务的控制层,业务层实现
 		* a: 案例核心代码
 			* a: cn.itcast.gjp.dao包中创建ZhangWuDao类
@@ -443,17 +436,17 @@
 				 *  实现对数据表 gjp_zhangwu 数据增删改查操作
 				 *  dbuils工具类完成,类成员创建QueryRunner对象,指定数据源
 				 */
-				public class ZhangWuDao {
+				 public class ZhangWuDao {
 					private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 					/*
 					 * 定义方法,查询数据库,带有条件去查询账务表
 					 * 由业务层调用,查询结果集存储到Bean对象,存储到List集合
 					 * 调用者传递2个日期字符串
 					 */
-					public List<ZhangWu> select(String startDate,String endDate){
+					 public List<ZhangWu> select(String startDate,String endDate){
 						return null;
-					}
-				}
+					 }
+				  }
 			* b: cn.itcast.gjp.service包中创建ZhangWuService类
 				/*
 				 *  业务层类
@@ -461,7 +454,7 @@
 				 *  经过计算,传递给dao层,操作数据库
 				 *  调用dao层中的类,类成员位置,创建Dao类的对象
 				 */
-				public class ZhangWuService {
+				 public class ZhangWuService {
 					private ZhangWuDao dao = new ZhangWuDao();
 					/*
 					 * 定义方法,实现条件查询账务
@@ -469,17 +462,17 @@
 					 * 调用dao层的方法,传递2个日期字符串
 					 * 获取到查询结果集
 					 */
-					public List<ZhangWu> select(String startDate,String endDate){
+					 public List<ZhangWu> select(String startDate,String endDate){
 						return dao.select(startDate, endDate);
-					}
-				}
+					 }
+				  }
 			* c: cn.itcast.gjp.controller包中建立ZhangWuController类
 				/*
 				 *  控制器层
 				 *  接收视图层的数据,数据传递给service层
 				 *  成员位置,创建service对象
 				 */
-				public class ZhangWuController {
+				 public class ZhangWuController {
 					private ZhangWuService service = new ZhangWuService();		
 					/*
 					 * 定义方法,实现条件查询账务
@@ -487,11 +480,11 @@
 					 * 调用service层的方法,传递两个日期字符串,获取结果集
 					 * 结果集返回给试图
 					 */
-					public List<ZhangWu> select(String startDate,String endDate){
+					 public List<ZhangWu> select(String startDate,String endDate){
 						return service.select(startDate, endDate);
-					}					
-				}
-###19实现条件查询账务的dao层实现
+					 }					
+				  }
+### 19实现条件查询账务的dao层实现
 	* A: 实现条件查询账务的dao层实现
 		* a: 案例核心代码
 			* a: cn.itcast.gjp.dao包中创建ZhangWuDao类select方法
@@ -499,14 +492,14 @@
 				 *  实现对数据表 gjp_zhangwu 数据增删改查操作
 				 *  dbuils工具类完成,类成员创建QueryRunner对象,指定数据源
 				 */
-				public class ZhangWuDao {
+				 public class ZhangWuDao {
 					private QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 					/*
 					 * 定义方法,查询数据库,带有条件去查询账务表
 					 * 由业务层调用,查询结果集存储到Bean对象,存储到List集合
 					 * 调用者传递2个日期字符串
 					 */
-					public List<ZhangWu> select(String startDate,String endDate){
+					 public List<ZhangWu> select(String startDate,String endDate){
 						try{
 							//拼写条件查询的SQL语句
 							String sql = "SELECT * FROM gjp_zhangwu WHERE createtime BETWEEN ? AND ?";
@@ -518,25 +511,25 @@
 							System.out.println(ex);
 							throw new RuntimeException("条件查询失败");
 						}
-					}
-				}
+					 }
+				  }
 
-###20实现条件查询账务的view层实现
+### 20实现条件查询账务的view层实现
 	* A: 实现条件查询账务的view层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类selectAll方法优化、抽取print方法、select方法
 			/*
 			  * 定义方法,实现查询所有的账务数据
-			  */
-			 public void selectAll(){
+			    */
+			     public void selectAll(){
 				 //调用控制层中的方法,查询所有的账务数据
 				 List<ZhangWu> list = controller.selectAll();
 				 if(list.size()!=0)
 					 print(list);
 				 else
 					 System.out.println("没有查询到数据");
-			 }
-			
+			     }
+
 			 /*
 			  * 定义方法,实现条件查询账务数据
 			  * 提供用户的输入日期,开始日期结束日期
@@ -569,8 +562,8 @@
 						 zw.getMoney()+"\t\t"+zw.getCreatetime()+"\t"+zw.getDescription());
 					 }
 				}
-				
-###21添加账务功能分析
+
+### 21添加账务功能分析
 	* A: 添加账务功能分析
 		* a: 编写MainView类中addZhangWu方法
 			* 键盘输入新添加的账务信息
@@ -582,7 +575,7 @@
 			* 通过QueryRunner对象，调用update方法更新数据库表gjp_zhangwu，完成指定账务添加到数据库表中
 		
 		
-###22添加账务功能菜单和输入功能实现
+### 22添加账务功能菜单和输入功能实现
 	* A: 添加账务功能菜单和输入功能实现	
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类addZhangWu方法
@@ -591,8 +584,8 @@
 			 * 添加账务的方法，用户在界面中选择菜单1的时候调用、
 			 * 实现思想：
 			 * 	  接收键盘输入，5项输入，调用controller层方法
-			 */
-			public void addZhangWu() {
+				 */
+				public void addZhangWu() {
 				System.out.println("选择的添加账务功能，请输入以下内容");
 				Scanner sc = new Scanner(System.in);
 				System.out.println("输入分类名称");
@@ -606,10 +599,10 @@
 				System.out.println("输入具体描述");
 				String description = sc.next();
 				//将接收到的数据，调用controller层的方法，传递参数，实现数据添加
-				
+
 			}
-			
-###23添加账务功能控制层,业务层实现
+
+### 23添加账务功能控制层,业务层实现
 	* A: 添加账务功能控制层,业务层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.controller包中的ZhangWuController类addZhangWu方法
@@ -619,28 +612,28 @@
 				 * 本方法调用service层的方法，传递ZhangWu对象，获取到添加后的结果集(添加成功影响的行数，int)
 				 * 
 				 */
-				public void addZhangWu(ZhangWu zw) {
+				 public void addZhangWu(ZhangWu zw) {
 					service.addZhangWu(zw);
-				}
+				 }
 			* cn.itcast.gjp.service包中的ZhangWuService类addZhangWu方法
 				/*
 				 * 定义方法，实现添加账务
 				 * 是由控制层调用，传递ZhangWu对象
 				 */
-				public void addZhangWu(ZhangWu zw) {
+				 public void addZhangWu(ZhangWu zw) {
 					dao.addZhangWu(zw);
-				}
+				 }
 			* cn.itcast.gjp.dao包中的ZhangWuDao类addZhangWu方法
 				/*
 				 * 定义方法，实现添加账务功能
 				 * 由业务层调用，传递ZhangWu对象
 				 * 将ZhangWu对象中的数据，添加到数据库
 				 */
-				public void addZhangWu(ZhangWu zw) {
-					 
+				 public void addZhangWu(ZhangWu zw) {
+
 				}
-				
-###24添加账务功能dao层实现
+
+### 24添加账务功能dao层实现
 	* A: 添加账务功能dao层实现
 		* a: 案例核心代码	
 			* cn.itcast.gjp.dao包中的ZhangWuDao类的addZhangWu方法
@@ -659,7 +652,7 @@
 					}
 				}
 		
-###25添加账务功能view层实现
+### 25添加账务功能view层实现
 	* A: 添加账务功能view层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类addZhangWu方法
@@ -683,8 +676,7 @@
 					System.out.println("恭喜添加账务成功");
 				}
 
-					
-###26编辑账务功能分析
+### 26编辑账务功能分析
 	* A: 编辑账务功能分析
 		* a: 编写MainView类中editZhangWu方法
 			* 键盘输入要编辑的账务信息ID号
@@ -698,8 +690,7 @@
 
 
 
-			
-###27编辑账务功能功能之前实现查询所有
+### 27编辑账务功能功能之前实现查询所有
 	* A: 编辑账务功能功能之前实现查询所有
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类editZhangWu方法
@@ -710,9 +701,10 @@
 					System.out.println("选择的是编辑功能，请输入数据");
 					
 					
+
 				}
-						
-###28编辑账务功能菜单实现
+
+### 28编辑账务功能菜单实现
 	* A: 编辑账务功能菜单实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类editZhangWu方法
@@ -739,8 +731,8 @@
 					ZhangWu zw = new ZhangWu(zwid, flname, money, zhanghu, createtime, description);
 					//调用controller层中的方法，实现编辑账务
 				}			
- 
-###29编辑账务功能控制层,业务层实现
+
+### 29编辑账务功能控制层,业务层实现
 	* A: 编辑账务功能控制层,业务层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.controller包中的ZhangWuController类editZhangWu方法
@@ -749,25 +741,26 @@
 				 * 由视图层调用，传递参数，也是ZhangWu对象
 				 * 调用service层的方法，也是ZhangWu对象
 				 */
-				public void editZhangWu(ZhangWu zw) {
+				 public void editZhangWu(ZhangWu zw) {
 					service.editZhangWu(zw);
-				}
+				 }
 			* cn.itcast.gjp.service包中的ZhangWuService类editZhangWu方法
 				/*
 				 * 定义方法，实现编辑账务
 				 * 由控制层调用，传递ZhangWu对象
 				 * 调用dao层的方法，传递ZhangWu对象
 				 */
-				public void editZhangWu(ZhangWu zw) {
+				 public void editZhangWu(ZhangWu zw) {
 					dao.editZhangWu(zw);
-				}
+				 }
 			* cn.itcast.gjp.dao包中的ZhangWuDao类editZhangWu方法
 				public void editZhangWu(ZhangWu zw) {
 					// TODO Auto-generated method stub
 					
+
 				}
-		
-###30编辑账务功能dao层实现
+
+### 30编辑账务功能dao层实现
 	* A：编辑账务功能dao层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.dao包中的ZhangWuDao类editZhangWu方法
@@ -776,7 +769,7 @@
 				 * 由业务层调用，传递ZhangWu对象
 				 * 将对象中的数据，更新到数据表
 				 */
-				public void editZhangWu(ZhangWu zw) {
+					public void editZhangWu(ZhangWu zw) {
 					try {
 						//更新数据的SQL
 						String sql = "UPDATE zhangwu SET flname=?,money=?,zhanghu=?,createtime=?,description=? WHERE zwid=?";
@@ -788,11 +781,11 @@
 						System.out.println(ex);
 						throw new RuntimeException("编辑账务失败");
 					}
-					
+
 				}
- 
-				
-###31编辑账务功能view层实现
+
+
+### 31编辑账务功能view层实现
 	* A: 编辑账务功能view层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类editZhangWu方法
@@ -804,7 +797,7 @@
 				 *  调用控制层的方法，传递ZhangWu对象，实现编辑
 				 * 
 				 */
-				public void editZhangWu() {
+				 public void editZhangWu() {
 					//调用查询所有账务数据的功能，显示出来
 					//看到所有数据，从中选择一项，进行修改
 					selectAll();
@@ -828,11 +821,9 @@
 					//调用controller层中的方法，实现编辑账务
 					controller.editZhangWu(zw);
 					System.out.println("账务编辑成功");
-				}
-		
+				 }
 
-
-###32删除账务功能分析
+### 32删除账务功能分析
 	* A: 删除账务功能分析
 		* a: 编写MainView类中deleteZhangWu方法
 			* 键盘输入要删除的账务信息ID号
@@ -844,10 +835,9 @@
 			* 通过QueryRunner对象，调用update方法更新数据库表gjp_zhangwu，完成数据库表中指定账务删除操作
 
 
-			
+​			
 
-
-###33删除账务功能菜单实现
+### 33删除账务功能菜单实现
 	* A: 删除账务功能菜单实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类deleteZhangWu方法
@@ -857,16 +847,16 @@
 				 * 	接收用户的输入，输入一个主键数据
 				 *  调用控制层方法，传递一个主键
 				 */
-				public void deleteZhangWu() {
+				 public void deleteZhangWu() {
 					//调用查询所有账务数据的功能，显示出来
 					//看到所有数据，从中选择一项，进行修改
 					selectAll();
 					System.out.println("选择的是删除功能，请输入序号即可");
 					int zwid = new Scanner(System.in).nextInt();
 					//调用控制层方法，传递主键id即可
-				}
+				 }
 		
-###34删除账务功能控制层,业务层实现
+### 34删除账务功能控制层,业务层实现
 	* A: 删除账务功能控制层,业务层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.controller包中的ZhangWuController类deleteZhangWu方法
@@ -875,44 +865,26 @@
 				 * 视图层调用，传递int类型主键
 				 * 调用service层方法，传递int主键
 				 */
-				public void deleteZhangWu(int zwid) {
+				 public void deleteZhangWu(int zwid) {
 					service.deleteZhangWu(zwid);
-				}
+				 }
 			* cn.itcast.gjp.service包中的ZhangWuService类deleteZhangWu方法
 				/*
 				 * 定义方法，实现删除账务功能
 				 * 由控制层调用，传递主键id
 				 * 调用dao层方法，传递主键id
 				 */
-				public void deleteZhangWu(int zwid) {
+				 public void deleteZhangWu(int zwid) {
 					dao.deleteZhangWu(zwid);
-				}
+				 }
 			* cn.itcast.gjp.dao包中的ZhangWuDao类deleteZhangWu方法
 				public void deleteZhangWu(int zwid) {
-		
-				}
-			
-###35删除账务功能dao实现
-	* A: 删除账务功能dao实现
-		* a: 案例核心代码
-			* cn.itcast.gjp.dao包中的ZhangWuDao类deleteZhangWu方法
-				/*
-				 * 定义方法，实现删除业务
-				 * 业务层调用，传递主键id
-				 */
-				public void deleteZhangWu(int zwid) {
-					try {
-						//拼写删除数据SQL
-						String sql = "DELETE FROM gjp_zhangwu WHERE zwid=?";
-						qr.update(sql, zwid);
-					} catch (SQLException ex) {
-						System.out.println(ex);
-						throw new RuntimeException("删除账务失败");
-					}
+
 				}
 
-			
-###36删除账务功能view层实现
+### 35删除账务功能dao实现
+
+### 36删除账务功能view层实现
 	* A: 删除账务功能view层实现
 		* a: 案例核心代码
 			* cn.itcast.gjp.view包中建立MainView类editZhangWu方法
@@ -932,5 +904,5 @@
 					controller.deleteZhangWu(zwid);
 					System.out.println("删除账务成功");
 			
-###37总结
+### 37总结
 	* 把今天的知识点总结一遍。
