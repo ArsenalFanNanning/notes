@@ -6,44 +6,18 @@
 5、反射配置文件运行类中的方法
 
 
-第一节课 类加载器
-###01类的加载.avi(11:08)
-###02类的加载时机.avi(06:19)
-###03三种类的加载器.avi(05:14)
 
-第二节课 反射
-###01反射的概念以及作用.avi(09:23)
-###02class文件的产生过程.avi(05:27)
-
-###03获取class文件对象三种方式.avi(11:57)
-###04反射获取空参数构造方法并运行.avi(15:55)
-###05反射获取有参数的构造方法并运行.avi(06:27)
-###06反射获取构造方法并运行的快速的方式.avi(06:14)
-
-###07反射获取私有构造方法并运行.avi(09:41)
-###08反射获取成员变量并改值.avi(09:22)
-###09反射获取空参数成员方法并运行.avi(11:23)
-###10反射获取有参数的成员方法并运行.avi(03:43)
-
-###11反射泛型擦除.avi(10:29)
-###12反射通过配置文件运行的步骤.avi(07:05)
-###13反射通过配置文件运行功能实现.avi(09:12)
-
-============上面的内容,方便我们只做ppt,word教案以及书写下面的简要的笔记=================
-
-
-
-###01类加载器
+### 01类加载器
 	* A.类的加载
 		当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
 		* a 加载 
 			* 就是指将class文件读入内存，并为之创建一个Class对象。
 			* 任何类被使用时系统都会建立一个Class对象
-		* b 连接
+				* b 连接
 			* 验证 是否有正确的内部结构，并和其他类协调一致
 			* 准备 负责为类的静态成员分配内存，并设置默认初始化值
 			* 解析 将类的二进制数据中的符号引用替换为直接引用
-		* c 初始化 
+				* c 初始化 
 			* 就是我们以前讲过的初始化步骤（new 对象）
 		* 注：简单的说就是：把.class文件加载到内存里，并把这个.class文件封装成一个Class类型的对象。
 	* B.类的加载时机
@@ -54,7 +28,7 @@
 		* d. 使用反射方式来强制创建某个类或接口对应的java.lang.Class对象
 		* e. 初始化某个类的子类
 		* f. 直接使用java.exe命令来运行某个主类
-			
+
 	* C: 类加载器(了解)
 		负责将.class文件加载到内在中，并为之生成对应的Class对象。
 		* a. Bootstrap ClassLoader 根类加载器
@@ -67,11 +41,11 @@
 			* 负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径。
 			* 我们用的是System ClassLoader 系统类加载器
 
-###02反射
+### 02反射
 	* A. 反射定义
 		* a. JAVA反射机制是在运行状态中，
 				对于任意一个类，都能够知道这个类的所有属性和方法；
-				对于任意一个对象，都能够调用它的任意一个方法和属性；
+					对于任意一个对象，都能够调用它的任意一个方法和属性；
 			这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
 
 		* b.反射技术
@@ -96,7 +70,7 @@
 				注：第三种和前两种的区别是：
 						前两种你必须明确Person类型.
 						后面是指定这种类型的字符串就行.这种扩展更强.我不需要知道你的类.我只提供字符串,按照配置文件加载就可以了
-
+	
 			* 2. 得到Class对象的三个方法代码演示：
 				代码演示
 				/*
@@ -113,11 +87,11 @@
 						// Person p1 = new Person();
 						// Class c1 = p1.getClass();
 						// System.out.println("c1 = "+ c1);
-
+	
 						// 2: 通过 类名.class 获取到字节码文件对象
 						// Class c2 = Person.class;
 						// System.out.println("c2 = "+ c2);
-
+	
 						// 3: 反射中的方法
 						Class c3 = Class.forName("cn.itcast_01_Reflect.Person");// 包名.类名
 						System.out.println("c3 = " + c3);
@@ -177,7 +151,7 @@
 					private void method5(){
 						System.out.println("私有方法");
 					}
-
+	
 					@Override
 					public String toString() {
 						return "Person [name=" + name + ", age=" + age + ", address=" + address+ "]";
@@ -199,9 +173,9 @@
 				因为是无参构造，所以不传参数。
 		* c. 通过反射获取无参构造方法并使用的代码演示：
 				package cn.itcast.demo1;
-
+	
 				import java.lang.reflect.Constructor;
-
+	
 				/*
 				 *  通过反射获取class文件中的构造方法,运行构造方法
 				 *  运行构造方法,创建对象
@@ -238,9 +212,9 @@
 				因为是有参构造，所以传相应的参数值。
 		* c. 通过反射获取有参构造方法并使用的代码演示：
 			package cn.itcast.demo1;
-
+	
 			import java.lang.reflect.Constructor;
-
+	
 			/*
 			 *  通过反射,获取有参数的构造方法并运行
 			 *  方法getConstructor,传递可以构造方法相对应的参数列表即可
@@ -295,9 +269,9 @@
 				使用此 Constructor 对象表示的构造方法来创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例。 
 		* c. 通过反射获取私有构造方法并使用的代码演示：
 			package cn.itcast.demo1;
-
+	
 			import java.lang.reflect.Constructor;
-
+	
 			/*
 			 *  反射获取私有的构造方法运行
 			 *  不推荐,破坏了程序的封装性,安全性
@@ -388,9 +362,9 @@
 				返回值Object就是方法的返回对象。如果方法没有返回值 ，返回的是null.
 		* c. 反射获取空参数成员方法并运行代码演示
 			package cn.itcast.demo1;
-
+	
 			import java.lang.reflect.Method;
-
+	
 			/*
 			 *  反射获取成员方法并运行
 			 *  public void eat(){}
@@ -416,7 +390,7 @@
 					method.invoke(obj);
 				}
 			}
-
+	
 	* I. 反射获取有参数成员方法并运行
 		* a. 获取有参数成员方法
 			* 得到公共的成员方法
@@ -438,7 +412,7 @@
 		* c. 反射获取有参数成员方法并运行代码演示
 			package cn.itcast.demo1;
 			import java.lang.reflect.Method;
-
+	
 			/*
 			 *  反射获取有参数的成员方法并执行
 			 *  public void sleep(String,int,double){}
@@ -465,7 +439,7 @@
 			package cn.itcast.demo2;
 			import java.lang.reflect.Method;
 			import java.util.ArrayList;
-
+	
 			/*
 			 *   定义集合类,泛型String
 			 *   要求向集合中添加Integer类型
@@ -488,8 +462,9 @@
 					method.invoke(array, 1500);
 					method.invoke(array, 15000);
 					System.out.println(array);
-					
-					
+
+
+​					
 				}
 			}
 	* K. 反射通过配置文件来决定运行的步骤
@@ -506,11 +481,11 @@
 		* c. 代码演示
 			代码：
 			package cn.itcast.demo3;
-
+	
 			import java.io.FileReader;
 			import java.lang.reflect.Method;
 			import java.util.Properties;
-
+	
 			/*
 			 *  调用Person方法,调用Student方法,调用Worker方法
 			 *  类不清楚,方法也不清楚
@@ -553,6 +528,7 @@
 			methodName=eat
 			#className=cn.itcast.demo3.Worker
 			#methodName=job
-		
-###3总结
+
+### 3总结
+
 * 把今天的知识点总结一遍。
