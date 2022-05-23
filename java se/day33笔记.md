@@ -114,7 +114,7 @@
 						this.name = name;
 						System.out.println("带有String的构造方法");
 					}
-					//私有的构造方法
+					// 私有的构造方法
 					private Person(String name, int age){
 						this.name = name;
 						this.age = age;
