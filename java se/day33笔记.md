@@ -105,7 +105,7 @@
 					public int age;
 					private String address;
 
-					//构造方法
+					// 构造方法
 					public Person() {
 						System.out.println("空参数构造方法");
 					}
