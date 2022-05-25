@@ -128,8 +128,8 @@
 						System.out.println("带有String, int, String的构造方法");
 					}
 					
-					//成员方法
-					//没有返回值没有参数的方法
+					// 成员方法
+					// 没有返回值没有参数的方法
 					public void method1(){
 						System.out.println("没有返回值没有参数的方法");
 					}
