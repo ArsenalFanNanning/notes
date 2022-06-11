@@ -133,7 +133,7 @@
 					public void method1(){
 						System.out.println("没有返回值没有参数的方法");
 					}
-					//没有返回值，有参数的方法
+					// 没有返回值，有参数的方法
 					public void method2(String name){
 						System.out.println("没有返回值，有参数的方法 name= "+ name);
 					}
@@ -142,7 +142,7 @@
 						System.out.println("有返回值，没有参数的方法");
 						return 123;
 					}
-					//有返回值，有参数的方法
+					// 有返回值，有参数的方法
 					public String method4(String name){
 						System.out.println("有返回值，有参数的方法");
 						return "哈哈" + name;
