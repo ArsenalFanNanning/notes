@@ -147,7 +147,7 @@
 						System.out.println("有返回值，有参数的方法");
 						return "哈哈" + name;
 					}
-					//私有方法
+					// 私有方法
 					private void method5(){
 						System.out.println("私有方法");
 					}
