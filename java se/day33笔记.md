@@ -386,7 +386,7 @@
 					// methodName获取的方法名  c 方法的参数列表
 					Method method = c.getMethod("eat");
 					// 使用Method类中的方法,运行获取到的方法eat
-					//Object invoke(Object obj, Object...o)
+					// Object invoke(Object obj, Object...o)
 					method.invoke(obj);
 				}
 			}
@@ -453,11 +453,11 @@
 				public static void main(String[] args)throws Exception {
 					ArrayList<String> array  = new ArrayList<String>();
 					array.add("a");
-					//反射方式,获取出集合ArrayList类的class文件对象
+					// 反射方式,获取出集合ArrayList类的class文件对象
 					Class c = array.getClass();
-					//获取ArrayList.class文件中的方法add
+					// 获取ArrayList.class文件中的方法add
 					Method method = c.getMethod("add",Object.class);
-					//使用invoke运行ArrayList方法add
+					// 使用invoke运行ArrayList方法add
 					method.invoke(array, 150);
 					method.invoke(array, 1500);
 					method.invoke(array, 15000);
