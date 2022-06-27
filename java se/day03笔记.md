@@ -63,7 +63,7 @@
 			   System.out.println(i);
 
 
-			   //问题? 产生随机数,范围 1-100之间
+			   // 问题? 产生随机数,范围 1-100之间
 			   // nextInt(100) 0-99 + 1
 			}
 		}
@@ -189,7 +189,7 @@
 			public static void main(String[] args){
 				int j = 6;
 				int i = 15;
-				//使用if语句,判断出最大值
+				// 使用if语句,判断出最大值
 				if(i>j){
 				int j = 6;
 					System.out.println(i+" 是最大值");
@@ -198,7 +198,7 @@
 				}
 
 
-				//使用三元运算实现
+				// 使用三元运算实现
 				int k = i>j ? i : j;
 				System.out.println(k+" 是最大值");
 			}
