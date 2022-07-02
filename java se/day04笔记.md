@@ -294,11 +294,11 @@
 ​	  class ArrayDemo08 {
 ​		public static void main(String[] args){
 ​		
-​			//定义二维数组的方式
+​			// 定义二维数组的方式
 ​			int[][] arr = new int[3][4];
 ​			System.out.println( arr );
 ​			System.out.println("二维数组的长度: " + arr.length);
-​			//获取二维数组的3个元素
+​			// 获取二维数组的3个元素
 ​			System.out.println( arr[0] );
 ​			System.out.println( arr[1] );
 ​			System.out.println( arr[2] );
@@ -356,9 +356,9 @@
 			public static void main(String[] args){
 				int[][] arr = { {1,2,3},{4,5},{6,7,8,9},{0} };
 				
-				//外循环,遍历二维数组
+				// 外循环,遍历二维数组
 				for(int i = 0 ; i < arr.length ;i++){
-					//内循环,遍历每个一维数组 arr[0] arr[1] arr[i]
+					// 内循环,遍历每个一维数组 arr[0] arr[1] arr[i]
 					for(int j = 0 ; j < arr[i].length; j++){
 						System.out.print(arr[i][j]);
 					}
