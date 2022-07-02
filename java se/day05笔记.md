@@ -38,7 +38,7 @@
 		public class MethodDemo{
 	
 			public static void main(String[] args){
-				 //调用方法, 方法执行起来
+				 // 调用方法, 方法执行起来
 				 // 在方法main中,调用方法 getArea
 		
 				 int area = getArea(5,6);
