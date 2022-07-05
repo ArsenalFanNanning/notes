@@ -258,9 +258,9 @@
 				   方法参数: 数组
 				*/
 				public static void printArray(int[] arr){
-					//输出一半中括号,不要换行打印
+					// 输出一半中括号,不要换行打印
 					System.out.print("[");
-					//数组进行遍历
+					// 数组进行遍历
 					for(int i = 0 ; i < arr.length ; i++){
 						//判断遍历到的元素,是不是数组的最后一个元素
 						//如何判断 循环变量 到达 length-1
