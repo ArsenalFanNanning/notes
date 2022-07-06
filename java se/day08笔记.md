@@ -277,7 +277,7 @@
 				 * 方法名: init
 				 */
 				public static void init(ArrayList<FruitItem> array){
-					//创建出多个FruitItem类型,并且属性赋值
+					// 创建出多个FruitItem类型,并且属性赋值
 					FruitItem f1 = new FruitItem();
 					f1.ID = 9527;
 					f1.name = "少林寺酥饼核桃";
@@ -293,7 +293,7 @@
 					f3.name = "新疆原产哈密瓜";
 					f3.price = 599.6;
 					
-					//创建的3个FruitItem类型变量,存储到集合中
+					// 创建的3个FruitItem类型变量,存储到集合中
 					array.add(f1);
 					array.add(f2);
 					array.add(f3);
