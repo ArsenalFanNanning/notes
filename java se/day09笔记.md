@@ -408,18 +408,18 @@
 		public class Test {
 			public static void main(String[] args) {
 				ArrayList<Student> list = new ArrayList<Student>(); //1.1创建一个可以存储多个同学名字的容器
-				 //1.存储全班同学信息
+				 // 1.存储全班同学信息
 				addStudent(list);
-				 //2.打印全班同学每一个人的信息（姓名、年龄）
+				 // 2.打印全班同学每一个人的信息（姓名、年龄）
 				printStudent(list);
-				 //3.随机对学生点名，打印学生信息
+				 // 3.随机对学生点名，打印学生信息
 				randomStudent(list);
 			}
 			public static void addStudent(ArrayList<Student> list) {
-				//键盘输入多个同学名字存储到容器中
+				// 键盘输入多个同学名字存储到容器中
 				Scanner sc = new Scanner(System.in);
 				for (int i = 0; i < 3; i++) {
-					//创建学生
+					// 创建学生
 					Student s = new Student();
 					System.out.println("存储第"+i+"个学生姓名：");
 					String name = sc.next();
@@ -427,7 +427,7 @@
 					System.out.println("存储第"+i+"个学生年龄：");
 					int age = sc.nextInt();
 					s.setAge(age);
-					//添加学生到集合
+					// 添加学生到集合
 					list.add(s);
 				}
 			}
