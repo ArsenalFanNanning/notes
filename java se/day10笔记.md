@@ -140,14 +140,14 @@
 ​			
 
 			class Zi extends Fu{
-				//Zi中的成员变量
+				// Zi中的成员变量
 				int num2 = 6;
-				//Zi中的成员方法
+				// Zi中的成员方法
 				public void show()
 				{
-					//访问父类中的num
+					// 访问父类中的num
 					System.out.println("Fu num="+num);
-					//访问子类中的num2
+					// 访问子类中的num2
 					System.out.println("Zi num2="+num2);
 				}
 			}
