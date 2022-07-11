@@ -67,7 +67,7 @@
 			
 			//定义子类去覆盖接口中的方法。类与接口之间的关系是 实现。通过 关键字 implements
 			class DemoImpl implements Demo { //子类实现Demo接口。
-				//重写接口中的方法。
+				// 重写接口中的方法。
 				public void show1(){}
 				public void show2(){}
 			}
@@ -189,7 +189,7 @@
 		public abstract void 吼叫();
 		}
 		// 缉毒犬属于犬科一种，让其继承犬科，获取的犬科的特性，
-		//由于缉毒犬具有缉毒功能，那么它只要实现缉毒接口即可，这样即保证缉毒犬具备犬科的特性，也拥有了缉毒的功能
+		// 由于缉毒犬具有缉毒功能，那么它只要实现缉毒接口即可，这样即保证缉毒犬具备犬科的特性，也拥有了缉毒的功能
 		class 缉毒犬 extends 犬科 implements 缉毒{
 		
 			public void 缉毒() {
