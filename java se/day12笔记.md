@@ -363,7 +363,7 @@
 ### 18super的应用
 	 * A: 练习：描述学生和工人这两个类，将他们的共性name和age抽取出来存放在父类中，并提供相应的get和set方法，同时需要在创建学生和工人对象就必须明确姓名和年龄
 	 * 案例:
-		//定义Person类，将Student和Worker共性抽取出来
+		// 定义Person类，将Student和Worker共性抽取出来
 		class Person {
 			private String name;
 			private int age;
@@ -446,11 +446,11 @@
 			private String name; // 员工姓名
 			
 
-			//空参数构造方法
+			// 空参数构造方法
 			public Employee() {
 				super();
 			}
-			//有参数构造方法
+			// 有参数构造方法
 			public Employee(String id, String name) {
 				super();
 				this.id = id;
