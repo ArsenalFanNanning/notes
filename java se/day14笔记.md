@@ -115,11 +115,11 @@
 	* A：程序编译
 			数学工具类
 	public class MathTool {
-		//求两个数的和的二倍
+		// 求两个数的和的二倍
 		public double sum2times(int number,int number2) {
 			return (number+number2)*2;
 		}
-		//求两个数的积
+		// 求两个数的积
 		public double area(int number,int number2) {
 			return number*number2;
 		}
@@ -136,11 +136,11 @@
 			this.kuan = kuan;
 		}
 		
-		//求长与宽的周长
+		// 求长与宽的周长
 		public double zhouChang() {
 			return (chang+kuan)*2;
 		}
-		//求长与宽的面积
+		// 求长与宽的面积
 		public double mianJi() {
 			return chang*kuan;
 		}
