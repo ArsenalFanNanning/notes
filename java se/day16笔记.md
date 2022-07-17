@@ -73,7 +73,7 @@
 				 */
 				public static void checkTel(){
 					String telNumber = "1335128005";
-					//String类的方法matches
+					// String类的方法matches
 					boolean b = telNumber.matches("1[34857][\\d]{9}");
 					System.out.println(b);
 				}
@@ -86,7 +86,7 @@
 				 */
 				public static void checkQQ(){
 					String QQ = "123456";
-					//检查QQ号码和规则是否匹配,String类的方法matches
+					// 检查QQ号码和规则是否匹配,String类的方法matches
 					boolean b = QQ.matches("[1-9][\\d]{4,9}");
 					System.out.println(b);
 				}
