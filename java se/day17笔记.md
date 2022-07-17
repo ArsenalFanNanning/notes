@@ -135,7 +135,7 @@
 
 
 ​	 	
-	 	//数据在byte(-128~127)范围内,JVM不会从新new对象
+	 	// 数据在byte(-128~127)范围内,JVM不会从新new对象
 	 	Integer aa = 127; // Integer aa = new Integer(127)
 	 	Integer bb = 127; // Integer bb = aa;
 	 	System.out.println(aa==bb); //true
