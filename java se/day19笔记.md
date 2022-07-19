@@ -100,12 +100,12 @@
         list.add("abc3");
         list.add("abc4");
         
-        //对集合使用迭代器进行获取,获取时候判断集合中是否存在 "abc3"对象
-        //如果有,添加一个元素 "ABC3"
+        // 对集合使用迭代器进行获取,获取时候判断集合中是否存在 "abc3"对象
+        // 如果有,添加一个元素 "ABC3"
         Iterator<String> it = list.iterator();
         while(it.hasNext()){
           String s = it.next();
-          //对获取出的元素s,进行判断,是不是有"abc3"
+          // 对获取出的元素s,进行判断,是不是有"abc3"
           if(s.equals("abc3")){
             list.add("ABC3");
           }
