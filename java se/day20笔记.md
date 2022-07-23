@@ -68,7 +68,7 @@
        	 *  存储重复键的时候,返回被覆盖之前的值
        	 */
        	public static void function(){
-       		//创建集合对象,HashMap,存储对象,键是字符串,值是整数
+       		// 创建集合对象,HashMap,存储对象,键是字符串,值是整数
        		Map<String, Integer> map = new HashMap<String, Integer>();
        		map.put("a", 1);
        		
