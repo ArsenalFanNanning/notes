@@ -44,8 +44,8 @@
 			* 案例演示：
 				public static void main(String[] args) {
 					int[] arr = new int[1024*1024*100];
-					//该句运行时发生了内存溢出错误OutOfMemoryError，开辟了过大的数组空间，
-					//导致JVM在分配数组空间时超出了JVM内存空间，直接发生错误。
+					// 该句运行时发生了内存溢出错误OutOfMemoryError，开辟了过大的数组空间，
+					// 导致JVM在分配数组空间时超出了JVM内存空间，直接发生错误。
 				}
 
 ### 03异常对象的产生原因和处理方式
