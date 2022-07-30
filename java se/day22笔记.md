@@ -40,12 +40,12 @@
 			 */
 			public class FileDemo {
 				public static void main(String[] args) {
-					//File类静态成员变量
-					//与系统有关的路径分隔符
+					// File类静态成员变量
+					// 与系统有关的路径分隔符
 					String separator = File.pathSeparator;
 					System.out.println(separator);// 是一个分号,目录的分割(window中环境变量配置各个路径用分号分割，表示一个完整的路径结束)  Linux中是冒号 :
 					
-					//与系统有关的默认名称分隔符
+					// 与系统有关的默认名称分隔符
 					separator = File.separator;
 					System.out.println(separator);// 向右 \  目录名称分割  Linux / 
 				}
