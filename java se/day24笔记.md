@@ -42,9 +42,9 @@
 					 * 采用UTF-8编码表写入
 					 */
 					public static void writeUTF()throws IOException{
-						//创建字节输出流，绑定文件
+						// 创建字节输出流，绑定文件
 						FileOutputStream fos = new FileOutputStream("c:\\utf.txt");
-						//创建转换流对象，构造方法保证字节输出流，并指定编码表是UTF-8
+						// 创建转换流对象，构造方法保证字节输出流，并指定编码表是UTF-8
 						OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
 						osw.write("你好");
 						osw.close();
