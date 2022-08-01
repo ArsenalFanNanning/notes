@@ -50,7 +50,7 @@
 					String value = pro.getProperty("c");
 					System.out.println(value);
 					
-					//方法stringPropertyNames,将集合中的键存储到Set集合,类似于Map接口的方法keySet
+					// 方法stringPropertyNames,将集合中的键存储到Set集合,类似于Map接口的方法keySet
 					Set<String> set = pro.stringPropertyNames();
 					for(String key : set){
 						System.out.println(key+"..."+pro.getProperty(key));
@@ -83,7 +83,7 @@
 					public static void function_1()throws IOException{
 						Properties pro = new Properties();
 						FileReader fr = new FileReader("c:\\pro.properties");
-						//调用集合的方法load,传递字符输入流
+						// 调用集合的方法load,传递字符输入流
 						pro.load(fr);
 						fr.close();
 						System.out.println(pro);
@@ -114,7 +114,7 @@
 					pro.setProperty("age", "31");
 					pro.setProperty("email", "123456789@163.com");
 					FileWriter fw = new FileWriter("c:\\pro.properties");
-					//键值对,存回文件,使用集合的方法store传递字符输出流
+					// 键值对,存回文件,使用集合的方法store传递字符输出流
 					pro.store(fw, "");
 					fw.close();
 				 }				
