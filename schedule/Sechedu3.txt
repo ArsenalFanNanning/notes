@@ -1,0 +1,164 @@
+https://blog.csdn.net/weixin_43947145/article/details/123089507
+
+
+// 开启定时任务
+@EnableScheduling 
+@Configuration
+public class SchedulingConfig {
+
+    @Bean
+    public TaskScheduler taskScheduler() {
+        // 创建任务调度线程池
+        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+        // 初始化线程池数量
+        taskScheduler.setPoolSize(4);
+        // 是否将取消后的任务，从队列中删除
+        taskScheduler.setRemoveOnCancelPolicy(true);
+        // 设置线程名前缀
+        taskScheduler.setThreadNamePrefix("TaskSchedulerThreadPool-");
+        return taskScheduler;
+    }
+}
+
+
+
+@Component
+public class ReportAutoTask implements SchedulingConfigurer {
+
+	private ScheduledTaskRegistrar scheduledTaskRegistrar;
+
+	/**
+     * 根据taskId来储存指定的任务
+     */
+    private Map<String, ScheduledTask> scheduledTaskMap = new ConcurrentHashMap<>(16);
+
+    /**
+     * 定时任务注册(这个方法会在启动的时候进行执行)
+     *
+     * @param scheduledTaskRegistrar
+     */
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+     	this.scheduledTaskRegistrar = scheduledTaskRegistrar;
+    }
+    
+    public ScheduledTaskRegistrar getScheduledTaskRegistrar() {
+        return scheduledTaskRegistrar;
+    }
+
+    public void setScheduledTaskRegistrar(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+        this.scheduledTaskRegistrar = scheduledTaskRegistrar;
+    }
+
+    public Map<String, ScheduledTask> getScheduledTaskMap() {
+        return scheduledTaskMap;
+    }
+
+    public void setScheduledTaskMap(Map<String, ScheduledTask> scheduledTaskMap) {
+        this.scheduledTaskMap = scheduledTaskMap;
+    }
+}
+
+
+
+
+@Component
+@Slf4j
+public class ReportAutoRunnable implements Runnable {
+
+    /**
+     * reportAutoDTO
+     */
+    private ReportAutoDTO reportAutoDTO;
+
+    public ReportAutoDTO getReportAutoDTO() {
+        return reportAutoDTO;
+    }
+
+    public void setReportAutoDTO(ReportAutoDTO reportAutoDTO) {
+        this.reportAutoDTO = reportAutoDTO;
+    }
+
+    @Autowired
+    private ReportAutoService reportAutoService;
+
+    @Override
+    public void run() {
+        String name = Thread.currentThread().getName();
+        try {
+            log.info("定时任务开始执行 任务id：{} ,线程名称：{}", reportAutoDTO.getId(),name);
+            reportAutoService.autoReport(reportAutoDTO);
+            log.info("定时任务执行完毕 任务id：{} ,线程名称：{}", reportAutoDTO.getId(),name);
+        } catch (Exception ex) {
+            log.info("定时任务执行出现异常 任务id：{} ,异常信息：{}", reportAutoDTO.getId(),ex.getMessage());
+        }
+    }
+}
+
+
+
+public class ReportAutoCronTask extends CronTask {
+    /**
+     * 任务id
+     */
+    private String taskId;
+
+    /**
+     * 任务名称
+     */
+    private String taskName;
+
+
+    public ReportAutoCronTask(Runnable runnable, String expression) {
+        super(runnable, expression);
+    }
+
+    public ReportAutoCronTask(Runnable runnable, CronTrigger cronTrigger) {
+        super(runnable, cronTrigger);
+    }
+
+    public ReportAutoCronTask(Runnable runnable, String expression,String taskId,String taskName){
+        super(runnable, expression);
+        this.taskId = taskId;
+        this.taskName = taskName;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+}
+
+
+
+
+// 每30秒执行一次
+ String expression ="0/30 0 0 * ?";
+ // 创建定时任务
+ReportAutoCronTask reportAutoCronTask = new ReportAutoCronTask(reportAutoRunnable, expression, "1111", "任务名称");
+scheduledTaskRegistrar.addCronTask(reportAutoCronTask);
+ // 启动定时任务
+ScheduledTask scheduledTask = scheduledTaskRegistrar.scheduleCronTask(reportAutoCronTask);reportAutoCronTask.setFlag(true);
+scheduledTaskMap.put("1111", scheduledTask);
+
+
+
+
+
+for (Map.Entry<String, ScheduledTask> scheduledTaskEntry : scheduledTaskMap.entrySet()) {
+                if (scheduledTaskEntry.getKey().equals(reportAutoDTO.getId())) {
+                    // 停止定时任务
+                    scheduledTaskEntry.getValue().cancel();
+                }
+            }
