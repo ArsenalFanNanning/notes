@@ -1,0 +1,291 @@
+https://blog.csdn.net/weixin_45821811/article/details/120547429
+
+
+CREATE TABLE `tb_cron`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '动态定时任务时间表',
+  `cron_expression` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '定时任务表达式',
+  `cron_describe` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `tb_cron` VALUES (1, '0 0/1 * * * ?', '每分钟执行一次');
+
+
+
+@Data
+@TableName("tb_cron")
+public class Cron {
+    private Long id;
+    private String cronExpression;
+    private String cronDescribe;
+}
+
+
+
+@Repository
+public interface CronMapper extends BaseMapper<Cron> {
+    @Select("select cron_expression from tb_cron where id=1")
+    String getCron1();
+}
+
+
+
+
+@Component
+public class CompleteScheduleConfig implements SchedulingConfigurer {
+
+    @Autowired
+    @SuppressWarnings("all")
+    CronMapper cronMapper;
+
+    /**
+     * 执行定时任务.
+     */
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.addTriggerTask(
+                //1.添加任务内容(Runnable)
+                () -> System.out.println("执行动态定时任务1: " + LocalDateTime.now().toLocalTime()+",此任务执行周期由数据库中的cron表达式决定"),
+                //2.设置执行周期(Trigger)
+                triggerContext -> {
+                    //2.1 从数据库获取执行周期
+                    String cron = cronMapper.getCron1();
+                    //2.2 合法性校验.
+                    if (cron!=null) {
+                        // Omitted Code ..
+                    }
+                    //2.3 返回执行周期(Date)
+                    return new CronTrigger(cron).nextExecutionTime(triggerContext);
+                }
+        );
+    }
+}
+
+
+
+
+import cn.hutool.core.convert.ConverterRegistry;
+import com.crush.scheduled.entity.Task;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ScheduledFuture;
+
+/**
+ * @author crush
+ */
+@Component
+@Slf4j
+public class DynamicTaskService {
+
+    /**
+     * 以下两个都是线程安全的集合类。
+     */
+    public Map<String, ScheduledFuture<?>> taskMap = new ConcurrentHashMap<>();
+    public List<String> taskList = new CopyOnWriteArrayList<String>();
+
+
+    private final ThreadPoolTaskScheduler syncScheduler;
+
+    public DynamicTaskService(ThreadPoolTaskScheduler syncScheduler) {
+        this.syncScheduler = syncScheduler;
+    }
+
+    /**
+     * 查看已开启但还未执行的动态任务
+     * @return
+     */
+    public List<String> getTaskList() {
+        return taskList;
+    }
+
+
+    /**
+     * 添加一个动态任务
+     *
+     * @param task
+     * @return
+     */
+    public boolean add(Task task) {
+        // 此处的逻辑是 ，如果当前已经有这个名字的任务存在，先删除之前的，再添加现在的。（即重复就覆盖）
+        if (null != taskMap.get(task.getName())) {
+            stop(task.getName());
+        }
+
+        // hutool 工具包下的一个转换类型工具类 好用的很
+        ConverterRegistry converterRegistry = ConverterRegistry.getInstance();
+        Date startTime = converterRegistry.convert(Date.class, task.getStart());
+
+        // schedule :调度给定的Runnable ，在指定的执行时间调用它。
+        //一旦调度程序关闭或返回的ScheduledFuture被取消，执行将结束。
+        //参数：
+        //任务 – 触发器触发时执行的 Runnable
+        //startTime – 任务所需的执行时间（如果这是过去，则任务将立即执行，即尽快执行）
+        ScheduledFuture<?> schedule = syncScheduler.schedule(getRunnable(task), startTime);
+        taskMap.put(task.getName(), schedule);
+        taskList.add(task.getName());
+        return true;
+    }
+
+
+    /**
+     * 运行任务
+     *
+     * @param task
+     * @return
+     */
+    public Runnable getRunnable(Task task) {
+        return () -> {
+            log.info("---动态定时任务运行---");
+            try {
+                System.out.println("此时时间==>" + LocalDateTime.now());
+                System.out.println("task中设定的时间==>" + task);
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            log.info("---end--------");
+        };
+    }
+
+    /**
+     * 停止任务
+     *
+     * @param name
+     * @return
+     */
+    public boolean stop(String name) {
+        if (null == taskMap.get(name)) {
+            return false;
+        }
+        ScheduledFuture<?> scheduledFuture = taskMap.get(name);
+        scheduledFuture.cancel(true);
+        taskMap.remove(name);
+        taskList.remove(name);
+        return true;
+    }
+}
+
+
+
+
+
+
+
+
+/**
+ * 异步线程池ThreadPoolExecutor 配置类
+ *
+ * @Author: crush
+ * @Date: 2021-07-23 14:14
+ */
+@Configuration
+public class ThreadPoolTaskExecutorConfig {
+
+    @Bean
+    public ThreadPoolTaskScheduler syncScheduler() {
+        ThreadPoolTaskScheduler syncScheduler = new ThreadPoolTaskScheduler();
+        syncScheduler.setPoolSize(5);
+        // 这里给线程设置名字，主要是为了在项目能够更快速的定位错误。
+        syncScheduler.setThreadGroupName("syncTg");
+        syncScheduler.setThreadNamePrefix("syncThread-");
+        syncScheduler.initialize();
+        return syncScheduler;
+    }
+}
+
+
+
+
+
+package com.crush.scheduled.controller;
+import com.crush.scheduled.entity.Task;
+import com.crush.scheduled.service.DynamicTaskService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @Author: crush
+ * @Date: 2021-07-29 15:26
+ * version 1.0
+ */
+@RestController
+@RequestMapping("/dynamicTask")
+public class DynamicTaskController {
+
+    private final DynamicTaskService dynamicTask;
+
+    public DynamicTaskController(DynamicTaskService dynamicTask) {
+        this.dynamicTask = dynamicTask;
+    }
+
+    /**
+     * 查看已开启但还未执行的动态任务
+     * @return
+     */
+    @GetMapping
+    public List<String> getStartingDynamicTask(){
+        return dynamicTask.getTaskList();
+    }
+
+
+    /**
+     * 开启一个动态任务
+     * @param task
+     * @return
+     */
+    @PostMapping("/dynamic")
+    public String startDynamicTask(@RequestBody Task task){
+        // 将这个添加到动态定时任务中去
+        dynamicTask.add(task);
+         return "动态任务:"+task.getName()+" 已开启";
+    }
+
+
+    /**
+     *  根据名称 停止一个动态任务
+     * @param name
+     * @return
+     */
+    @DeleteMapping("/{name}")
+    public String stopDynamicTask(@PathVariable("name") String name){
+        // 将这个添加到动态定时任务中去
+        if(!dynamicTask.stop(name)){
+            return "停止失败,任务已在进行中.";
+        }
+        return "任务已停止";
+    }
+
+}
+
+
+
+
+
+/**
+ * @Author: crush
+ * @Date: 2021-07-29 15:35
+ * version 1.0
+ */
+@Data
+@Accessors(chain = true) // 方便链式编写 习惯所然 
+public class Task {
+    /**
+     * 动态任务名曾
+     */
+    private String name;
+
+    /**
+     * 设定动态任务开始时间
+     */
+    private LocalDateTime start;
+}
+
+
+
