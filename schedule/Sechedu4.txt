@@ -1,0 +1,235 @@
+https://www.csdn.net/tags/MtTacg1sNjAwMzUtYmxvZwO0O0OO0O0O.html
+
+
+CREATE TABLE `job_interface_info`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求接口地址',
+  `client_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求方式：GET,POST',
+  `body_params_json` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求参数Json',
+  `hearder_json` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求头参数',
+  `updated_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `cron` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '定时任务表达式',
+  `task_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务名称',
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '创建人id',
+  `is_deleted` int(1) NULL DEFAULT 0 COMMENT '删除标识符，1删除 0未删除',
+  `run_status` int(11) NULL DEFAULT NULL COMMENT '运行状态1允许 0停止',
+  PRIMARY KEY (`id`) USING BTREE
+)
+
+
+
+
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+
+@Configuration
+public class SchedulingConfig {
+    @Bean
+    public TaskScheduler taskScheduler() {
+        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+        // 定时任务执行线程池核心线程数
+        taskScheduler.setPoolSize(5);
+        taskScheduler.setRemoveOnCancelPolicy(true);
+        taskScheduler.setThreadNamePrefix("TaskSchedulerThreadPool-");
+        return taskScheduler;
+    }
+}
+
+
+
+
+import java.util.concurrent.ScheduledFuture;
+
+public final class ScheduledTask {
+
+    public volatile ScheduledFuture<?> future;
+    /**
+     * 取消定时任务
+     */
+    public void cancel() {
+        ScheduledFuture<?> future = this.future;
+        if (future != null) {
+            future.cancel(true);
+        }
+    }
+}
+
+
+
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.config.CronTask;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+@Component
+public class CronTaskRegistrar implements DisposableBean {
+
+    private final Map<String, ScheduledTask> scheduledTasks = new ConcurrentHashMap<>(16);
+
+    @Autowired
+    private TaskScheduler taskScheduler;
+
+    public TaskScheduler getScheduler() {
+        return this.taskScheduler;
+    }
+
+    /**
+     * 新增定时任务
+     * @param task
+     * @param cronExpression
+     */
+    public void addCronTask(String taskId,Runnable task, String cronExpression) {
+        addCronTask(taskId,new CronTask(task, cronExpression));
+    }
+
+    public void addCronTask(String taskId,CronTask cronTask) {
+        if (cronTask != null) {
+            if (this.scheduledTasks.containsKey(taskId)) {
+                removeCronTask(taskId);
+            }
+
+            this.scheduledTasks.put(taskId, scheduleCronTask(cronTask));
+        }
+    }
+
+    /**
+     * 移除定时任务
+     */
+    public void removeCronTask(String taskId) {
+        ScheduledTask scheduledTask = this.scheduledTasks.remove(taskId);
+        if (scheduledTask != null){
+            scheduledTask.cancel();}
+    }
+
+    public ScheduledTask scheduleCronTask(CronTask cronTask) {
+        ScheduledTask scheduledTask = new ScheduledTask();
+        scheduledTask.future = this.taskScheduler.schedule(cronTask.getRunnable(), cronTask.getTrigger());
+
+        return scheduledTask;
+    }
+
+
+    @Override
+    public void destroy() {
+        for (ScheduledTask task : this.scheduledTasks.values()) {
+            task.cancel();
+        }
+        this.scheduledTasks.clear();
+    }
+}
+
+
+
+package com.wugui.datax.admin.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wugui.datatx.core.biz.model.ReturnT;
+import com.wugui.datax.admin.dynamic.CronTaskRegistrar;
+import com.wugui.datax.admin.entity.JobInterfaceInfo;
+import com.wugui.datax.admin.service.IJobInterfaceInfoService;
+import com.wugui.datax.admin.util.HttpUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+
+/**
+ * <p>
+ * 控制器
+ * </p>
+ *
+ * @author ws
+ * @since 2021-11-02
+ */
+@Api(tags = "接口任务模块")
+@RestController
+@RequestMapping("/api/jobInterfaceInfo")
+public class JobInterfaceInfoController {
+    @Autowired
+    private IJobInterfaceInfoService baseService;
+    @Resource
+    private HttpUtils httpUtils;
+    @Resource
+    private CronTaskRegistrar registrar;
+    private Runnable task;
+
+    @ApiOperation("add:新增")
+    @PostMapping("/add")
+    public ReturnT<String> add(@RequestBody JobInterfaceInfo entity) {
+        Boolean ret = baseService.save(entity);
+        return ret ? ReturnT.SUCCESS : ReturnT.FAIL;
+
+    }
+
+    @ApiOperation("update：修改")
+    @PutMapping("/update")
+    public ReturnT<String> update(@RequestBody JobInterfaceInfo entity) {
+        Boolean ret = baseService.updateById(entity);
+        if (entity.getRunStatus().equals(0)) {
+            registrar.removeCronTask(entity.getId().toString());
+        }
+        return ret ? ReturnT.SUCCESS : ReturnT.FAIL;
+    }
+
+    @ApiOperation("delete：删除")
+    @DeleteMapping("/delete")
+    public ReturnT<String> delete(Integer id) {
+        registrar.removeCronTask(id.toString());
+        Boolean ret = baseService.removeById(id);
+        return ret ? ReturnT.SUCCESS : ReturnT.FAIL;
+    }
+
+    @ApiOperation("list：列表")
+    @GetMapping("/list")
+    public ReturnT<IPage> list(Page page, String name) {
+        QueryWrapper<JobInterfaceInfo> queryWrapper = new QueryWrapper();
+        queryWrapper.lambda().eq(JobInterfaceInfo::getIsDeleted, 0);
+        IPage data = baseService.page(page, queryWrapper);
+        return new ReturnT<>(data);
+    }
+
+    @ApiOperation("startTask:开启定时任务")
+    @GetMapping("/startTask")
+    public ReturnT<String> startTask(Integer id) {
+        JobInterfaceInfo job = baseService.getById(id);
+        registrar.addCronTask(id.toString(), doTask(id), job.getCron());
+        return ReturnT.SUCCESS;
+    }
+    
+    private Runnable doTask(Integer id) {
+        task = new Runnable() {
+            @SneakyThrows
+            @Override
+            public void run() {
+                System.out.println(id + ":" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                JobInterfaceInfo job = baseService.getById(id);
+                //todo
+            }
+        };
+        return task;
+    }
+
+
+}
