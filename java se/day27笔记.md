@@ -35,7 +35,7 @@
     
      public class Tickets implements Runnable{
       
-      //定义出售的票源
+      // 定义出售的票源
       private int ticket = 100;
       private Object obj = new Object();
       
