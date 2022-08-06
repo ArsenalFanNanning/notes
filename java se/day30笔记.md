@@ -33,12 +33,12 @@
 				 * 定义方法,使用QueryRunner类的方法update向数据表中,添加数据
 				 */
 				public static void insert()throws SQLException{
-					//创建QueryRunner类对象
+					// 创建QueryRunner类对象
 					QueryRunner qr = new QueryRunner();
 					String sql = "INSERT INTO sort (sname,sprice,sdesc)VALUES(?,?,?)";
-					//将三个?占位符的实际参数,写在数组中
+					// 将三个?占位符的实际参数,写在数组中
 					Object[] params = {"体育用品",289.32,"购买体育用品"};
-					//调用QueryRunner类的方法update执行SQL语句
+					// 调用QueryRunner类的方法update执行SQL语句
 					int row = qr.update(con, sql, params);
 					System.out.println(row);
 					DbUtils.closeQuietly(con);
