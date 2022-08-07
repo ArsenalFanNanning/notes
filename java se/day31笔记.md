@@ -142,7 +142,7 @@
 				 private String createtime; 
 				
 				 private String description;
-				 //注意生成空参构造、有参构造、set和get方法、toString方法等
+				 // 注意生成空参构造、有参构造、set和get方法、toString方法等
 			}
 
 ### 10创建JDBCUtils工具类
