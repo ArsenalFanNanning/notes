@@ -72,8 +72,8 @@
 		* a: 变量定义后可以不赋值，使用时再赋值。不赋值不能使用。
 			public static void main(String[] args) {
 			int x;
-			x = 20; //为x赋值20
-			System.out.println(x);//读取x变量中的值，再打印
+			x = 20; // 为x赋值20
+			System.out.println(x);// 读取x变量中的值，再打印
 			}
 					
 		* c:	变量使用时有作用域的限制。
