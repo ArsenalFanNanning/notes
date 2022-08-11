@@ -223,8 +223,8 @@
 	* B: 案例代码
 		public class WhileDemo{
 			public static void main(String[] args){
-				//输出 1-4之间的整数
-				//定义变量,整数类型, 循环的条件
+				// 输出 1-4之间的整数
+				// 定义变量,整数类型, 循环的条件
 				int i = 1;
 				while( i < 5 ){
 					System.out.println(i);
