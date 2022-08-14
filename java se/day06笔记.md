@@ -73,7 +73,7 @@
 					p.brand = "爱立信";
 					p.size = 5.0;
 					
-					//获取属性值
+					// 获取属性值
 					System.out.println(p.color+"  "+p.brand+"  "+p.size);
 				}
 			}
