@@ -54,8 +54,8 @@
 				      未知数的变量,定义在方法的小括号内
 			*/
 			public static int  getArea(int w, int h){
-				//实现方法的功能主体
-				//int area = w * h;
+				// 实现方法的功能主体
+				// int area = w * h;
 				return w * h;
 			}
 		}
