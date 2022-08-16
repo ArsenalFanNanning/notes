@@ -262,8 +262,8 @@
 					System.out.print("[");
 					// 数组进行遍历
 					for(int i = 0 ; i < arr.length ; i++){
-						//判断遍历到的元素,是不是数组的最后一个元素
-						//如何判断 循环变量 到达 length-1
+						// 判断遍历到的元素,是不是数组的最后一个元素
+						// 如何判断 循环变量 到达 length-1
 						if( i == arr.length-1 ){
 							//输出数组的元素和]
 							System.out.print(arr[i]+"]");
