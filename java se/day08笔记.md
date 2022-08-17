@@ -262,9 +262,9 @@
 			public class Shopp {
 	
 				public static void main(String[] args) {
-					//创建ArrayList集合,存储商品类型,存储数据类型FruitItem类型
+					// 创建ArrayList集合,存储商品类型,存储数据类型FruitItem类型
 					ArrayList<FruitItem> array = new ArrayList<FruitItem>();
-					//调用商品初始化方法,传递集合
+					// 调用商品初始化方法,传递集合
 					init(array);
 					
 					}
