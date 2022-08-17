@@ -104,7 +104,7 @@
 		public class CarDemo {
 			public static void main(String[] args) { 
 				/*
-				 测试：Car类中的run方法。
+				  测试：Car类中的run方法。
 				 */
 				// 1,创建Car的对象。给对象起个名字。
 				Car c = new Car();// c是类类型的变量。c指向了一个具体的Car类型的对象。
