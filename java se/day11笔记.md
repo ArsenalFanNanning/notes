@@ -183,7 +183,7 @@
 		interface 缉毒{
 			public abstract void 缉毒();
 		}
-		//定义犬科的这个提醒的共性功能
+		// 定义犬科的这个提醒的共性功能
 		abstract class 犬科{
 		public abstract void 吃饭();
 		public abstract void 吼叫();
