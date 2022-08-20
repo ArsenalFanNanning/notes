@@ -468,7 +468,7 @@
 			public void setName(String name) {
 				this.name = name;
 			}
-			//工作方法（抽象方法）
+			// 工作方法（抽象方法）
 			public abstract void work(); 
 		}
 		
