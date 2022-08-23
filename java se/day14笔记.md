@@ -168,10 +168,10 @@
 					System.out.println("show方法执行了");
 				}
 			}
-			//测试类
+			// 测试类
 			public class Test {
 				public static void main(String[] args) {
-					//创建Person对象
+					// 创建Person对象
 					Person p = new Person();
 					//调用method方法
 					method(p);
