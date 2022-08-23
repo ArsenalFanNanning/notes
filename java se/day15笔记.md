@@ -125,7 +125,7 @@
 						return true;
 					}
 					
-					//对参数obj,非null判断
+					// 对参数obj,非null判断
 					if( obj == null){
 						return false;
 					}
