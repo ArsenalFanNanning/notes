@@ -135,7 +135,7 @@
 				 */
 				public static void split_1(){
 					String str = "12-25-36-98";
-					//按照-对字符串进行切割,String类方法split
+					// 按照-对字符串进行切割,String类方法split
 					String[] strArr = str.split("-");
 					System.out.println("数组的长度"+strArr.length);
 					for(int i = 0 ; i < strArr.length ; i++){
