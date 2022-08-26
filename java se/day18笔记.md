@@ -237,7 +237,7 @@ ArrayList类    LinkedList类                                 HashSet类     Lin
        }
        
 
-       //cursor记录的索引值不等于集合的长度返回true,否则返回false
+       // cursor记录的索引值不等于集合的长度返回true,否则返回false
          public boolean hasNext() {       
            return cursor != size; //cursor初值为0
                            
