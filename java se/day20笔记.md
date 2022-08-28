@@ -106,9 +106,9 @@
                                   		map.put("c", 13);
                                   		map.put("d", 14);
 
-     		//1. 调用map集合的方法keySet,所有的键存储到Set集合中
+     		// 1. 调用map集合的方法keySet,所有的键存储到Set集合中
      		Set<String> set = map.keySet();
-     		//2. 遍历Set集合,获取出Set集合中的所有元素 (Map中的键)
+     		// 2. 遍历Set集合,获取出Set集合中的所有元素 (Map中的键)
      		Iterator<String> it = set.iterator();
      		while(it.hasNext()){
      			//it.next返回是Set集合元素,也就是Map中的键
