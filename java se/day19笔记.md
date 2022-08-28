@@ -325,7 +325,7 @@
         }
       }
      
-      //String类重写hashCode()方法
+      // String类重写hashCode()方法
       //字符串都会存储在底层的value数组中{'a','b','c'}
       public int hashCode() {
               int h = hash;//hash初值为0
