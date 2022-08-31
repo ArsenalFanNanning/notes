@@ -340,7 +340,7 @@
 					function_2();
 				}
 				public static void function_2(){
-					//获取系统中的所有根目录
+					// 获取系统中的所有根目录
 					File[] fileArr = File.listRoots();
 					for(File f : fileArr){
 						System.out.println(f);
