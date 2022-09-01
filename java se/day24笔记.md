@@ -55,7 +55,7 @@
 					 * 文本采用GBK的形式写入
 					 */
 					public static void writeGBK()throws IOException{
-						//创建字节输出流，绑定数据文件
+						// 创建字节输出流，绑定数据文件
 						FileOutputStream fos = new FileOutputStream("c:\\gbk.txt");
 						//创建转换流对象，构造方法，绑定字节输出流，使用GBK编码表
 						OutputStreamWriter osw = new OutputStreamWriter(fos);
