@@ -189,7 +189,7 @@
 		* c: 案例代码
 			public class FileOutputStreamDemo3 {
 				public static void main(String[] args) {
-					//try 外面声明变量,try 里面建立对象
+					// try 外面声明变量,try 里面建立对象
 					FileOutputStream fos = null;
 					try{
 						fos = new FileOutputStream("s:\\a.txt");
