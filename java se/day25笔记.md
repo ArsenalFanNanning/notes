@@ -178,7 +178,7 @@
 				 * void writeObject(Object obj)写出对象的方法
 				 */
 				public static void writeObject() throws IOException{
-					//创建字节输出流,封装文件
+					// 创建字节输出流,封装文件
 					FileOutputStream fos = new FileOutputStream("c:\\person.txt");
 					//创建写出对象的序列化流的对象,构造方法传递字节输出流
 					ObjectOutputStream oos = new ObjectOutputStream(fos);
