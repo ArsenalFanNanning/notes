@@ -364,7 +364,7 @@
               }
         }.start();
 
-        //实现接口方式  XXX implements Runnable{ public void run(){}}
+        // 实现接口方式  XXX implements Runnable{ public void run(){}}
         
         Runnable r = new Runnable(){
           public void run(){
