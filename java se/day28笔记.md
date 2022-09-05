@@ -211,9 +211,9 @@
        */
       public class UDPReceive {
         public static void main(String[] args)throws IOException {
-          //创建数据包传输对象DatagramSocket 绑定端口号
+          // 创建数据包传输对象DatagramSocket 绑定端口号
           DatagramSocket ds = new DatagramSocket(6000);
-          //创建字节数组
+          // 创建字节数组
           byte[] data = new byte[1024];
           //创建数据包对象,传递字节数组
           DatagramPacket dp = new DatagramPacket(data, data.length);
