@@ -57,7 +57,7 @@
 				 *  定义方法,使用QueryRunner类的方法update将数据表的数据修改
 				 */
 				public static void update()throws SQLException{
-					//创建QueryRunner类对象
+					// 创建QueryRunner类对象
 					QueryRunner qr = new QueryRunner();	
 					//写修改数据的SQL语句
 					String sql = "UPDATE sort SET sname=?,sprice=?,sdesc=? WHERE sid=?";
