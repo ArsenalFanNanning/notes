@@ -94,7 +94,7 @@
 					//1.注册驱动 反射技术,将驱动类加入到内容
 					// 使用java.sql.DriverManager类静态方法 registerDriver(Driver driver)
 					// Diver是一个接口,参数传递,MySQL驱动程序中的实现类
-					//DriverManager.registerDriver(new Driver());
+					// DriverManager.registerDriver(new Driver());
 					//驱动类源代码,注册2次驱动程序
 					Class.forName("com.mysql.jdbc.Driver");
 					
