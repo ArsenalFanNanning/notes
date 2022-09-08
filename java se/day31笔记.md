@@ -149,7 +149,7 @@
 	* A：创建JDBCUtils工具类
 		* a: 案例代码
 			public class JDBCUtils{
-				//创建BasicDataSource对象
+				// 创建BasicDataSource对象
 				private static BasicDataSource datasource = new BasicDataSource();
 				//静态代码块,实现必要参数设置
 				static{
