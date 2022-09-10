@@ -324,7 +324,7 @@
 				public static void main(String[] args) throws Exception{
 					Class c = Class.forName("cn.itcast.demo1.Person");
 					Object obj = c.newInstance();
-					//获取成员变量 Class类的方法 getFields() class文件中的所有公共的成员变量
+					// 获取成员变量 Class类的方法 getFields() class文件中的所有公共的成员变量
 					//返回值是Field[]    Field类描述成员变量对象的类
 					/*Field[] fields = c.getFields();
 					for(Field f : fields){
