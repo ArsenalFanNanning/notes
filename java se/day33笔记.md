@@ -331,7 +331,7 @@
 						System.out.println(f);
 					}*/
 					
-					//获取指定的成员变量 String name
+					// 获取指定的成员变量 String name
 					//Class类的方法  Field getField(传递字符串类型的变量名) 获取指定的成员变量
 					Field field = c.getField("name");
 				   
