@@ -332,7 +332,7 @@
 					}*/
 					
 					// 获取指定的成员变量 String name
-					//Class类的方法  Field getField(传递字符串类型的变量名) 获取指定的成员变量
+					// Class类的方法  Field getField(传递字符串类型的变量名) 获取指定的成员变量
 					Field field = c.getField("name");
 				   
 					//Field类的方法 void set(Object obj, Object value) ,修改成员变量的值
