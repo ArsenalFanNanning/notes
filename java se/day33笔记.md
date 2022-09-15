@@ -336,7 +336,7 @@
 					Field field = c.getField("name");
 				   
 					// Field类的方法 void set(Object obj, Object value) ,修改成员变量的值
-					//Object obj 必须有对象的支持,  Object value 修改后的值
+					// Object obj 必须有对象的支持,  Object value 修改后的值
 					field.set(obj,"王五");
 					System.out.println(obj);
 					
