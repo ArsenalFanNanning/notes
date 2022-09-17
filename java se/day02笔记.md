@@ -82,7 +82,7 @@
 			{
 			    int y = 20;
 			}
-			System.out.println(x);//读取x变量中的值，再打印
+			System.out.println(x);// 读取x变量中的值，再打印
 			System.out.println(y);//读取y变量中的值失败，失败原因，找不到y变量，因为超出了y变量作用范围，所以不能使用y变量
 			}
 	
