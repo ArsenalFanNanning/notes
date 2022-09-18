@@ -432,7 +432,7 @@
 ​		import java.util.Random;
 ​		public class CallName{
 ​			public static void main(String[] args){
-​				//存储姓名,姓名存储到数组中
+​				// 存储姓名,姓名存储到数组中
 ​				//数组存储姓名,姓名的数据类型,String
 ​				String[] names = {"张三","李四","王五","李蕾","韩梅梅","小名","老王","小华","约翰逊","爱丽丝"};
 ​				
